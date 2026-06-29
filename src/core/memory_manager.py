@@ -76,15 +76,17 @@ class MemoriaPersistente:
 
     def __init__(self, db_path: str = "memoria.db",
                  index_path: str = "memoria.index",
-                 max_memories: int = 500):
+                 max_memories: int = 500,
+                 ollama_client=None):
 
         self.db_path = db_path
         self.index_path = index_path
         self.max_memories = max_memories
+        self.ollama_client = ollama_client
 
         self.cache_lru = CacheLRU(max_size=100, ttl=1800)
         self._db_lock = asyncio.Lock()
-        self.embedding_dim = 384
+        self.embedding_dim = 4096 if ollama_client else 384
 
         self._init_sqlite()
         self._init_faiss()
@@ -212,15 +214,29 @@ class MemoriaPersistente:
         await loop.run_in_executor(None, self._worker_ready.wait)
         return self.embedder
 
-    async def salvar_memoria(self, texto: str, importancia: float = 1.0) -> int:
-        """Salva memoria com atomicidade entre SQLite e FAISS.
+    async def _get_embedding(self, text: str) -> np.ndarray:
+        if self.ollama_client is not None:
+            try:
+                vec = await self.ollama_client.embeddings(text)
+                if vec and len(vec) == self.dimension:
+                    logger.debug(f"Embedding via Ollama: {len(vec)} dims")
+                    return np.array(vec, dtype=np.float32)
+            except Exception as e:
+                logger.warning(f"Ollama embedding failed: {e}")
+        future_embedding: ConcurrentFuture = ConcurrentFuture()
+        self.embedding_queue.put((text, future_embedding))
+        try:
+            return await asyncio.wait_for(
+                asyncio.wrap_future(future_embedding), timeout=30.0
+            )
+        except (asyncio.TimeoutError, TimeoutError):
+            logger.warning("Embedding timeout, using zeroed vector")
+            return np.zeros(self.dimension, dtype=np.float32)
 
-        Mantem o mapping _faiss_to_db sincronizado:
-        - Marcadores de memorias evictadas como None no mapping
-        - Novas entradas adicionadas ao final do mapping
-        - Busca futura filtra entradas com mapping None
-        """
+    async def salvar_memoria(self, texto: str, importancia: float = 1.0) -> int:
         logger = logging.getLogger(__name__)
+
+        embedding = await self._get_embedding(texto)
 
         async with self._db_lock:
             try:
@@ -245,18 +261,6 @@ class MemoriaPersistente:
                         for i in range(len(self._faiss_to_db)):
                             if self._faiss_to_db[i] in evict_ids:
                                 self._faiss_to_db[i] = None
-
-                future_embedding: ConcurrentFuture = ConcurrentFuture()
-                self.embedding_queue.put((texto, future_embedding))
-
-                try:
-                    embedding = await asyncio.wait_for(
-                        asyncio.wrap_future(future_embedding),
-                        timeout=30.0
-                    )
-                except (asyncio.TimeoutError, TimeoutError):
-                    logger.warning("Embedding timeout, usando vetor zerado")
-                    embedding = np.zeros(self.dimension, dtype=np.float32)
 
                 timestamp = datetime.now(timezone.utc).timestamp()
 

@@ -13,13 +13,13 @@ from pathlib import Path
 from typing import List, Dict, Optional, AsyncGenerator, Any, Union
 from dataclasses import dataclass
 from enum import Enum
-
 logger = logging.getLogger(__name__)
 
 os.environ.setdefault("TOKENIZERS_PARALLELISM", "false")
 
 
 class BackendType(str, Enum):
+    OLLAMA = "ollama"
     HUGGINGFACE = "huggingface"
     OPENROUTER = "openrouter"
     LLAMA_CPP = "llama_cpp"
@@ -48,11 +48,15 @@ class LLMManager:
         self.hf_model = None
         self.hf_tokenizer = None
 
+        self.ollama_client = None
+        if str(self.config.get("ollama_enabled", os.environ.get("OLLAMA_ENABLED", "false"))).lower() in ("true", "1", "yes"):
+            self._init_ollama()
+
         # Generation metadata (for API headers / debugging)
         self.last_backend_used: Optional[BackendType] = None
         self.last_fallback_triggered: bool = False
         self.last_fallback_reason: Optional[str] = None
-        self.last_fallback_chain: str = "openrouter->llama_cpp->huggingface"
+        self.last_fallback_chain: str = "ollama->openrouter->llama_cpp->huggingface"
 
         # Web search
         self.web_search_processor = None
@@ -150,6 +154,31 @@ class LLMManager:
                 logger.info("Modelo local pré-carregado para fallback")
         except Exception as e:
             logger.warning(f"Pré-carregamento do modelo local falhou: {e}")
+
+    def _init_ollama(self):
+        try:
+            from src.core.ollama_client import OllamaClient, OllamaConfig
+        except ImportError:
+            from core.ollama_client import OllamaClient, OllamaConfig
+        try:
+            self.ollama_client = OllamaClient(
+                OllamaConfig(
+                    base_url=self.config.get("OLLAMA_URL", os.environ.get("OLLAMA_URL", "http://localhost:11434")),
+                    model=self.config.get("OLLAMA_MODEL", os.environ.get("OLLAMA_MODEL", "orbith:1.0")),
+                    timeout=int(self.config.get("OLLAMA_TIMEOUT", os.environ.get("OLLAMA_TIMEOUT", "120"))),
+                    temperature=float(self.config.get("OLLAMA_TEMPERATURE", os.environ.get("OLLAMA_TEMPERATURE", "0.7"))),
+                    top_k=int(self.config.get("OLLAMA_TOP_K", os.environ.get("OLLAMA_TOP_K", "40"))),
+                    top_p=float(self.config.get("OLLAMA_TOP_P", os.environ.get("OLLAMA_TOP_P", "0.9"))),
+                    repeat_penalty=float(self.config.get("OLLAMA_REPEAT_PENALTY", os.environ.get("OLLAMA_REPEAT_PENALTY", "1.1"))),
+                    num_ctx=int(self.config.get("OLLAMA_NUM_CTX", os.environ.get("OLLAMA_NUM_CTX", "4096"))),
+                    num_batch=int(self.config.get("OLLAMA_NUM_BATCH", os.environ.get("OLLAMA_NUM_BATCH", "512"))),
+                    use_gpu=str(self.config.get("OLLAMA_USE_GPU", os.environ.get("OLLAMA_USE_GPU", "true"))).lower() in ("true", "1", "yes"),
+                )
+            )
+            logger.info("Ollama client initialized")
+        except Exception as e:
+            logger.warning(f"Ollama initialization failed: {e}")
+            self.ollama_client = None
 
     def _init_openrouter(self):
         """Inicializa cliente OpenRouter como backend primário"""
@@ -352,6 +381,44 @@ class LLMManager:
             logger.warning(f"HuggingFace stream falhou: {e}")
         return None
 
+    async def _try_ollama(self, request: Request, system_prompt: Optional[str] = None, use_web_search: bool = False) -> Optional[str]:
+        if self.ollama_client is None:
+            return None
+        try:
+            await self.ollama_client._ensure_session()
+            if not self.ollama_client._model_available:
+                if not await self.ollama_client._ensure_connection():
+                    return None
+            result = await self.ollama_client.generate_complete(
+                prompt=request.prompt,
+                system_prompt=system_prompt,
+                temperature=request.temperature,
+                max_tokens=request.max_tokens,
+            )
+            if result.startswith("[ERROR]"):
+                return None
+            return result
+        except Exception as e:
+            logger.warning(f"Ollama failed: {e}")
+            return None
+
+    async def _try_ollama_stream(self, request: Request) -> Optional[AsyncGenerator[str, None]]:
+        if self.ollama_client is None:
+            return None
+        try:
+            await self.ollama_client._ensure_session()
+            if not self.ollama_client._model_available:
+                if not await self.ollama_client._ensure_connection():
+                    return None
+            return self.ollama_client.generate(
+                prompt=request.prompt,
+                temperature=request.temperature,
+                max_tokens=request.max_tokens,
+            )
+        except Exception as e:
+            logger.warning(f"Ollama stream failed: {e}")
+            return None
+
     async def _execute_with_fallback(
         self,
         request: Request,
@@ -368,11 +435,14 @@ class LLMManager:
         """
         self._reset_last_generation_meta()
 
-        backends = [
+        backends = []
+        if getattr(self, "ollama_client", None) is not None:
+            backends.append((BackendType.OLLAMA, self._try_ollama, self._try_ollama_stream))
+        backends.extend([
             (BackendType.OPENROUTER, self._try_openrouter, self._try_openrouter_stream),
             (BackendType.LLAMA_CPP, self._try_llama_cpp, self._try_llama_cpp_stream),
             (BackendType.HUGGINGFACE, self._try_huggingface, self._try_huggingface_stream),
-        ]
+        ])
 
         for i, (backend_type, sync_fn, stream_fn) in enumerate(backends):
             try:
@@ -652,18 +722,20 @@ class LLMManager:
             raise
 
     def is_loaded(self) -> bool:
-        """Retorna se o modelo está carregado"""
+        if self.backend == BackendType.OLLAMA:
+            return self.ollama_client is not None and self.ollama_client._model_available
         if self.backend == BackendType.OPENROUTER:
             return self._openrouter_client is not None
-        elif self.backend == BackendType.LLAMA_CPP:
+        if self.backend == BackendType.LLAMA_CPP:
             return self._local_llm is not None
         return bool(self._hf_ready)
 
     def get_device(self) -> str:
-        """Retorna o dispositivo"""
+        if self.backend == BackendType.OLLAMA:
+            return "local (Ollama)"
         if self.backend == BackendType.OPENROUTER:
             return "cloud"
-        elif self.backend == BackendType.LLAMA_CPP:
+        if self.backend == BackendType.LLAMA_CPP:
             return "GPU (GGUF)"
         hf_model = getattr(self, 'hf_model', None)
         if hf_model and hasattr(hf_model, 'device'):
@@ -671,7 +743,8 @@ class LLMManager:
         return "unknown"
 
     def get_model_name(self) -> str:
-        """Retorna o nome do modelo"""
+        if self.backend == BackendType.OLLAMA:
+            return self.config.get("OLLAMA_MODEL", os.environ.get("OLLAMA_MODEL", "orbith:1.0"))
         if self.backend == BackendType.OPENROUTER:
             return self.config.get("OPENROUTER_MODEL", os.environ.get("OPENROUTER_MODEL", "openrouter/owl-alpha"))
         elif self.backend == BackendType.LLAMA_CPP:
@@ -679,7 +752,16 @@ class LLMManager:
         return self.config.get("HF_MODEL_NAME", os.environ.get("HF_MODEL_NAME", "microsoft/phi-2"))
 
     def cleanup(self):
-        """Limpa memória do modelo"""
+        if self.ollama_client is not None:
+            try:
+                import asyncio
+                try:
+                    asyncio.get_running_loop()
+                    asyncio.ensure_future(self.ollama_client.close())
+                except RuntimeError:
+                    pass
+            except Exception:
+                pass
         if self.backend == BackendType.HUGGINGFACE and hasattr(self, 'hf_model'):
             import torch
             import gc
