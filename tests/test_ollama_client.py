@@ -30,7 +30,7 @@ def check(name, condition, detail=""):
 async def test_ollama_config_defaults():
     config = OllamaConfig()
     check("default base_url", config.base_url == "http://localhost:11434")
-    check("default model", config.model == "orbith:1.0")
+    check("default model", config.model == "ornith:latest")
     check("default timeout", config.timeout == 120)
     check("default temperature", config.temperature == 0.7)
     check("default top_k", config.top_k == 40)
@@ -111,11 +111,11 @@ async def test_llm_manager_ollama_config():
     config_dict = {
         "ollama_enabled": "true",
         "OLLAMA_URL": "http://localhost:11434",
-        "OLLAMA_MODEL": "orbith:1.0",
+        "OLLAMA_MODEL": "ornith:latest",
     }
     manager = LLMManager(config=config_dict)
     check("ollama client created", manager.ollama_client is not None)
-    check("ollama config model", manager.ollama_client.config.model == "orbith:1.0")
+    check("ollama config model", manager.ollama_client.config.model == "ornith:latest")
     manager.cleanup()
 
 
@@ -147,7 +147,12 @@ async def test_ollama_try_methods_exist():
 
 
 async def test_ollama_try_no_connection():
-    config_dict = {"ollama_enabled": "true"}
+    """_try_ollama returns None when Ollama URL is unreachable."""
+    config_dict = {
+        "ollama_enabled": "true",
+        "OLLAMA_URL": "http://localhost:99998",
+        "OLLAMA_MODEL": "nonexistent-model",
+    }
     manager = LLMManager(config=config_dict)
     request = Request(prompt="hello")
     result = await manager._try_ollama(request)

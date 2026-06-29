@@ -26,7 +26,7 @@ class Settings(BaseSettings):
     # Ollama Configuration (100% local)
     OLLAMA_ENABLED: bool = Field(default=True, env="OLLAMA_ENABLED")
     OLLAMA_URL: str = Field(default="http://localhost:11434", env="OLLAMA_URL")
-    OLLAMA_MODEL: str = Field(default="orbith:1.0", env="OLLAMA_MODEL")
+    OLLAMA_MODEL: str = Field(default="ornith:latest", env="OLLAMA_MODEL")
     OLLAMA_TIMEOUT: int = Field(default=120, ge=30, le=600, env="OLLAMA_TIMEOUT")
     OLLAMA_TEMPERATURE: float = Field(default=0.7, ge=0.0, le=2.0, env="OLLAMA_TEMPERATURE")
     OLLAMA_TOP_K: int = Field(default=40, ge=1, le=100, env="OLLAMA_TOP_K")

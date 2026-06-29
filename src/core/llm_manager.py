@@ -164,7 +164,7 @@ class LLMManager:
             self.ollama_client = OllamaClient(
                 OllamaConfig(
                     base_url=self.config.get("OLLAMA_URL", os.environ.get("OLLAMA_URL", "http://localhost:11434")),
-                    model=self.config.get("OLLAMA_MODEL", os.environ.get("OLLAMA_MODEL", "orbith:1.0")),
+                    model=self.config.get("OLLAMA_MODEL", os.environ.get("OLLAMA_MODEL", "ornith:latest")),
                     timeout=int(self.config.get("OLLAMA_TIMEOUT", os.environ.get("OLLAMA_TIMEOUT", "120"))),
                     temperature=float(self.config.get("OLLAMA_TEMPERATURE", os.environ.get("OLLAMA_TEMPERATURE", "0.7"))),
                     top_k=int(self.config.get("OLLAMA_TOP_K", os.environ.get("OLLAMA_TOP_K", "40"))),
@@ -744,7 +744,7 @@ class LLMManager:
 
     def get_model_name(self) -> str:
         if self.backend == BackendType.OLLAMA:
-            return self.config.get("OLLAMA_MODEL", os.environ.get("OLLAMA_MODEL", "orbith:1.0"))
+            return self.config.get("OLLAMA_MODEL", os.environ.get("OLLAMA_MODEL", "ornith:latest"))
         if self.backend == BackendType.OPENROUTER:
             return self.config.get("OPENROUTER_MODEL", os.environ.get("OPENROUTER_MODEL", "openrouter/owl-alpha"))
         elif self.backend == BackendType.LLAMA_CPP:

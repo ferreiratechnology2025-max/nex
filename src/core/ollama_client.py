@@ -11,7 +11,7 @@ logger = logging.getLogger(__name__)
 @dataclass
 class OllamaConfig:
     base_url: str = "http://localhost:11434"
-    model: str = "orbith:1.0"
+    model: str = "ornith:latest"
     timeout: int = 120
     max_retries: int = 3
     retry_delay: float = 1.0

@@ -13,16 +13,16 @@ if errorlevel 1 (
 )
 
 echo [2/4] Verificando modelo...
-ollama list | findstr orbith:1.0 >nul
+ollama list | findstr ornith:latest >nul
 if errorlevel 1 (
-    echo Baixando modelo Orbyth 1.0...
-    ollama pull orbith:1.0
+    echo Baixando modelo ornith:latest...
+    ollama pull ornith:latest
 )
 
 echo [3/4] Iniciando servidor Nex Chat...
 cd /d "%~dp0../.."
 set OLLAMA_ENABLED=true
-set OLLAMA_MODEL=orbith:1.0
+set OLLAMA_MODEL=ornith:latest
 set OPENROUTER_ENABLED=false
 set USE_OLLAMA_EMBEDDINGS=true
 

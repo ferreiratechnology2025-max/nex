@@ -1,6 +1,6 @@
 @echo off
 echo ========================================
-echo Setup Ollama + Orbyth 1.0 para Nex Chat
+echo Setup Ollama + ornith:latest para Nex Chat
 echo ========================================
 echo.
 
@@ -16,12 +16,12 @@ if errorlevel 1 (
 )
 
 echo.
-echo [2/6] Baixando modelo Orbyth 1.0...
-ollama pull orbith:1.0
+echo [2/6] Baixando modelo ornith:latest...
+ollama pull ornith:latest
 
 echo.
 echo [3/6] Verificando modelo...
-ollama list | findstr orbith
+ollama list | findstr ornith
 
 echo.
 echo [4/6] Configurando ambiente Nex Chat...
