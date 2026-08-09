@@ -1,0 +1,49 @@
+=== REPOSITORY STATE — PÓS COMMITS A e B ===
+
+DATA: 2026-08-08 (sessão de auditoria)
+
+COMMITS:
+- Commit A: 67763fc — Repository Boundary (200 arquivos, 22.863 inserções)
+- Commit B: 728e7c5 — MemoryManager fix (1 arquivo, 2 inserções / 2 deleções)
+
+TRACKED STATUS:
+- Arquivos versionados (git ls-files): 217
+- Arquivos staged: 0
+
+UNTRACKED REMANESCENTES: 43 entradas de git status (contando diretórios
+como uma linha cada)
+- 24 nunca classificados (Dockerfile, docker-entrypoint.sh, Makefile,
+  check_environment.ps1, start_services.ps1, docs/, examples/, 17
+  scripts em scripts/ e scripts/windows/, 2 PDFs de manual, "ligar
+  Nex.txt") — diferidos para Fase 9, conforme decisão do Arquiteto
+- 2 KEEP-UNTRACKED confirmados (tests/debug_test.py, tests/quick_test.py)
+- venv/ (KEEP-UNTRACKED — ambiente virtual)
+- 5 diretórios de artefatos desta própria auditoria (auditoria_nex/,
+  auditoria_profunda/, baseline_saude/, fase_7_correcao_controlada/,
+  fase_8_repository_boundary/) — nunca classificados; são o produto desta
+  sessão, não código do projeto; recomendo tratamento explícito na Fase 9
+  (provavelmente ARCHIVE ou DELETE, não PROMOTE — são relatórios de
+  processo, não artefatos de produto)
+- data/ CONFIRMADO AUSENTE da lista (validação de que a correção do
+  .gitignore na 8.2B.1 persiste corretamente após os commits)
+
+Lista completa em: untracked_remanescentes.txt
+
+TESTES:
+- 87 passed / 26 failed (baseline preservado, validado na 8.2E antes dos
+  commits; não re-executado após os commits pois `git commit` não altera
+  arquivos de trabalho — apenas grava o índice já validado)
+
+RUNTIME:
+- /health: memory_count: 71 (confirmado na 8.2E, antes dos commits)
+
+PERSISTÊNCIA:
+- data/memoria.db: 71 linhas
+- data/memoria.index: presente, 186.579 bytes
+- Órfãos: ausentes
+
+PRÓXIMO PASSO:
+- Fase 9: Classificação dos itens remanescentes — os 24 originais MAIS os
+  5 diretórios de artefatos de auditoria (achado desta etapa, não
+  antecipado no escopo original da Fase 9 tal como planejada)
+- Fase 10: Investigação das 26 falhas residuais

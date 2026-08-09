@@ -1,0 +1,23 @@
+total 28
+drwxr-xr-x 1 ferre 197609    0 Jun 29 15:17 .
+drwxr-xr-x 1 ferre 197609    0 Aug  8 23:32 ..
+-rw-r--r-- 1 ferre 197609 5476 Jun 13 09:46 README.md
+drwxr-xr-x 1 ferre 197609    0 Jun 29 15:17 angular
+drwxr-xr-x 1 ferre 197609    0 Jun 29 15:17 arkts
+drwxr-xr-x 1 ferre 197609    0 Jun 29 15:17 common
+drwxr-xr-x 1 ferre 197609    0 Jun 29 15:17 cpp
+drwxr-xr-x 1 ferre 197609    0 Jun 29 15:17 csharp
+drwxr-xr-x 1 ferre 197609    0 Jun 29 15:17 dart
+drwxr-xr-x 1 ferre 197609    0 Jun 29 15:17 fsharp
+drwxr-xr-x 1 ferre 197609    0 Jun 29 15:17 golang
+drwxr-xr-x 1 ferre 197609    0 Jun 29 15:17 java
+drwxr-xr-x 1 ferre 197609    0 Jun 29 15:17 kotlin
+drwxr-xr-x 1 ferre 197609    0 Jun 29 15:17 perl
+drwxr-xr-x 1 ferre 197609    0 Jun 29 15:17 php
+drwxr-xr-x 1 ferre 197609    0 Jun 29 15:17 python
+drwxr-xr-x 1 ferre 197609    0 Jun 29 15:17 react
+drwxr-xr-x 1 ferre 197609    0 Jun 29 15:17 ruby
+drwxr-xr-x 1 ferre 197609    0 Jun 29 15:17 rust
+drwxr-xr-x 1 ferre 197609    0 Jun 29 15:17 swift
+drwxr-xr-x 1 ferre 197609    0 Jun 29 15:17 typescript
+drwxr-xr-x 1 ferre 197609    0 Jun 29 15:17 web

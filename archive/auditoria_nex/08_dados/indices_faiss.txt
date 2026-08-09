@@ -1,0 +1,5 @@
+
+FullName                  Length
+--------                  ------
+D:\Nex\data\memoria.index 186579
+

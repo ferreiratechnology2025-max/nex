@@ -1,0 +1,40 @@
+tests/debug_test.py:12:async def debug_test():
+tests/quick_test.py:10:async def test():
+tests/test_api_gateway.py:49:    async def test_rate_limiter_check_ok(self):
+tests/test_coordinator_triage.py:108:        async def run():
+tests/test_coordinator_triage.py:126:        async def run():
+tests/test_coordinator_triage.py:142:        async def run():
+tests/test_fallback_activation.py:6:    async def test_llm_manager_fallback_to_llama_cpp(self):
+tests/test_fallback_activation.py:24:        async def _fail_zai(*args, **kwargs):
+tests/test_fallback_activation.py:62:        async def _fail_zai(*args, **kwargs):
+tests/test_fallback_chain.py:46:        async def run():
+tests/test_fallback_chain.py:65:        async def run():
+tests/test_fallback_chain.py:84:        async def mock_llama_stream(request):
+tests/test_fallback_chain.py:88:        async def run():
+tests/test_fallback_chain.py:109:        async def run():
+tests/test_fallback_chain.py:128:        async def run():
+tests/test_llm_manager.py:100:        async def run_batch():
+tests/test_llm_manager.py:123:        async def run_single():
+tests/test_memory_integration.py:22:async def test_delete_and_search_returns_only_valid():
+tests/test_memory_integration.py:91:async def test_eviction_updates_mapping():
+tests/test_memory_integration.py:141:async def main():
+tests/test_memory_opt.py:126:async def run_integration_test():
+tests/test_ollama_client.py:30:async def test_ollama_config_defaults():
+tests/test_ollama_client.py:41:async def test_ollama_config_custom():
+tests/test_ollama_client.py:54:async def test_ollama_client_init():
+tests/test_ollama_client.py:62:async def test_ollama_empty_prompt_embeddings():
+tests/test_ollama_client.py:71:async def test_ollama_connection_refused():
+tests/test_ollama_client.py:80:async def test_ollama_list_models_empty():
+tests/test_ollama_client.py:89:async def test_ollama_get_model_info_empty():
+tests/test_ollama_client.py:98:async def test_ollama_generate_no_connection():
+tests/test_ollama_client.py:109:async def test_llm_manager_ollama_config():
+tests/test_ollama_client.py:122:async def test_llm_manager_ollama_disabled():
+tests/test_ollama_client.py:128:async def test_llm_manager_fallback_chain_includes_ollama():
+tests/test_ollama_client.py:134:async def test_backend_type_has_ollama():
+tests/test_ollama_client.py:139:async def test_ollama_try_methods_exist():
+tests/test_ollama_client.py:149:async def test_ollama_try_no_connection():
+tests/test_web_search.py:58:    async def test_save_to_memory_no_manager(self):
+tests/test_web_search.py:75:    async def test_save_to_memory_with_manager(self):
+tests/test_web_search.py:128:    async def test_generate_without_web_search(self):
+tests/test_web_search.py:210:    async def test_llm_manager_with_memory(self):
+tests/test_web_search.py:223:    async def test_web_search_processor_with_zai_client(self):

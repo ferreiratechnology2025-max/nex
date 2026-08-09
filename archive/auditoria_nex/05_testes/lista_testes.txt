@@ -1,0 +1,20 @@
+
+    Directory: D:\Nex\tests
+
+Mode        LastWriteTime Length Name
+----        ------------- ------ ----
+-a--- 17/04/2026    22:14   2068 debug_test.py
+-a--- 17/04/2026    22:00   1067 quick_test.py
+-a--- 17/04/2026    22:47   4891 test_api_gateway.py
+-a--- 17/04/2026    22:45   6596 test_config.py
+-a--- 29/06/2026    15:47   5875 test_coordinator_triage.py
+-a--- 22/04/2026    00:17   3570 test_fallback_activation.py
+-a--- 29/06/2026    15:43   5867 test_fallback_chain.py
+-a--- 21/04/2026    23:31   2469 test_fallback.py
+-a--- 17/04/2026    22:32   5415 test_llm_manager.py
+-a--- 29/06/2026    15:35   5689 test_memory_integration.py
+-a--- 17/04/2026    21:54   5457 test_memory_opt.py
+-a--- 29/06/2026    16:18   7195 test_ollama_client.py
+-a--- 19/04/2026    21:48   7417 test_web_search.py
+-a--- 17/04/2026    22:52   6304 test_ws_metrics.py
+

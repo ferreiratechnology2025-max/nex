@@ -1,0 +1,18 @@
+Defaults remanescentes em src/core/memory_manager.py (após Etapas 4 e 5):
+
+1. `CacheLRU.__init__(self, max_size: int = 1000, ttl: int = 3600)` (linha 33)
+   Natureza: configuração numérica de cache em memória (tamanho máximo e TTL).
+   Risco de estado fragmentado em disco: NENHUM — não é path de arquivo, não
+   cria nem referencia nenhum arquivo. Não pertence à mesma classe de bug de
+   db_path/index_path.
+
+2. `MemoriaPersistente.__init__(..., max_memories: int = 500, ollama_client=None)` (linha 77-80)
+   - `max_memories`: limite numérico de itens em memória, não é path.
+     Nenhum risco de orfão em disco.
+   - `ollama_client`: default None, injeção de dependência opcional (usado só
+     para decidir embedding_dim). Não é path, não cria arquivo.
+
+CONCLUSÃO: db_path e index_path eram os ÚNICOS parâmetros do construtor de
+MemoriaPersistente com potencial de criar estado fragmentado em disco via
+default implícito relativo ao cwd. Ambos já foram corrigidos (Etapas 4 e 5).
+Nenhum outro default no arquivo pertence a essa classe de risco.

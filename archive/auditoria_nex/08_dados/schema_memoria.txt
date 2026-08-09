@@ -1,0 +1,1 @@
+SQLITE3_CLI_NOT_INSTALLED (db exists at D:\Nex\memoria.db, size=4096 bytes)

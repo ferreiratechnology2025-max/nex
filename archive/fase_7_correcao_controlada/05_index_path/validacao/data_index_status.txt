@@ -1,0 +1,1 @@
+-rw-r--r-- 1 ferre 197609 186579 Jul 14 20:50 data/memoria.index

@@ -1,0 +1,6 @@
+./agents/chief-of-staff.md
+./agents/harmonyos-app-resolver.md
+./agents/react-build-resolver.md
+./agents/react-reviewer.md
+./CLAUDE.md
+./README.md

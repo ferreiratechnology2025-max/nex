@@ -1,0 +1,2 @@
+78:                 index_path: str = "memoria.index",
+83:        self.index_path = index_path

@@ -1,0 +1,41 @@
+=== VALIDAÇÃO PÓS-STAGING — FASE 8.2E ===
+
+STAGING:
+- Arquivos staged: 200 (33 entradas explícitas, expandidas por agents/
+  [64] e rules/ [~104]) — inalterado desde a 8.2D (22.863 inserções)
+- Arquivos não-classificados staged: 0 (verificado contra os 24 itens de
+  NAO_CLASSIFICADOS.txt — nenhum encontrado no staging)
+- data/ staged: 0
+- segredos staged (nome de arquivo): 0
+- artefatos indesejados staged: 0
+
+TESTES:
+- Coletados: 113
+- Passaram: 87
+- Falharam: 26
+- Erros de coleção: 0
+- Regressão: NENHUMA (idêntico ao baseline pós-Fase 7)
+
+RUNTIME:
+- Servidor: UP (subiu, respondeu, foi encerrado corretamente)
+- /health: PASS (200 OK, memory_count: 71)
+- /metrics: PASS (200 OK, requests_total/latência/memória reportados)
+
+PERSISTÊNCIA:
+- data/memoria.db: 71 linhas (tabela `memorias`)
+- data/memoria.index: presente, 186.579 bytes (inalterado desde a Fase 3)
+- órfãos (memoria.db, memoria.index na raiz): AUSENTES
+
+CONCLUSÃO:
+- Staging válido — apenas itens com classificação documentada e evidência
+- Sem regressão detectada em nenhuma dimensão (testes, runtime, persistência)
+- Pronto para commit, com a ressalva já registrada na 8.2D:
+  src/core/memory_manager.py (modificação tracked da Fase 7) permanece
+  fora deste staging por decisão deliberada — não é um item de
+  "promoção" de untracked, é uma correção de código já versionado.
+
+PRÓXIMO PASSO (decisão do Arquiteto, não executado nesta etapa):
+- Commit A: Repository Boundary (200 arquivos staged)
+- Commit B: Fase 7 — correção de persistência (memory_manager.py)
+- Os ~24 itens não classificados (NAO_CLASSIFICADOS.txt) permanecem
+  untracked, pendentes de uma fase de classificação própria

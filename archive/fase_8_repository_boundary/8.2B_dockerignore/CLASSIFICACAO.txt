@@ -1,0 +1,40 @@
+=== CLASSIFICAÇÃO — .dockerignore ===
+
+Origem: untracked (`?? .dockerignore`), escapou do inventário original da
+Fase 8.1 (mesma classe de lacuna do `.gitignore` — nome de arquivo sem
+extensão reconhecida pelos grheps usados naquela etapa).
+
+Evidência de infraestrutura Docker real:
+- Dockerfile: PRESENTE (`./Dockerfile`, na raiz do projeto)
+- docker-compose.yml: PRESENTE (já classificado PROMOTE na Fase 8.1,
+  referencia inclusive o serviço `nex-monitor` também PROMOTE)
+- Referências a "docker" em documentação/scripts: 98 ocorrências em
+  arquivos .md/.txt/.sh/.bat (README, scripts de build, etc.)
+
+Conteúdo do .dockerignore: arquivo coerente e bem formado, cobrindo:
+- Bytecode Python (__pycache__/, *.pyc, *.pyo, *.pyd, *.so, *.egg-info/)
+- Ambiente virtual (.venv, venv/, ENV/, env/)
+- Segredos (.env)
+- Dados locais (data/, *.db, *.sqlite) — nota: já ignora `data/` por
+  completo, o mesmo ajuste que acabamos de aplicar ao .gitignore nesta
+  etapa. O .dockerignore já seguia a prática correta.
+- Logs, IDE, .git/, README/LICENSE, tests/, modelos grandes (*.gguf, *.bin)
+
+Duplicação: nenhuma — é o único .dockerignore do projeto, e seu propósito
+(excluir arquivos do contexto de build Docker) não se sobrepõe ao
+.gitignore (propósito de controle de versão), mesmo que as listas se
+pareçam.
+
+Valor: ALTO — sem ele, `docker build` (referenciado pelo Dockerfile e
+docker-compose.yml já classificados PROMOTE) enviaria todo o `venv/`,
+`data/` (incluindo dados de sessão de usuário) e `.env` para o contexto
+de build, inflando a imagem e potencialmente vazando segredos para dentro
+da imagem Docker.
+
+CLASSIFICAÇÃO: PROMOTE
+
+Justificativa: infraestrutura de build real e ativa (Dockerfile +
+docker-compose.yml confirmados), conteúdo correto e coerente com as
+mesmas práticas de segurança já aplicadas ao .gitignore nesta fase. Sem
+riscos identificados (não contém segredos, não referencia nada que não
+exista).

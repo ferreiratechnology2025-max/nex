@@ -1,0 +1,3 @@
+Python 3.11.9
+OS: Windows 11 Home 10.0.26200
+Windows-10-10.0.26200-SP0

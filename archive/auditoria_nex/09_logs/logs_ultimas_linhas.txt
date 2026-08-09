@@ -1,0 +1,75 @@
+=== D:\Nex\nex_chat_error.log ===
+=== D:\Nex\nex_chat.log ===
+=== D:\Nex\server.log ===
+    + CategoryInfo          : NotSpecified: (INFO:     Started server process [13092]:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits 
+and faster downloads.
+Applied optimizations: OMP=2, MKL=2, TOKENIZERS=false
+============================================================
+Nex Local AI Assistant
+============================================================
+Model: gemma2:2b
+Max Tokens: 2048
+DB Path: data\memoria.db
+Host: 0.0.0.0:8000
+============================================================
+Initializing memory system...
+Rate limiter initialized
+Initializing LLM manager...
+Backend ativo: openrouter
+Initializing document system...
+Document system ready
+Initializing agent coordinator...
+Agent coordinator ready (LangGraph)
+
+Server starting at http://0.0.0.0:8000
+Press Ctrl+C to stop
+
+
+Loading weights:   0%|          | 0/103 [00:00<?, ?it/s]
+Loading weights: 100%|##########| 103/103 [00:00<00:00, 6330.89it/s]
+[1mBertModel LOAD REPORT[0m from: sentence-transformers/all-MiniLM-L6-v2
+Key                     | Status     |  | 
+------------------------+------------+--+-
+embeddings.position_ids | UNEXPECTED |  | 
+
+Notes:
+- UNEXPECTED:	can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+Worker de embeddings inicializado
+INFO:     127.0.0.1:62753 - "GET /health HTTP/1.1" 200 OK
+Timeout gerando resposta para: 
+Objetivo: fale sobre python em 2 frases
+
+Crie um ...
+Falha OpenRouter, ativando fallback: 'str' object has no attribute 'prompt'
+Todos os backends falharam
+Modelo primßrio openrouter/owl-alpha falhou, tentando fallback nvidia/nemotron-3-nano-30b-a3b:free
+Modelo primßrio openrouter/owl-alpha falhou, tentando fallback nvidia/nemotron-3-nano-30b-a3b:free
+INFO:     127.0.0.1:62755 - "POST /orchestrate HTTP/1.1" 200 OK
+=== D:\Nex\logs\server_test.log ===
+Applied optimizations: OMP=2, MKL=2, TOKENIZERS=false
+============================================================
+Nex Local AI Assistant
+============================================================
+Model: gemma2:2b
+Max Tokens: 2048
+DB Path: data\memoria.db
+Host: 0.0.0.0:8000
+============================================================
+Initializing memory system...
+Rate limiter initialized
+Initializing LLM manager...
+Backend ativo: openrouter
+
+Server starting at http://0.0.0.0:8000
+Press Ctrl+C to stop
+
+Worker de embeddings inicializado
+INFO:     127.0.0.1:54895 - "GET /metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54897 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50702 - "GET /health HTTP/1.1" 200 OK

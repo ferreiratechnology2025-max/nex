@@ -1,0 +1,89 @@
+RESUMO — FASE 6: BASELINE DE SAÚDE
+Fatos brutos apenas. Nenhuma correção foi aplicada a nenhum arquivo.
+
+## AMBIENTE
+Python 3.11.9 | Windows-10-10.0.26200-SP0 (Windows 11 Home)
+
+## BASELINE 1 — `pytest tests/ -v --tb=short --maxfail=5`
+- 113 itens coletados (SEM erro de coleção — porque o comando restringe a `tests/`,
+  e `test_ollama_integration.py` está na RAIZ do repo, fora de `tests/`, portanto não
+  é coletado por este comando. O erro de coleção documentado na Fase 5 só aparece
+  quando o pytest roda a partir da raiz sem restrição de path.)
+- Parou em 5 falhas (--maxfail=5): 5 failed, 8 passed, 34 warnings, 8.71s
+  Falhas: tests/quick_test.py::test, tests/test_api_gateway.py (4 casos)
+
+## BASELINE 2 — `pytest tests/ -v --tb=short -k "not test_ollama_integration"`
+- Mesma restrição a `tests/` (a exclusão via -k não teve efeito prático aqui, pois
+  o teste problemático já não está em `tests/`), agora sem --maxfail, suíte completa:
+  **43 failed, 70 passed, 43 warnings, 89.12s** (113 itens totais)
+- Padrão dominante nas falhas: "async def functions are not natively supported"
+  (17 ocorrências) — afeta test_llm_manager.py, test_memory_opt.py (parcial),
+  test_ollama_client.py, test_web_search.py (parcial), test_ws_metrics.py.
+  CAUSA RAIZ VERIFICADA: `pytest-asyncio` versão 1.3.0 ESTÁ instalado
+  (`pip show pytest-asyncio` confirma), mas não há `pytest.ini`, `setup.cfg`,
+  `pyproject.toml` nem `conftest.py` no projeto definindo `asyncio_mode`.
+  Sem essa configuração (ou sem `@pytest.mark.asyncio` explícito nos testes),
+  o plugin não roda funções de teste assíncronas nativamente — não é ausência
+  de dependência, é ausência de configuração/registro do plugin.
+- Demais falhas (test_memory_integration.py, test_memory_opt.py::TestCacheLRU,
+  test_ollama_client.py, test_web_search.py, test_ws_metrics.py) têm mensagens
+  próprias (AssertionError, TypeError, etc.) — não investigadas nesta fase por
+  não fazerem parte do escopo solicitado (GenerationConfig / DB / FAISS / segurança).
+
+## INVESTIGAÇÃO — GenerationConfig
+- `grep -rn "GenerationConfig" src/` → NOT_FOUND_IN_SRC (não existe em nenhum
+  arquivo de código-fonte atual).
+- `grep -rn "GenerationConfig" .` (todo o projeto, exceto venv) → 2 ocorrências,
+  ambas em TESTES, não em código-fonte:
+    test_ollama_integration.py:15 → from src.core.llm_manager import LLMManager, GenerationConfig
+    test_system.py:30            → from src.core.llm_manager import LLMManager, GenerationConfig, ResponseCache
+- `git log --all --grep="GenerationConfig"` → nenhum commit com esse termo na mensagem.
+- `git log --all -S"GenerationConfig"` (pickaxe — busca no CONTEÚDO de todos os commits,
+  não só na mensagem) → **zero resultados**. `GenerationConfig` nunca existiu em
+  nenhum commit do histórico git deste repositório.
+- `git log --oneline -- src/core/llm_manager.py` → 3 commits (8899c8b, 9c4e003,
+  9e0271b), todos já com a API atual (`BackendType`, `Request`, `LLMManager`).
+- Classes hoje existentes em `src/core/llm_manager.py`: `BackendType`, `Request`,
+  `LLMManager`. `ResponseCache` (também importado por test_system.py) TAMBÉM NÃO EXISTE.
+
+CONCLUSÃO FACTUAL: `GenerationConfig` e `ResponseCache` não são API removida/renomeada
+rastreável no git — nunca estiveram no histórico versionado deste módulo. Os dois
+arquivos que os importam (`test_ollama_integration.py`, `test_system.py`) estão,
+segundo o `git status` original, UNTRACKED (`??`) — nunca foram commitados. A hipótese
+mais provável, dado que não há nenhum vestígio histórico dessas classes em nenhum commit,
+é que esses dois arquivos de teste foram escritos contra uma versão especulativa/anterior
+não versionada do módulo (ou copiados de um template/rascunho) e nunca foram sincronizados
+com a implementação real. Isso é uma inferência razoável a partir da ausência total de
+evidência no histórico — não uma certeza, pois não há como provar negativo do que nunca
+foi commitado.
+
+## SERVIDOR — TENTATIVA DE INICIALIZAÇÃO
+- `python -m src.main` SUBIU COM SUCESSO (no killing necessário além do shutdown
+  programado — processo real ficou em PID do SO diferente do PID do job do shell,
+  documentado abaixo).
+- Log de startup (trecho relevante):
+    DB Path: data\memoria.db
+    Backend ativo: openrouter
+    Agent coordinator ready (LangGraph)
+    Uvicorn running on http://0.0.0.0:8000
+- GET /health → 200 OK:
+    {"status":"ok","model":"openrouter/owl-alpha","device":"cloud",
+     "memory_count":71,
+     "backends":{"ollama":{"available":true,"model":"ornith:latest","ready":false},
+                 "openrouter":{"available":true,"model":"openrouter/owl-alpha",...},
+                 "llama_cpp":{"available":false,...},
+                 "huggingface":{"available":false,...}},
+     "fallback_order":["ollama","openrouter","llama_cpp","huggingface"]}
+  → CONFIRMAÇÃO CRUZADA: memory_count=71 bate exatamente com as 71 linhas de
+    data/memoria.db e os 71 vetores do FAISS index (Fases 2-3). Fecha o ciclo de
+    evidência: data/memoria.db é, sem ambiguidade, o banco usado em produção real.
+- GET /metrics → 200 OK:
+    {"requests_total":2,"active_connections":0,"avg_latency_ms":2.37,
+     "peak_memory_mb":461.14,"fallback_counts":{...},"llm_fallback_total":0}
+- Servidor foi encerrado ao final do teste (taskkill /F no PID real do processo
+  uvoador — o PID retornado pelo job control do bash não correspondia ao PID do
+  processo Python no Windows; a porta 8000 foi confirmada livre via netstat após
+  o kill, restando apenas conexões TIME_WAIT residuais dos dois curls, que
+  expiram por si só).
+
+## NENHUM ARQUIVO DE CÓDIGO OU TESTE FOI MODIFICADO NESTA FASE.

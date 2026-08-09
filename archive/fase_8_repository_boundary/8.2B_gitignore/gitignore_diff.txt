@@ -1,0 +1,19 @@
+warning: in the working copy of '.gitignore', LF will be replaced by CRLF the next time Git touches it
+diff --git a/.gitignore b/.gitignore
+index 6466763..fea4482 100644
+--- a/.gitignore
++++ b/.gitignore
+@@ -11,10 +11,9 @@ __pycache__/
+ dist/
+ build/
+ 
+-# Data
+-data/memoria.db
+-data/memoria.db-*
+-data/*.index
++# Data (estado de runtime, não código — inclui DB, índice FAISS, sessões de
++# usuário com conteúdo pessoal; ver fase_8_repository_boundary/02_classificacao)
++data/
+ 
+ # Logs
+ logs/

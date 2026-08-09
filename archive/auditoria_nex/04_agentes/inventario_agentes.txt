@@ -1,0 +1,256 @@
+=== a11y-architect.md ===
+name: a11y-architect
+model: sonnet
+tools: ["Read", "Write", "Edit", "Grep", "Glob"]
+=== architect.md ===
+name: architect
+tools: ["Read", "Grep", "Glob"]
+model: opus
+=== build-error-resolver.md ===
+name: build-error-resolver
+tools: ["Read", "Write", "Edit", "Bash", "Grep", "Glob"]
+model: sonnet
+=== chief-of-staff.md ===
+name: chief-of-staff
+tools: ["Read", "Grep", "Glob", "Bash", "Edit", "Write"]
+model: opus
+=== code-architect.md ===
+name: code-architect
+model: sonnet
+tools: [Read, Grep, Glob, Bash]
+=== code-explorer.md ===
+name: code-explorer
+model: sonnet
+tools: [Read, Grep, Glob]
+=== code-reviewer.md ===
+name: code-reviewer
+tools: ["Read", "Grep", "Glob", "Bash"]
+model: sonnet
+=== code-simplifier.md ===
+name: code-simplifier
+model: sonnet
+tools: [Read, Write, Edit, Bash, Grep, Glob]
+=== comment-analyzer.md ===
+name: comment-analyzer
+model: sonnet
+tools: [Read, Grep, Glob]
+=== conversation-analyzer.md ===
+name: conversation-analyzer
+model: sonnet
+tools: [Read, Grep]
+=== cpp-build-resolver.md ===
+name: cpp-build-resolver
+tools: ["Read", "Write", "Edit", "Bash", "Grep", "Glob"]
+model: sonnet
+=== cpp-reviewer.md ===
+name: cpp-reviewer
+tools: ["Read", "Grep", "Glob", "Bash"]
+model: sonnet
+=== csharp-reviewer.md ===
+name: csharp-reviewer
+tools: ["Read", "Grep", "Glob", "Bash"]
+model: sonnet
+=== dart-build-resolver.md ===
+name: dart-build-resolver
+tools: ["Read", "Write", "Edit", "Bash", "Grep", "Glob"]
+model: sonnet
+=== database-reviewer.md ===
+name: database-reviewer
+tools: ["Read", "Write", "Edit", "Bash", "Grep", "Glob"]
+model: sonnet
+=== django-build-resolver.md ===
+name: django-build-resolver
+tools: ["Read", "Write", "Edit", "Bash", "Grep", "Glob"]
+model: sonnet
+=== django-reviewer.md ===
+name: django-reviewer
+tools: ["Read", "Grep", "Glob", "Bash"]
+model: sonnet
+=== doc-updater.md ===
+name: doc-updater
+tools: ["Read", "Write", "Edit", "Bash", "Grep", "Glob"]
+model: haiku
+=== docs-lookup.md ===
+name: docs-lookup
+tools: ["Read", "Grep", "mcp__context7__resolve-library-id", "mcp__context7__query-docs"]
+model: sonnet
+=== e2e-runner.md ===
+name: e2e-runner
+tools: ["Read", "Write", "Edit", "Bash", "Grep", "Glob"]
+model: sonnet
+=== fastapi-reviewer.md ===
+name: fastapi-reviewer
+tools: ["Read", "Grep", "Glob", "Bash"]
+model: sonnet
+=== flutter-reviewer.md ===
+name: flutter-reviewer
+tools: ["Read", "Grep", "Glob", "Bash"]
+model: sonnet
+=== fsharp-reviewer.md ===
+name: fsharp-reviewer
+tools: ["Read", "Grep", "Glob", "Bash"]
+model: sonnet
+=== gan-evaluator.md ===
+name: gan-evaluator
+tools: ["Read", "Write", "Bash", "Grep", "Glob"]
+model: opus
+=== gan-generator.md ===
+name: gan-generator
+tools: ["Read", "Write", "Edit", "Bash", "Grep", "Glob"]
+model: opus
+=== gan-planner.md ===
+name: gan-planner
+tools: ["Read", "Write", "Grep", "Glob"]
+model: opus
+=== go-build-resolver.md ===
+name: go-build-resolver
+tools: ["Read", "Write", "Edit", "Bash", "Grep", "Glob"]
+model: sonnet
+=== go-reviewer.md ===
+name: go-reviewer
+tools: ["Read", "Grep", "Glob", "Bash"]
+model: sonnet
+=== harmonyos-app-resolver.md ===
+name: harmonyos-app-resolver
+tools: ["Read", "Write", "Edit", "Bash", "Grep", "Glob"]
+model: sonnet
+=== harness-optimizer.md ===
+name: harness-optimizer
+tools: ["Read", "Grep", "Glob", "Bash", "Edit"]
+model: sonnet
+=== healthcare-reviewer.md ===
+name: healthcare-reviewer
+tools: ["Read", "Grep", "Glob"]
+model: opus
+=== homelab-architect.md ===
+name: homelab-architect
+tools: ["Read", "Grep"]
+model: sonnet
+=== java-build-resolver.md ===
+name: java-build-resolver
+tools: ["Read", "Write", "Edit", "Bash", "Grep", "Glob"]
+model: sonnet
+=== java-reviewer.md ===
+name: java-reviewer
+tools: ["Read", "Grep", "Glob", "Bash"]
+model: sonnet
+=== kotlin-build-resolver.md ===
+name: kotlin-build-resolver
+tools: ["Read", "Write", "Edit", "Bash", "Grep", "Glob"]
+model: sonnet
+=== kotlin-reviewer.md ===
+name: kotlin-reviewer
+tools: ["Read", "Grep", "Glob", "Bash"]
+model: sonnet
+=== loop-operator.md ===
+name: loop-operator
+tools: ["Read", "Grep", "Glob", "Bash", "Edit"]
+model: sonnet
+=== marketing-agent.md ===
+name: marketing-agent
+tools: ["Read", "Grep", "Glob", "WebSearch", "WebFetch"]
+model: sonnet
+=== mle-reviewer.md ===
+name: mle-reviewer
+tools: ["Read", "Grep", "Glob", "Bash"]
+model: sonnet
+=== network-architect.md ===
+name: network-architect
+tools: ["Read", "Grep"]
+model: sonnet
+=== network-config-reviewer.md ===
+name: network-config-reviewer
+tools: ["Read", "Grep"]
+model: sonnet
+=== network-troubleshooter.md ===
+name: network-troubleshooter
+tools: ["Read", "Bash", "Grep"]
+model: sonnet
+=== opensource-forker.md ===
+name: opensource-forker
+tools: ["Read", "Write", "Edit", "Bash", "Grep", "Glob"]
+model: sonnet
+=== opensource-packager.md ===
+name: opensource-packager
+tools: ["Read", "Write", "Edit", "Bash", "Grep", "Glob"]
+model: sonnet
+=== opensource-sanitizer.md ===
+name: opensource-sanitizer
+tools: ["Read", "Grep", "Glob", "Bash"]
+model: sonnet
+=== performance-optimizer.md ===
+name: performance-optimizer
+tools: ["Read", "Write", "Edit", "Bash", "Grep", "Glob"]
+model: sonnet
+=== php-reviewer.md ===
+name: php-reviewer
+tools: ["Read", "Grep", "Glob", "Bash"]
+model: sonnet
+=== planner.md ===
+name: planner
+tools: ["Read", "Grep", "Glob"]
+model: opus
+=== pr-test-analyzer.md ===
+name: pr-test-analyzer
+model: sonnet
+tools: [Read, Grep, Glob, Bash]
+=== python-reviewer.md ===
+name: python-reviewer
+tools: ["Read", "Grep", "Glob", "Bash"]
+model: sonnet
+=== pytorch-build-resolver.md ===
+name: pytorch-build-resolver
+tools: ["Read", "Write", "Edit", "Bash", "Grep", "Glob"]
+model: sonnet
+=== react-build-resolver.md ===
+name: react-build-resolver
+tools: ["Read", "Write", "Edit", "Bash", "Grep", "Glob"]
+model: sonnet
+=== react-reviewer.md ===
+name: react-reviewer
+tools: ["Read", "Grep", "Glob", "Bash"]
+model: sonnet
+=== refactor-cleaner.md ===
+name: refactor-cleaner
+tools: ["Read", "Write", "Edit", "Bash", "Grep", "Glob"]
+model: sonnet
+=== rust-build-resolver.md ===
+name: rust-build-resolver
+tools: ["Read", "Write", "Edit", "Bash", "Grep", "Glob"]
+model: sonnet
+=== rust-reviewer.md ===
+name: rust-reviewer
+tools: ["Read", "Grep", "Glob", "Bash"]
+model: sonnet
+=== security-reviewer.md ===
+name: security-reviewer
+tools: ["Read", "Write", "Edit", "Bash", "Grep", "Glob"]
+model: sonnet
+=== seo-specialist.md ===
+name: seo-specialist
+tools: ["Read", "Grep", "Glob", "WebSearch", "WebFetch"]
+model: sonnet
+=== silent-failure-hunter.md ===
+name: silent-failure-hunter
+model: sonnet
+tools: [Read, Grep, Glob, Bash]
+=== swift-build-resolver.md ===
+name: swift-build-resolver
+tools: ["Read", "Write", "Edit", "Bash", "Grep", "Glob"]
+model: sonnet
+=== swift-reviewer.md ===
+name: swift-reviewer
+tools: ["Read", "Grep", "Glob", "Bash"]
+model: sonnet
+=== tdd-guide.md ===
+name: tdd-guide
+tools: ["Read", "Write", "Edit", "Bash", "Grep"]
+model: sonnet
+=== type-design-analyzer.md ===
+name: type-design-analyzer
+model: sonnet
+tools: [Read, Grep, Glob]
+=== typescript-reviewer.md ===
+name: typescript-reviewer
+tools: ["Read", "Grep", "Glob", "Bash"]
+model: sonnet

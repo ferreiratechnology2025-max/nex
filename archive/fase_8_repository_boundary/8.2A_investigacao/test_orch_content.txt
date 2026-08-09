@@ -1,0 +1,48 @@
+"""Teste direto da orquestracao sem servidor"""
+import sys, os, asyncio, logging
+sys.path.insert(0, r"D:\Nex")
+os.environ["USE_HUGGINGFACE"] = "false"
+logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s: %(message)s")
+
+from src.core.llm_manager import LLMManager
+
+async def main():
+    cfg = {
+        "OPENROUTER_API_KEY": "sk-or-REDACTED",
+        "USE_HUGGINGFACE": "false",
+    }
+    lm = LLMManager(cfg)
+    
+    # Direct generate test
+    from src.core.llm_manager import Request
+    print("Testing LLM generate...")
+    try:
+        r = await asyncio.wait_for(lm.generate(Request(prompt="fale sobre python"), system_prompt=None), timeout=30)
+        print(f"LLM OK ({len(r)} chars): {r[:80]}")
+    except asyncio.TimeoutError:
+        print("LLM TIMEOUT")
+    except Exception as e:
+        print(f"LLM ERROR: {e}")
+
+    # Test coordinator
+    from src.agents.coordinator import Coordinator
+    from src.core.memory_manager import MemoriaPersistente
+    import src.core.memory_manager as mm
+    if not hasattr(mm, 'logger'):
+        mm.logger = logging.getLogger('src.core.memory_manager')
+
+    m = mm.MemoriaPersistente(":memory:", "", 10)
+    c = Coordinator(llm_manager=lm, memory_manager=m)
+    
+    print("\nTesting coordinator execute...")
+    try:
+        result = await asyncio.wait_for(c.execute("fale sobre python em 2 frases"), timeout=120)
+        print(f"\nRESULT: success={result.get('success')}")
+        print(f"Final: {result.get('final_response', '')[:200]}")
+    except asyncio.TimeoutError:
+        print("ORCHESTRATION TIMEOUT")
+    except Exception as e:
+        print(f"ORCHESTRATION ERROR: {e}")
+
+if __name__ == "__main__":
+    asyncio.run(main())

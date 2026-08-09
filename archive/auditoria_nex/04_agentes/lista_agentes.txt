@@ -1,0 +1,70 @@
+
+    Directory: D:\Nex\agents
+
+Mode        LastWriteTime Length Name
+----        ------------- ------ ----
+-a--- 13/06/2026    09:46   7500 a11y-architect.md
+-a--- 13/06/2026    09:46   7504 architect.md
+-a--- 13/06/2026    09:46   4886 build-error-resolver.md
+-a--- 13/06/2026    09:46   6772 chief-of-staff.md
+-a--- 13/06/2026    09:46   2607 code-architect.md
+-a--- 13/06/2026    09:46   2665 code-explorer.md
+-a--- 13/06/2026    09:46  14210 code-reviewer.md
+-a--- 13/06/2026    09:46   2323 code-simplifier.md
+-a--- 13/06/2026    09:46   2091 comment-analyzer.md
+-a--- 13/06/2026    09:46   2499 conversation-analyzer.md
+-a--- 13/06/2026    09:46   4221 cpp-build-resolver.md
+-a--- 13/06/2026    09:46   4063 cpp-reviewer.md
+-a--- 13/06/2026    09:46   5812 csharp-reviewer.md
+-a--- 13/06/2026    09:46   7895 dart-build-resolver.md
+-a--- 13/06/2026    09:46   5441 database-reviewer.md
+-a--- 13/06/2026    09:46   9785 django-build-resolver.md
+-a--- 13/06/2026    09:46   8164 django-reviewer.md
+-a--- 13/06/2026    09:46   4492 doc-updater.md
+-a--- 13/06/2026    09:46   4654 docs-lookup.md
+-a--- 13/06/2026    09:46   5209 e2e-runner.md
+-a--- 13/06/2026    09:46   3603 fastapi-reviewer.md
+-a--- 13/06/2026    09:46  15501 flutter-reviewer.md
+-a--- 13/06/2026    09:46   5737 fsharp-reviewer.md
+-a--- 13/06/2026    09:46   8179 gan-evaluator.md
+-a--- 13/06/2026    09:46   6043 gan-generator.md
+-a--- 13/06/2026    09:46   4618 gan-planner.md
+-a--- 13/06/2026    09:46   4362 go-build-resolver.md
+-a--- 13/06/2026    09:46   3866 go-reviewer.md
+-a--- 13/06/2026    09:46   9579 harmonyos-app-resolver.md
+-a--- 13/06/2026    09:46   1965 harness-optimizer.md
+-a--- 13/06/2026    09:46   4404 healthcare-reviewer.md
+-a--- 13/06/2026    09:46   4618 homelab-architect.md
+-a--- 13/06/2026    09:46  12470 java-build-resolver.md
+-a--- 13/06/2026    09:46  13533 java-reviewer.md
+-a--- 13/06/2026    09:46   5344 kotlin-build-resolver.md
+-a--- 13/06/2026    09:46   7857 kotlin-reviewer.md
+-a--- 13/06/2026    09:46   1960 loop-operator.md
+-a--- 13/06/2026    09:46   7446 marketing-agent.md
+-a--- 13/06/2026    09:46  10425 mle-reviewer.md
+-a--- 13/06/2026    09:46   4935 network-architect.md
+-a--- 13/06/2026    09:46   4463 network-config-reviewer.md
+-a--- 13/06/2026    09:46   4428 network-troubleshooter.md
+-a--- 13/06/2026    09:46   7607 opensource-forker.md
+-a--- 13/06/2026    09:46   8213 opensource-packager.md
+-a--- 13/06/2026    09:46   7360 opensource-sanitizer.md
+-a--- 13/06/2026    09:46  13923 performance-optimizer.md
+-a--- 13/06/2026    09:46   5831 php-reviewer.md
+-a--- 13/06/2026    09:46   8284 planner.md
+-a--- 13/06/2026    09:46   1993 pr-test-analyzer.md
+-a--- 13/06/2026    09:46   4508 python-reviewer.md
+-a--- 13/06/2026    09:46   6642 pytorch-build-resolver.md
+-a--- 13/06/2026    09:46  11416 react-build-resolver.md
+-a--- 13/06/2026    09:46  11588 react-reviewer.md
+-a--- 13/06/2026    09:46   3794 refactor-cleaner.md
+-a--- 13/06/2026    09:46   7028 rust-build-resolver.md
+-a--- 13/06/2026    09:46   5769 rust-reviewer.md
+-a--- 13/06/2026    09:46   5590 security-reviewer.md
+-a--- 13/06/2026    09:46   2929 seo-specialist.md
+-a--- 13/06/2026    09:46   2050 silent-failure-hunter.md
+-a--- 13/06/2026    09:46   7418 swift-build-resolver.md
+-a--- 13/06/2026    09:46   7451 swift-reviewer.md
+-a--- 13/06/2026    09:46   3977 tdd-guide.md
+-a--- 13/06/2026    09:46   1933 type-design-analyzer.md
+-a--- 13/06/2026    09:46   9202 typescript-reviewer.md
+

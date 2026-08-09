@@ -1,0 +1,135 @@
+=== CLASSIFICAÇÃO DE TESTES UNTRACKED ===
+
+## Contexto adicional (fato não previsto no prompt original)
+`git status --porcelain | grep "\.py$"` mostra que a maioria de `tests/*.py`
+TAMBÉM está untracked (test_api_gateway.py, test_config.py, test_fallback.py,
+test_fallback_activation.py, test_llm_manager.py, test_memory_opt.py,
+test_web_search.py, test_ws_metrics.py, debug_test.py, quick_test.py — 10 de
+14 arquivos). Só test_coordinator_triage.py, test_fallback_chain.py,
+test_memory_integration.py e test_ollama_client.py estão de fato versionados.
+Ou seja, "estar untracked" por si só NÃO distingue os dois arquivos da raiz do
+restante da suíte — a maior parte da suíte hoje usada como baseline também
+nunca foi commitada. O critério decisivo para classificação, portanto, não é
+o status do git, e sim a compatibilidade com a API real (abaixo).
+
+---
+
+Arquivo: test_ollama_integration.py
+---------------------------------------
+Origem:        Untracked (`??`). `git log --all --full-history` → nenhum
+                resultado. Nunca esteve em nenhum commit deste repositório.
+Dependências:   `from src.core.memory_manager import MemoryManager` (existe,
+                é alias de MemoriaPersistente) e
+                `from src.core.llm_manager import LLMManager, GenerationConfig`
+                — GenerationConfig NÃO existe (`class GenerationConfig`:
+                NOT_FOUND em src/).
+Compatibilidade: Falha na importação (ImportError), confirmado na Fase 5/6.
+                Mesmo corrigindo o import, o script chama APIs que não
+                correspondem à implementação atual:
+                  - `LLMManager(model_name=..., backend=..., cache_enabled=...)`
+                    — construtor real é `LLMManager(config: dict, memory_manager)`.
+                  - `llm.generate(...)` tratado como síncrono — método real é
+                    `async def generate(...)`.
+                  - `llm.generate_stream(...)` — não existe (só métodos
+                    privados `_generate_stream*`).
+                  - `llm.get_stats()` (na classe LLMManager) — não existe.
+                  - `MemoryManager(storage_path=Path(...))` — construtor real
+                    usa `db_path`, `index_path`, `max_memories`, `ollama_client`.
+                  - `memory.add_user_message(...)`, `memory.get_context(...)`
+                    — não existem (API real é `salvar_memoria()` assíncrono).
+Cobertura:      Também não é um teste pytest de fato — é uma classe
+                `OllamaIntegrationTest` sem prefixo `Test`, sem métodos
+                `test_*` no sentido pytest, executada via
+                `if __name__ == "__main__": tester.run_all()`. Mesmo com
+                import corrigido, pytest coletaria ZERO testes deste arquivo
+                (o nome `test_*.py` faz o pytest tentar importar o módulo,
+                mas não há nada dentro que o pytest reconheça como caso de
+                teste). É por isso que o efeito observado é sempre "erro de
+                coleção", nunca "teste falhando" — não há teste pytest aqui.
+Natureza:       EXPERIMENTAL / script de smoke-test manual, escrito contra
+                uma API especulativa que nunca existiu no histórico
+                versionado, e nunca funcional mesmo como script standalone
+                contra o código atual.
+
+Classificação: DELETE
+Justificativa: (1) Depende de uma classe que nunca existiu no histórico git.
+               (2) Todos os outros símbolos que chama também divergem da API
+               real (nomes de parâmetro, sync/async, métodos inexistentes) —
+               não é um caso isolado de rename, é dessincronia completa.
+               (3) Não é estruturalmente um teste pytest — não agrega
+               cobertura à suíte mesmo se reparado. Se for necessário um
+               smoke-test manual de integração com Ollama no futuro, deve
+               ser reescrito do zero contra a API real e, preferencialmente,
+               renomeado para não colidir com o padrão `test_*.py` do pytest
+               (ex.: `smoke_ollama.py`), ou reescrito como teste pytest de
+               verdade.
+
+---
+
+Arquivo: test_system.py
+---------------------------------------
+Origem:        Untracked (`??`). `git log --all --full-history` → nenhum
+                resultado. Nunca esteve em nenhum commit deste repositório.
+Dependências:   `from src.core.memory_manager import MemoryManager,
+                ShortTermMemory, LongTermMemory` e
+                `from src.core.llm_manager import LLMManager, GenerationConfig,
+                ResponseCache`.
+                MemoryManager existe (alias). ShortTermMemory/LongTermMemory:
+                não encontradas por `class ShortTermMemory`/`class
+                LongTermMemory` em src/ (grep memorymanager_class.txt não
+                retornou essas classes — apenas MemoriaPersistente).
+                GenerationConfig e ResponseCache: NOT_FOUND (mesmas ausências
+                do arquivo anterior).
+Compatibilidade: Falha na importação, mesma causa-raiz do arquivo anterior
+                (GenerationConfig inexistente na linha de import combinada).
+                Mesmas divergências de API observadas:
+                  - `MemoryManager(storage_path=Path("./test_memory"))` vs
+                    construtor real (`db_path=...`).
+                  - `mm.add_user_message(...)`, `mm.get_context(...)`,
+                    `mm.recall(...)` — nenhum existe na classe real.
+                  - `LLMManager(model_name=..., backend=..., cache_enabled=...)`
+                    — mesma divergência de construtor do outro arquivo.
+                  - `from src.main import app, session_manager, lifespan` —
+                    `app` só existe como import local dentro da função
+                    `main()` de src/main.py (`from src.api_gateway import app`),
+                    não como atributo de módulo de `src.main`.
+                    `session_manager` e `lifespan` não existem em
+                    `src/main.py` (grep não retornou ocorrências).
+Cobertura:      Assim como o outro arquivo, é um script procedural
+                (top-level, com prints e try/except, sem asserts, sem
+                estrutura pytest) pensado para execução direta
+                (`python test_system.py`), não para coleta pelo pytest.
+                Nenhum `def test_*` real.
+Natureza:       EXPERIMENTAL / smoke-test manual "verifica se os arquivos
+                existem e se os módulos importam", escrito contra uma versão
+                da arquitetura (memória com short/long term explícitas,
+                LLMManager parametrizado por model_name/backend, app exposto
+                em src.main) que diverge da arquitetura atual em pelo menos
+                três subsistemas independentes (memória, LLM, entrypoint da
+                API).
+Cobertura equivalente: `tests/test_memory_integration.py` e
+                `tests/test_llm_manager.py` (ambos no diretório oficial,
+                ainda que também untracked) já cobrem memória e LLMManager
+                contra a API REAL — não há lacuna de cobertura que só
+                test_system.py preencheria.
+
+Classificação: DELETE
+Justificativa: Divergência de API em três subsistemas simultaneamente
+               (memória, LLM, entrypoint), nenhuma classe/assinatura chamada
+               bate com o código atual, não é estruturalmente um teste
+               pytest, e a cobertura que pretende dar (import smoke-test +
+               checagem de memória/LLM) já existe, contra a API real, em
+               tests/test_memory_integration.py e tests/test_llm_manager.py.
+
+---
+
+## Resumo
+
+| Arquivo                        | Classificação | Motivo principal |
+|---------------------------------|:--------------:|-------------------|
+| test_ollama_integration.py      | DELETE          | API nunca existiu no histórico git; não é teste pytest estrutural |
+| test_system.py                  | DELETE          | Divergência em 3 subsistemas; cobertura já existe nos testes oficiais |
+
+Nenhum arquivo foi modificado ou removido nesta etapa (Etapa 3 é apenas
+classificação, conforme regra de engajamento). A remoção, se aprovada, é
+ação da Etapa 4/5.

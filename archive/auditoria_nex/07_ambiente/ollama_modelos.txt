@@ -1,0 +1,16 @@
+time=2026-08-08T22:26:17.860-03:00 level=INFO source=app_windows.go:282 msg="starting Ollama" app=C:\Users\ferre\AppData\Local\Programs\Ollama version=0.32.6 OS=Windows/10.0.26200
+time=2026-08-08T22:26:17.874-03:00 level=INFO source=app.go:235 msg="initialized tools registry" tool_count=0
+time=2026-08-08T22:26:17.883-03:00 level=INFO source=app.go:250 msg="starting ollama server"
+time=2026-08-08T22:26:17.883-03:00 level=INFO source=app.go:281 msg="starting ui server" port=58092
+time=2026-08-08T22:26:20.885-03:00 level=INFO source=updater.go:361 msg="beginning update checker" interval=1h0m0s
+NAME                           ID              SIZE      MODIFIED     
+ornith:latest                  a75697c14589    5.6 GB    5 weeks ago     
+qwen2.5:7b                     845dbda0ea48    4.7 GB    6 weeks ago     
+qwen35-9b:latest               d8801343a1e3    5.6 GB    7 weeks ago     
+gemma3ne4b:latest              5d9c14a5b18d    4.2 GB    7 weeks ago     
+granite4htiny:latest           2f4da0fa7ead    4.2 GB    7 weeks ago     
+granite4:latest                59fbbfd190f7    2.8 GB    7 weeks ago     
+phi-4-mini-reasoning:latest    59fbbfd190f7    2.8 GB    7 weeks ago     
+gemma2:9b-instruct-q3_K_M      7461deaf5540    4.8 GB    2 months ago    
+llama3.1:latest                46e0c10c039e    4.9 GB    2 months ago    
+qwen2.5-coder:3b               f72c60cabf62    1.9 GB    2 months ago    

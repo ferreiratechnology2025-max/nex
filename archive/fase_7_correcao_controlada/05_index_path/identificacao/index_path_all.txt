@@ -1,0 +1,5 @@
+78:                 index_path: str = "memoria.index",
+83:        self.index_path = index_path
+138:            if os.path.exists(self.index_path):
+140:                    self.index = faiss.read_index(self.index_path)
+287:                        faiss.write_index(self.index, self.index_path)

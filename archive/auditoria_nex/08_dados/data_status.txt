@@ -1,0 +1,79 @@
+
+    Directory: D:\Nex\data
+
+Mode        LastWriteTime  Length Name
+----        -------------  ------ ----
+d---- 02/06/2026    08:40         sessions
+-a--- 13/04/2026    18:25      37 config.json
+-a--- 14/07/2026    18:16  245760 memoria.db
+-a--- 14/07/2026    17:59   32768 memoria.db-shm
+-a--- 14/07/2026    20:50 4140632 memoria.db-wal
+-a--- 14/07/2026    20:50  186579 memoria.index
+
+    Directory: D:\Nex\data\sessions
+
+Mode        LastWriteTime Length Name
+----        ------------- ------ ----
+d---- 02/06/2026    08:40        19836627
+d---- 02/06/2026    08:40        37fe9520
+d---- 02/06/2026    08:40        5d3be55c
+d---- 02/06/2026    08:40        ba3bb938
+d---- 02/06/2026    08:40        bea31119
+d---- 02/06/2026    08:40        cb6afad6
+
+    Directory: D:\Nex\data\sessions\19836627
+
+Mode        LastWriteTime Length Name
+----        ------------- ------ ----
+d---- 02/06/2026    08:40        long_term
+
+    Directory: D:\Nex\data\sessions\19836627\long_term
+
+Mode        LastWriteTime Length Name
+----        ------------- ------ ----
+-a--- 13/04/2026    18:50  22848 long_term_memories.json
+
+    Directory: D:\Nex\data\sessions\37fe9520
+
+Mode        LastWriteTime Length Name
+----        ------------- ------ ----
+d---- 13/04/2026    19:21        long_term
+
+    Directory: D:\Nex\data\sessions\5d3be55c
+
+Mode        LastWriteTime Length Name
+----        ------------- ------ ----
+d---- 02/06/2026    08:40        long_term
+-a--- 13/04/2026    19:13     70 profile.json
+
+    Directory: D:\Nex\data\sessions\5d3be55c\long_term
+
+Mode        LastWriteTime Length Name
+----        ------------- ------ ----
+-a--- 13/04/2026    19:13    602 long_term_memories.json
+
+    Directory: D:\Nex\data\sessions\ba3bb938
+
+Mode        LastWriteTime Length Name
+----        ------------- ------ ----
+d---- 13/04/2026    18:16        long_term
+
+    Directory: D:\Nex\data\sessions\bea31119
+
+Mode        LastWriteTime Length Name
+----        ------------- ------ ----
+d---- 13/04/2026    18:25        long_term
+
+    Directory: D:\Nex\data\sessions\cb6afad6
+
+Mode        LastWriteTime Length Name
+----        ------------- ------ ----
+d---- 02/06/2026    08:40        long_term
+-a--- 13/04/2026    19:16     70 profile.json
+
+    Directory: D:\Nex\data\sessions\cb6afad6\long_term
+
+Mode        LastWriteTime Length Name
+----        ------------- ------ ----
+-a--- 13/04/2026    19:16    602 long_term_memories.json
+

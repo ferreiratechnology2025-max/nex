@@ -1,0 +1,7 @@
+./agents/code-reviewer.md
+./agents/flutter-reviewer.md
+./agents/harmonyos-app-resolver.md
+./agents/kotlin-reviewer.md
+./agents/opensource-forker.md
+./agents/opensource-packager.md
+./CLAUDE.md

@@ -1,0 +1,1 @@
+VAZIO — data/ não aparece mais no git status

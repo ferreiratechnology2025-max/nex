@@ -1,0 +1,15 @@
+Nenhuma chamada precisou de correção.
+
+Evidência: todos os call sites de MemoriaPersistente()/MemoryManager() no código
+atual (src/main.py:54, tests/debug_test.py:18, tests/quick_test.py:16,
+tests/test_memory_integration.py:29,98, tests/test_memory_opt.py:78,95,110,133)
+já passam `db_path` explicitamente. Nenhum usa o default implícito.
+
+Os únicos dois call sites que dependiam do default (`MemoryManager(storage_path=...)`
+em test_ollama_integration.py e `MemoryManager(storage_path=...)` em test_system.py
+— aliás, ambos usavam um parâmetro `storage_path` que nunca existiu na assinatura
+real, então nem sequer usavam corretamente o default) foram removidos na Etapa 4A.
+
+Conclusão: a causa-raiz do arquivo órfão `D:\Nex\memoria.db` já foi eliminada
+pela DELEÇÃO dos dois scripts, não pela alteração de nenhum call site
+remanescente.

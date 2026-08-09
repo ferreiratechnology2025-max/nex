@@ -1,0 +1,4 @@
+collecting ... collected 113 items
+============================== warnings summary ===============================
+=========================== short test summary info ===========================
+================= 26 failed, 87 passed, 43 warnings in 36.59s =================

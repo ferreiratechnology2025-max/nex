@@ -1,0 +1,279 @@
+"""
+Teste de Integracao com Ollama - Gemma 2 2B
+Validacao completa do sistema com modelo real
+"""
+
+import sys
+import time
+import json
+from pathlib import Path
+from datetime import datetime
+
+sys.path.insert(0, str(Path(__file__).parent))
+
+from src.core.memory_manager import MemoryManager
+from src.core.llm_manager import LLMManager, GenerationConfig
+
+
+class OllamaIntegrationTest:
+    """Teste completo de integracao com Ollama"""
+
+    def __init__(self):
+        self.results = {
+            'passed': 0,
+            'failed': 0,
+            'warnings': 0,
+            'details': []
+        }
+
+    def log(self, test_name: str, status: str, message: str = "", duration_ms: float = None):
+        """Registra resultado do teste"""
+        status_icon = {
+            'PASS': '[PASS]',
+            'FAIL': '[FAIL]',
+            'WARN': '[WARN]'
+        }.get(status, '[????]')
+
+        time_str = f" ({duration_ms:.0f}ms)" if duration_ms else ""
+        print(f"{status_icon} {test_name}{time_str}: {message}")
+
+        self.results['details'].append({
+            'test': test_name,
+            'status': status,
+            'message': message,
+            'duration_ms': duration_ms
+        })
+
+        if status == 'PASS':
+            self.results['passed'] += 1
+        elif status == 'FAIL':
+            self.results['failed'] += 1
+        else:
+            self.results['warnings'] += 1
+
+    def check_ollama(self) -> bool:
+        """Verifica se Ollama esta rodando"""
+        try:
+            import requests
+            response = requests.get("http://localhost:11434/api/tags", timeout=5)
+            if response.status_code == 200:
+                data = response.json()
+                models = [m['name'] for m in data.get('models', [])]
+                self.log("Ollama disponivel", "PASS",
+                         f"Modelos: {', '.join(models) if models else 'nenhum'}")
+                return True
+        except Exception as e:
+            self.log("Ollama disponivel", "FAIL", f"Nao conectado: {e}")
+            return False
+
+    def test_llm_manager_load(self):
+        """Testa carregamento do LLMManager"""
+        try:
+            llm = LLMManager(model_name="gemma2:2b", backend="auto", cache_enabled=True)
+            self.log("LLMManager carregado", "PASS", f"Backend: {llm.backend}")
+            return llm
+        except Exception as e:
+            self.log("LLMManager carregado", "FAIL", str(e))
+            return None
+
+    def test_simple_generation(self, llm: LLMManager):
+        """Testa geracao simples"""
+        try:
+            start = time.time()
+            response = llm.generate("Diga 'Ola, mundo!' em portugues")
+            elapsed = (time.time() - start) * 1000
+
+            if response and len(response) > 0:
+                self.log("Geracao simples", "PASS", f"'{response[:80]}...'", elapsed)
+                return response
+            else:
+                self.log("Geracao simples", "FAIL", "Resposta vazia", elapsed)
+                return None
+        except Exception as e:
+            self.log("Geracao simples", "FAIL", str(e))
+            return None
+
+    def test_caching(self, llm: LLMManager):
+        """Testa sistema de cache"""
+        try:
+            prompt = "Diga 'teste de cache' em portugues"
+
+            # Primeira chamada
+            start1 = time.time()
+            response1 = llm.generate(prompt)
+            elapsed1 = (time.time() - start1) * 1000
+
+            # Segunda chamada (deve ser mais rapida)
+            start2 = time.time()
+            response2 = llm.generate(prompt)
+            elapsed2 = (time.time() - start2) * 1000
+
+            if elapsed2 < elapsed1 * 0.7:
+                self.log("Cache funcionando", "PASS", f"{elapsed2:.0f}ms vs {elapsed1:.0f}ms")
+            else:
+                self.log("Cache funcionando", "WARN",
+                         f"Pode nao estar ativo ({elapsed2:.0f}ms vs {elapsed1:.0f}ms)")
+        except Exception as e:
+            self.log("Cache funcionando", "FAIL", str(e))
+
+    def test_memory_integration(self, llm: LLMManager):
+        """Testa integracao com MemoryManager"""
+        try:
+            memory = MemoryManager(storage_path=Path("./test_integration"))
+
+            # Conversa com informacao importante
+            user_msg = "Meu nome e Joao e sou programador Python"
+            memory.add_user_message(user_msg)
+
+            # Recupera contexto
+            short_ctx, long_ctx = memory.get_context("Qual e meu nome?")
+
+            # Monta prompt
+            prompt = f"""{long_ctx}
+Historico: {short_ctx[-3:] if short_ctx else []}
+Usuario: Qual e meu nome?
+Assistente:"""
+
+            start = time.time()
+            response = llm.generate(prompt)
+            elapsed = (time.time() - start) * 1000
+
+            if "joao" in response.lower():
+                self.log("Memoria integrada", "PASS",
+                         f"Lembrou do nome: '{response[:80]}'", elapsed)
+            else:
+                self.log("Memoria integrada", "WARN",
+                         f"Nao lembrou do nome: '{response[:80]}'", elapsed)
+
+        except Exception as e:
+            self.log("Memoria integrada", "FAIL", str(e))
+
+    def test_streaming(self, llm: LLMManager):
+        """Testa streaming de respostas"""
+        try:
+            start = time.time()
+            tokens = []
+
+            for token in llm.generate_stream("Diga os numeros de 1 a 5 em portugues"):
+                tokens.append(token)
+
+            elapsed = (time.time() - start) * 1000
+
+            if len(tokens) > 0:
+                self.log("Streaming", "PASS", f"{len(tokens)} tokens recebidos", elapsed)
+            else:
+                self.log("Streaming", "FAIL", "Nenhum token recebido", elapsed)
+
+        except Exception as e:
+            self.log("Streaming", "FAIL", str(e))
+
+    def test_performance(self, llm: LLMManager):
+        """Teste de performance com multiplas chamadas"""
+        try:
+            prompts = [
+                "Diga 'um' em portugues",
+                "Diga 'dois' em portugues",
+                "Diga 'tres' em portugues",
+            ]
+
+            latencies = []
+            for prompt in prompts:
+                start = time.time()
+                llm.generate(prompt)
+                latencies.append((time.time() - start) * 1000)
+
+            avg_latency = sum(latencies) / len(latencies)
+            min_latency = min(latencies)
+            max_latency = max(latencies)
+
+            self.log("Performance", "PASS",
+                     f"Media: {avg_latency:.0f}ms | Min: {min_latency:.0f}ms | Max: {max_latency:.0f}ms")
+
+            # Estatisticas do LLM
+            stats = llm.get_stats()
+            self.log("Estatisticas LLM", "PASS",
+                     f"Requests: {stats['requests']}, Cache hits: {stats['cache_hits']}")
+
+        except Exception as e:
+            self.log("Performance", "FAIL", str(e))
+
+    def run_all(self):
+        """Executa todos os testes"""
+        print("=" * 60)
+        print("TESTE DE INTEGRACAO COM OLLAMA")
+        print("=" * 60)
+        print()
+
+        # 1. Verifica Ollama
+        if not self.check_ollama():
+            print()
+            print("Ollama nao esta disponivel. Execute:")
+            print("   ./scripts/install_ollama.sh  (Linux/Mac)")
+            print("   scripts\\install_ollama.bat   (Windows)")
+            print("   ollama pull gemma2:2b")
+            return
+
+        # 2. Carrega LLM
+        llm = self.test_llm_manager_load()
+        if not llm:
+            print()
+            print("Falha ao carregar LLM")
+            return
+
+        print()
+        print("-" * 40)
+        print("Executando testes funcionais...")
+        print("-" * 40)
+
+        # 3. Testes
+        self.test_simple_generation(llm)
+        self.test_caching(llm)
+        self.test_memory_integration(llm)
+        self.test_streaming(llm)
+        self.test_performance(llm)
+
+        # 4. Resumo
+        self.print_summary()
+
+    def print_summary(self):
+        """Imprime resumo dos testes"""
+        print()
+        print("=" * 60)
+        print("RESUMO DOS TESTES")
+        print("=" * 60)
+        print(f"Passaram:      {self.results['passed']}")
+        print(f"Falharam:      {self.results['failed']}")
+        print(f"Advertencias:  {self.results['warnings']}")
+
+        total = self.results['passed'] + self.results['failed'] + self.results['warnings']
+        score = (self.results['passed'] / total * 100) if total > 0 else 0
+
+        print(f"\nPontuacao: {score:.1f}%")
+
+        if score >= 80:
+            print("\nSISTEMA VALIDADO COM SUCESSO!")
+        elif score >= 60:
+            print("\nSISTEMA FUNCIONAL COM RESSALVAS")
+        else:
+            print("\nSISTEMA COM PROBLEMAS - REVISAR")
+
+        # Salva resultados
+        result_file = Path(__file__).parent / "test_results.json"
+        with open(result_file, 'w', encoding='utf-8') as f:
+            json.dump({
+                'timestamp': datetime.now().isoformat(),
+                'summary': {
+                    'passed': self.results['passed'],
+                    'failed': self.results['failed'],
+                    'warnings': self.results['warnings'],
+                    'score': score
+                },
+                'details': self.results['details']
+            }, f, indent=2, ensure_ascii=False)
+
+        print(f"\nResultados salvos em: {result_file}")
+
+
+if __name__ == "__main__":
+    tester = OllamaIntegrationTest()
+    tester.run_all()

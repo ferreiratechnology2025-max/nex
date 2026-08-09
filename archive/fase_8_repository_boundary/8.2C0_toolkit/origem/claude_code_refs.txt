@@ -1,0 +1,17 @@
+agents/chief-of-staff.md:157:- [Claude Code](https://docs.anthropic.com/en/docs/claude-code)
+agents/conversation-analyzer.md:19:You analyze conversation history to identify problematic Claude Code behaviors that should be prevented with hooks.
+agents/harness-optimizer.md:37:- Keep compatibility across Claude Code, Cursor, OpenCode, and Codex.
+agents/opensource-packager.md:3:description: Generate complete open-source packaging for a sanitized project. Produces CLAUDE.md, setup.sh, README.md, LICENSE, CONTRIBUTING.md, and GitHub issue templates. Makes any repo immediately usable with Claude Code. Third stage of the opensource-pipeline skill.
+agents/opensource-packager.md:19:You generate complete open-source packaging for a sanitized project. Your goal: anyone should be able to fork, run `setup.sh`, and be productive within minutes — especially with Claude Code.
+agents/opensource-packager.md:24:- Generate `CLAUDE.md` (the most important file — gives Claude Code full context)
+agents/opensource-packager.md:147:echo "  4. Using Claude Code? CLAUDE.md has all the context."
+agents/opensource-packager.md:201:## Using with Claude Code
+agents/opensource-packager.md:203:This project includes a \`CLAUDE.md\` that gives Claude Code full context.
+agents/opensource-packager.md:206:claude    # Start Claude Code — reads CLAUDE.md automatically
+agents/opensource-packager.md:220:- Always add the "Using with Claude Code" section
+agents/opensource-packager.md:229:Include: development setup, branch/PR workflow, code style notes from project analysis, issue reporting guidelines, and a "Using Claude Code" section.
+agents/opensource-packager.md:248:Output: 5 files generated, setup.sh executable, "Using with Claude Code" section added
+agents/opensource-packager.md:255:- **Always** include the "Using with Claude Code" section in README
+rules/react/hooks.md:12:> This file covers **React hooks** (`useState`, `useEffect`, `useMemo`, `useCallback`, custom hooks) — NOT the Claude Code `hooks/` runtime system. Naming matches the per-language convention `rules/<lang>/hooks.md` used across this repo.
+CLAUDE.md:3:This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+CLAUDE.md:7:This is a **Claude Code plugin** - a collection of production-ready agents, skills, hooks, commands, rules, and MCP configurations. The project provides battle-tested workflows for software development using Claude Code.

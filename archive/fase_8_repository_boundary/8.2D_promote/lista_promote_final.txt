@@ -1,0 +1,53 @@
+# Lista explícita de PROMOTE — baseada em classificação documentada
+# (Fase 8.1 + 8.2B.2 + 8.2C.0). NÃO inclui itens não classificados
+# encontrados nesta etapa (ver NAO_CLASSIFICADOS.txt).
+
+# src/ (classificacao_src.md — 13 arquivos)
+src/agents/__init__.py
+src/agents/analyst_agent.py
+src/agents/base_agent.py
+src/agents/researcher_agent.py
+src/agents/writer_agent.py
+src/core/__init__.py
+src/core/document_manager.py
+src/core/document_reader.py
+src/core/openrouter_client.py
+src/core/web_search.py
+src/core/web_search_engine.py
+src/metrics.py
+src/ws_handler.py
+
+# tests/ (classificacao_tests.md — 8 arquivos PROMOTE; quick_test.py e
+# debug_test.py ficam de fora, classificados KEEP-UNTRACKED)
+tests/test_api_gateway.py
+tests/test_config.py
+tests/test_fallback.py
+tests/test_fallback_activation.py
+tests/test_llm_manager.py
+tests/test_memory_opt.py
+tests/test_web_search.py
+tests/test_ws_metrics.py
+
+# config (classificacao_config.md — 2 arquivos)
+docker-compose.yml
+pytest.ini
+
+# dirs (classificacao_artifacts.md — 2 diretórios PROMOTE;
+# data/ e venv/ ficam de fora, KEEP-UNTRACKED)
+monitor/
+.streamlit/
+
+# docs (classificacao_docs.md — 4 arquivos; .gitignore já staged
+# separadamente na 8.2B.1)
+requirements.txt
+README.md
+SYSTEM_MAP.md
+Nex.spec.md
+
+# 8.2B.2 — .dockerignore
+.dockerignore
+
+# 8.2C.0 — toolkit (CLAUDE.md + agents/ + rules/, revisão retroativa)
+CLAUDE.md
+agents/
+rules/

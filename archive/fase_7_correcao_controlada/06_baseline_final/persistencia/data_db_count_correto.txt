@@ -1,0 +1,2 @@
+--- contagem real com o nome de tabela correto (memorias) ---
+71

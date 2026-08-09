@@ -1,0 +1,30 @@
+ACHADOS QUE CONTRADIZEM PREMISSAS DO PROMPT ORIGINAL (8.2A4)
+
+1. data/ NÃO está totalmente ignorado, ao contrário do esperado pelo prompt
+   ("Verificar se data/ está ignorado" pressupunha resultado binário
+   ignorado/não-ignorado).
+   Fato: .gitignore cobre apenas `data/memoria.db`, `data/memoria.db-*`,
+   `data/*.index` — arquivos específicos. `data/config.json` e
+   `data/sessions/` (que contém `long_term_memories.json` e `profile.json`
+   por sessão de usuário, com conteúdo pessoal como "Meu nome é João...",
+   observado na Fase 8.1) CONTINUAM aparecendo como `?? data/` no git
+   status. Um `git add -A` neste momento adicionaria dados de sessão de
+   usuário ao repositório.
+   AÇÃO RECOMENDADA (fora do escopo desta etapa, para decisão do
+   Arquiteto): adicionar uma regra `data/` (sem sufixo) ao .gitignore,
+   substituindo ou complementando as três regras específicas já existentes,
+   antes de qualquer `git add -A` ou `git add .`.
+
+2. .dockerignore também está untracked e também escapou do inventário da
+   Fase 8.1 (mesma classe de lacuna do .gitignore — nomes de arquivo que
+   começam com ponto e não têm extensão reconhecida pelos grheps usados).
+   `git status --porcelain | grep "dockerignore"` → `?? .dockerignore`.
+   Não foi classificado nem nesta etapa nem na Fase 8.1. Recomendo
+   classificação explícita antes do fechamento da Fase 8.2 (é quase
+   certamente PROMOTE, por analogia ao .gitignore, mas não foi
+   verificado/lido nesta etapa — escopo desta etapa era conter P0, não
+   expandir o inventário).
+
+Nenhuma ação de correção foi tomada para os dois achados acima nesta
+etapa — apenas documentados, conforme regra de engajamento ("não faça
+correções não solicitadas").

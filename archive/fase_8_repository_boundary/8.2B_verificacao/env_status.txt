@@ -1,0 +1,1 @@
+AUSENTE (não aparece no git status — .env já ignorado, conforme confirmado na Fase 7)

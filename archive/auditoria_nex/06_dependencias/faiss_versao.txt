@@ -1,0 +1,10 @@
+Name: faiss-cpu
+Version: 1.13.2
+Summary: A library for efficient similarity search and clustering of dense vectors.
+Home-page: 
+Author: 
+Author-email: Kota Yamaguchi <yamaguchi_kota@cyberagent.co.jp>
+License: 
+Location: C:\Users\ferre\AppData\Roaming\Python\Python311\site-packages
+Requires: numpy, packaging
+Required-by: 

@@ -1,0 +1,6 @@
+tests/test_api_gateway.py:    @pytest.mark.asyncio
+tests/test_web_search.py:    @pytest.mark.asyncio
+tests/test_web_search.py:    @pytest.mark.asyncio
+tests/test_web_search.py:    @pytest.mark.asyncio
+tests/test_web_search.py:    @pytest.mark.asyncio
+tests/test_web_search.py:    @pytest.mark.asyncio

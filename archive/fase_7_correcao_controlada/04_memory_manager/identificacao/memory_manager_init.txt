@@ -1,0 +1,2 @@
+33:    def __init__(self, max_size: int = 1000, ttl: int = 3600):
+77:    def __init__(self, db_path: str = "memoria.db",

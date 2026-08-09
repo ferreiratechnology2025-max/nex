@@ -1,0 +1,10 @@
+src/main.py:54:    memory_system = MemoriaPersistente(
+tests/debug_test.py:18:        memoria = MemoriaPersistente(db_path=db, index_path=idx, max_memories=100)
+tests/quick_test.py:16:        memoria = MemoriaPersistente(db_path=db, index_path=idx, max_memories=100)
+tests/test_memory_integration.py:29:        manager = MemoriaPersistente(
+tests/test_memory_integration.py:98:        manager = MemoriaPersistente(
+tests/test_memory_opt.py:63:class TestMemoriaPersistente(unittest.TestCase):
+tests/test_memory_opt.py:78:        memoria = MemoriaPersistente(
+tests/test_memory_opt.py:95:        memoria = MemoriaPersistente(
+tests/test_memory_opt.py:110:        memoria = MemoriaPersistente(
+tests/test_memory_opt.py:133:        memoria = MemoriaPersistente(

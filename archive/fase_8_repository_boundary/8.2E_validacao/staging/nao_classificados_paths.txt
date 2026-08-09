@@ -1,0 +1,36 @@
+docs/                    (diretório — contém ao menos DEVELOPER_GUIDE.md
+examples/                (diretório — conteúdo nunca inspecionado)
+Dockerfile                (arquivo citado como existente e referenciado
+docker-entrypoint.sh
+Makefile
+check_environment.ps1
+start_services.ps1
+scripts/build.sh
+scripts/create_release.sh
+scripts/download_model.bat
+scripts/download_model.sh
+scripts/install_ollama.bat
+scripts/install_ollama.sh
+scripts/start.bat
+scripts/start.sh
+scripts/stop.sh
+scripts/validate_system.bat
+scripts/validate_system.sh
+scripts/windows/backup.bat
+scripts/windows/build.bat
+scripts/windows/download_tinyllama.bat
+scripts/windows/fix_env.bat
+scripts/windows/setup_openrouter.bat
+scripts/windows/setup_venv.bat
+scripts/windows/start.bat
+scripts/windows/start_ui.bat
+scripts/windows/start_venv.bat
+scripts/windows/stop.bat
+scripts/windows/test.bat
+scripts/windows/test_venv.bat
+scripts/windows/validate.bat
+scripts/windows/validate_venv.bat
+MANUAL SISTEMA Nex 1.pdf
+Manual de Bolso do Nex Chat.pdf
+ligar Nex.txt
+streamlit_app.py — NÃO está nesta lista porque já está TRACKED

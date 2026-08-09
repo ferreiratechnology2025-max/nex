@@ -1,0 +1,8 @@
+
+FullName                    Length LastWriteTime
+--------                    ------ -------------
+D:\Nex\nex_chat_error.log        0 13/04/2026 18:54:44
+D:\Nex\nex_chat.log              0 13/04/2026 18:54:44
+D:\Nex\server.log            15984 02/06/2026 05:53:48
+D:\Nex\logs\server_test.log    739 02/06/2026 00:12:38
+

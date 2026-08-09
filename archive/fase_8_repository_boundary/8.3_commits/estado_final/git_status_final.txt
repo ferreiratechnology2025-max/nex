@@ -1,0 +1,44 @@
+ M static/script.js
+?? Dockerfile
+?? "MANUAL SISTEMA Nex 1.pdf"
+?? Makefile
+?? "Manual de Bolso do Nex Chat.pdf"
+?? auditoria_nex/
+?? auditoria_profunda/
+?? baseline_saude/
+?? check_environment.ps1
+?? docker-entrypoint.sh
+?? docs/
+?? examples/
+?? fase_7_correcao_controlada/
+?? fase_8_repository_boundary/
+?? "ligar Nex.txt"
+?? scripts/build.sh
+?? scripts/create_release.sh
+?? scripts/download_model.bat
+?? scripts/download_model.sh
+?? scripts/install_ollama.bat
+?? scripts/install_ollama.sh
+?? scripts/start.bat
+?? scripts/start.sh
+?? scripts/stop.sh
+?? scripts/validate_system.bat
+?? scripts/validate_system.sh
+?? scripts/windows/backup.bat
+?? scripts/windows/build.bat
+?? scripts/windows/download_tinyllama.bat
+?? scripts/windows/fix_env.bat
+?? scripts/windows/setup_openrouter.bat
+?? scripts/windows/setup_venv.bat
+?? scripts/windows/start.bat
+?? scripts/windows/start_ui.bat
+?? scripts/windows/start_venv.bat
+?? scripts/windows/stop.bat
+?? scripts/windows/test.bat
+?? scripts/windows/test_venv.bat
+?? scripts/windows/validate.bat
+?? scripts/windows/validate_venv.bat
+?? start_services.ps1
+?? tests/debug_test.py
+?? tests/quick_test.py
+?? venv/

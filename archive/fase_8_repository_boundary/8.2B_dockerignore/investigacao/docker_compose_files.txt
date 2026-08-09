@@ -1,0 +1,2 @@
+./auditoria_nex/02_configuracoes/docker-compose.yml
+./docker-compose.yml

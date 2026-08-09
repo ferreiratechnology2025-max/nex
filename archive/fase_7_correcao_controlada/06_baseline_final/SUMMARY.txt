@@ -1,0 +1,86 @@
+=== BASELINE FINAL — FASE 7 ===
+
+DATA: 2026-08-08 (sessão de auditoria, horário local das etapas ~22:20–23:15)
+AMBIENTE:
+- Python: 3.11.9
+- OS: Windows-10-10.0.26200-SP0 (Windows 11 Home)
+- Dependências-chave: fastapi 0.136.1, faiss-cpu 1.13.2, ollama (client py) 0.6.2,
+  pytest-asyncio 1.3.0
+
+TESTES:
+- Coletados: 113
+- Passaram: 87
+- Falharam: 26
+- Erros de coleção: 0
+- Pulados: 0
+
+RUNTIME:
+- Servidor: sobe com sucesso via `python -m src.main` (testado 3x nesta fase,
+  encerrado corretamente em todas — nota operacional: o PID do job do bash no
+  Windows não corresponde ao PID real do processo; é necessário localizar via
+  `netstat` e derrubar via `taskkill /F` pelo PID real)
+- /health: PASS (200 OK)
+- memory_count: 71
+- /metrics: PASS (200 OK) — requests_total, latência e uso de memória reportados
+
+PERSISTÊNCIA:
+- DB canônico: data/memoria.db
+- Linhas: 71 (tabela `memorias` — NOTA: o comando de validação original do
+  Arquiteto referenciava uma tabela `memories`, que não existe; o schema real,
+  confirmado desde a Fase 2, usa `memorias`. Documentado o erro de tentativa
+  e a contagem correta lado a lado nesta pasta)
+- FAISS canônico: data/memoria.index
+- Vetores: 71
+- Dimensão: 384
+- Órfão DB (D:\Nex\memoria.db): AUSENTE (removido na Etapa 4, confirmado ausente
+  também nesta rodada final, inclusive -shm/-wal)
+- Órfão INDEX (D:\Nex\memoria.index): AUSENTE (nunca existiu; nenhum call site
+  remanescente usava o default relativo antes mesmo da Etapa 5)
+
+REPOSITÓRIO:
+- Arquivos tracked modificados: 2
+    M src/core/memory_manager.py   (as duas correções desta fase: db_path e index_path)
+    M static/script.js             (já constava modificado no snapshot inicial
+                                     da conversa, antes de qualquer ação desta
+                                     auditoria — não foi tocado nesta fase)
+- Arquivos untracked (total, `??`): 79
+- Arquivos .py untracked: 24 (inclui a maior parte de src/ e 10 de 14 arquivos
+  de tests/ — achado já registrado na Etapa 3; não corrigido nesta fase,
+  proposto como escopo da Fase 8)
+
+ALTERAÇÕES REALIZADAS NA FASE 7:
+1. OPENROUTER_API_KEY — rotação confirmada verbalmente pelo usuário (ação fora
+   do escopo automatizável; não verificável por comando)
+2. pytest-asyncio — configurado via pytest.ini (asyncio_mode = auto, não strict
+   — decisão revisada com evidência na Etapa 2, pois strict teria deixado 17
+   testes sem marcador continuando a falhar)
+3. test_ollama_integration.py — removido (DELETE, classificado na Etapa 3)
+4. test_system.py — removido (DELETE, classificado na Etapa 3)
+5. db_path — parâmetro obrigatório em MemoriaPersistente.__init__ (Etapa 4)
+6. index_path — parâmetro obrigatório em MemoriaPersistente.__init__ (Etapa 5)
+7. Arquivo órfão D:\Nex\memoria.db (+ -shm/-wal) — removido após validação
+   de que não seria recriado (Etapa 4)
+
+REGRESSÕES DETECTADAS:
+- Nenhuma. 87 passed / 26 failed mantido idêntico entre Etapa 2 (pós-asyncio),
+  Etapa 4 (pós-db_path) e Etapa 5 (pós-index_path) — as duas correções de
+  persistência não afetaram nenhum resultado de teste, como esperado (nenhum
+  call site dependia dos defaults removidos).
+
+26 FALHAS RESIDUAIS (não investigadas nesta fase — registro factual apenas):
+- tests/test_api_gateway.py (4 casos)
+- tests/test_fallback.py (2 casos)
+- tests/test_fallback_activation.py (2 casos)
+- tests/test_llm_manager.py (6 casos — TypeError)
+- tests/test_memory_opt.py (5 casos — AssertionError em TestCacheLRU)
+- tests/test_web_search.py (5 casos)
+- tests/test_ws_metrics.py (1 caso)
+Nenhuma dessas falhas está relacionada a configuração de asyncio (verificado:
+mensagens não contêm mais "async def functions are not natively supported").
+
+PRÓXIMA FASE (proposta, não iniciada):
+- Classificar as 26 falhas residuais por causa-raiz (TypeError vs AssertionError
+  vs lógica de negócio)
+- Determinar o status dos 24 arquivos .py untracked (10 deles em tests/) —
+  Repository Boundary / Test Suite Ownership, conforme já sinalizado ao final
+  da Etapa 3

@@ -1,0 +1,3 @@
+PRESENT: OPENROUTER_API_KEY encontrada em .env (valor não registrado por regra de engajamento)
+NOTA: Este script NÃO PODE confirmar se a chave foi rotacionada — apenas presença/ausência da variável. Confirmação de rotação real requer ação humana no painel do OpenRouter, fora do escopo automatizável.
+CONFIRMADO PELO USUÁRIO (Líder do Projeto) em 2026-08-08 22:48:55: chave OPENROUTER_API_KEY rotacionada no painel do OpenRouter. Confirmação verbal registrada nesta auditoria — ação executada fora do escopo automatizável do Coder.

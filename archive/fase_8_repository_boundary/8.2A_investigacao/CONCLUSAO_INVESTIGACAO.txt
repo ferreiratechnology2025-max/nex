@@ -1,0 +1,6 @@
+CONCLUSÃO DA INVESTIGAÇÃO 8.2A1:
+1. test_orch.py:11 — ÚNICA ocorrência de chave literal hardcoded, confirmada. Chave já rotacionada (Fase 7, Etapa 1).
+2. src/main.py:84 — FALSO POSITIVO do grep amplo: é 'settings.OPENROUTER_API_KEY' (referência seguraà classe Settings), não um literal. Verificado: não contém prefixo 'sk-or-v1'. Uso interno (populaconfig dict passado a LLMManager), sem exposição via endpoint HTTP encontrada.
+3. potential_secrets.txt (grep amplo por tokens de 32+ caracteres em todo *.py): 72 ocorrências, 71 são falsos positivos (separadores de comentário '---...', nomes de função/método longos como 'test_llm_manager_fallback_chain_includes_ollama'). Apenas a linha 72 (test_orch.py) é um segredo real.
+4. NOTA DE PROCESSO: o comando bruto de grep amplo (sem redação) reimprimiu a chave completa no terminal desta sessão antes da correção. A chave já estava rotacionada (baixa severidade), mas o artefato foi corrigido/redigido imediatamente após o erro ser percebido; nenhuma cópia não redigida permanece em disco.
+CONCLUSÃO: nenhum OUTRO segredo hardcoded existe no working tree além do já conhecido em test_orch.py.

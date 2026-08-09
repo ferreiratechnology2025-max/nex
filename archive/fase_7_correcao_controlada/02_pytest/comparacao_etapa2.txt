@@ -1,0 +1,41 @@
+=== BASELINE FASE 6 (sem pytest.ini, sem asyncio_mode configurado) ===
+- Collected: 113
+- Passed: 70
+- Failed: 43
+- Collection errors: 0 (quando escopo restrito a tests/; erro de coleção só ocorre
+  quando pytest roda a partir da raiz e alcança test_ollama_integration.py)
+
+=== APÓS CONFIGURAÇÃO pytest-asyncio (asyncio_mode = auto, pytest.ini na raiz) ===
+- Collected: 113
+- Passed: 87
+- Failed: 26
+- Collection errors: 0
+
+=== DIFERENÇA ===
+- Falhas eliminadas: 17 (43 → 26)
+- Falhas remanescentes: 26
+
+Os 17 casos eliminados correspondem exatamente às 17 ocorrências de
+"async def functions are not natively supported" identificadas na Fase 6:
+  - tests/test_ollama_client.py (14 testes)
+  - tests/test_fallback_activation.py (1 teste, agora reagrupado — outro teste do
+    mesmo arquivo ainda falha por motivo distinto, ver abaixo)
+  - tests/test_memory_integration.py (2 testes)
+
+PROVA CAUSAL: a contagem de falhas eliminadas (17) bate exatamente com a contagem
+de falhas por ausência de suporte nativo a async identificada na Fase 6. Isso
+confirma que o problema era puramente de configuração do harness, não do código
+de teste ou do código de produção.
+
+=== 26 FALHAS REMANESCENTES (não fazem parte do escopo da Etapa 2 — não investigadas aqui) ===
+tests/test_api_gateway.py (4 casos)
+tests/test_fallback.py (2 casos)
+tests/test_fallback_activation.py (2 casos — motivo diferente do async, ainda a investigar)
+tests/test_llm_manager.py (6 casos — TypeError)
+tests/test_memory_opt.py (5 casos — AssertionError em TestCacheLRU)
+tests/test_web_search.py (5 casos)
+tests/test_ws_metrics.py (1 caso)
+
+Nenhum destes 26 é causado por configuração de asyncio (verificado: as mensagens de
+erro nesta rodada não incluem mais "async def functions are not natively supported").
+São falhas de outra natureza (TypeError, AssertionError) fora do escopo da Etapa 2.

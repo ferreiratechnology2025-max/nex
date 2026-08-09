@@ -1,0 +1,98 @@
+./agents/opensource-forker.md:36:- Config files: `.env`, `config/`, `docker-compose.yml`
+./agents/opensource-forker.md:104:- `docker-compose.yml` — replace hardcoded values with `${VAR_NAME}`
+./agents/opensource-forker.md:170:- DATABASE_URL (was hardcoded in docker-compose.yml)
+./agents/opensource-forker.md:197:Action: Copies files, strips `DATABASE_URL` from `docker-compose.yml`, replaces `internal.company.com` with `your-domain.com`, creates `.env.example` with 8 variables, fresh git init
+./agents/opensource-packager.md:37:- `docker-compose.yml` (services, ports, dependencies)
+./agents/opensource-packager.md:77:# Docker
+./agents/opensource-packager.md:79:docker compose up -d --build
+./agents/opensource-packager.md:114:- If Docker is the primary runtime, lead with Docker commands
+./agents/opensource-packager.md:247:Action: Detects Python + FastAPI + PostgreSQL from `requirements.txt` and `docker-compose.yml`, generates `CLAUDE.md` (62 lines), `setup.sh` with pip + alembic migrate steps, enhances existing `README.md`, adds `MIT LICENSE`
+./agents/opensource-sanitizer.md:125:- `docker-compose.yml` (if present) uses `${VAR}` syntax, not hardcoded values
+./agents/opensource-sanitizer.md:164:2. **[INTERNAL]** `docker-compose.yml:15` — References internal domain
+./auditoria_nex/01_estrutura_projeto.txt:21:D:\Nex\.dockerignore                                                          432     13/04/2026 12:12:28
+./auditoria_nex/01_estrutura_projeto.txt:26:D:\Nex\docker-compose.yml                                                     1597    13/04/2026 12:12:26
+./auditoria_nex/01_estrutura_projeto.txt:27:D:\Nex\docker-entrypoint.sh                                                   1220    13/04/2026 12:12:24
+./auditoria_nex/01_estrutura_projeto.txt:28:D:\Nex\Dockerfile                                                             1520    13/04/2026 12:12:22
+./docker-entrypoint.sh:2:# Docker Entrypoint para Nex Chat
+./docs/DEVELOPER_GUIDE.md:47:|  |   Ollama     |  |  File System |  |   Docker     |        |
+./docs/DEVELOPER_GUIDE.md:481:- [Docker Documentation](https://docs.docker.com)
+./fase_7_correcao_controlada/03_untracked_tests/test_system_content.txt:158:    "Dockerfile",
+./fase_7_correcao_controlada/03_untracked_tests/test_system_content.txt:159:    "docker-compose.yml"
+./fase_7_correcao_controlada/03_untracked_tests/test_system_content.txt:238:- Docker files      : ✅ (todos presentes)
+./fase_7_correcao_controlada/03_untracked_tests/test_system_content.txt:242:2. Ou execute: docker-compose up -d
+./fase_7_correcao_controlada/06_baseline_final/repositorio/git_status_full.txt:3:?? .dockerignore
+./fase_7_correcao_controlada/06_baseline_final/repositorio/git_status_full.txt:7:?? Dockerfile
+./fase_7_correcao_controlada/06_baseline_final/repositorio/git_status_full.txt:20:?? docker-compose.yml
+./fase_7_correcao_controlada/06_baseline_final/repositorio/git_status_full.txt:21:?? docker-entrypoint.sh
+./fase_7_correcao_controlada/06_baseline_final/repositorio/git_untracked.txt:1:?? .dockerignore
+./fase_7_correcao_controlada/06_baseline_final/repositorio/git_untracked.txt:5:?? Dockerfile
+./fase_7_correcao_controlada/06_baseline_final/repositorio/git_untracked.txt:18:?? docker-compose.yml
+./fase_7_correcao_controlada/06_baseline_final/repositorio/git_untracked.txt:19:?? docker-entrypoint.sh
+./fase_8_repository_boundary/01_inventario/untracked_config.txt:1:?? docker-compose.yml
+./fase_8_repository_boundary/02_classificacao/classificacao_artifacts.md:25:- **Dependências:** referenciado explicitamente em `docker-compose.yml:54-60`
+./fase_8_repository_boundary/02_classificacao/classificacao_artifacts.md:32:  (docker-compose já classificado PROMOTE).
+./fase_8_repository_boundary/02_classificacao/classificacao_config.md:3:## docker-compose.yml
+./fase_8_repository_boundary/02_classificacao/classificacao_config.md:5:  documentada do projeto (Dockerfile também presente no repo).
+./fase_8_repository_boundary/02_classificacao/classificacao_config.md:6:- **Finalidade:** definição do serviço `nex-chat` para execução via Docker.
+./fase_8_repository_boundary/02_classificacao/classificacao_config.md:9:- **Duplicação:** nenhuma — único arquivo de orquestração Docker do projeto.
+./fase_8_repository_boundary/02_classificacao/classificacao_config.md:10:- **Valor:** ALTO — infraestrutura de deploy, sem a qual `docker-compose up`
+./fase_8_repository_boundary/02_classificacao/classificacao_config.md:12:  `docker-entrypoint.sh`, presente no repo) não funciona.
+./fase_8_repository_boundary/02_classificacao/classificacao_docs.md:33:  em `docker-entrypoint.sh`/`Dockerfile`, ambos já tracked) não funciona.
+./fase_8_repository_boundary/02_classificacao/classificacao_docs.md:77:  (`src/`, `tests/`, `data/`, `docker-compose.yml`, etc.).
+./fase_8_repository_boundary/03_resumo/SUMMARY.md:4:(24 `.py` + docker-compose.yml + pytest.ini + 5 diretórios − 2 já contados
+./fase_8_repository_boundary/03_resumo/SUMMARY.md:25:| config | docker-compose.yml | PROMOTE | infra real, sem segredos |
+./fase_8_repository_boundary/03_resumo/SUMMARY.md:28:| dirs | monitor/ | PROMOTE | referenciado em docker-compose.yml |
+./fase_8_repository_boundary/04_recomendacoes/recomendacoes_gitignore.md:99:- `docker-compose.yml`, `pytest.ini`
+./fase_8_repository_boundary/8.2B_dockerignore/investigacao/dockerfiles.txt:1:./Dockerfile
+./fase_8_repository_boundary/8.2B_dockerignore/investigacao/dockerignore_content.txt:1:# Docker ignore file
+./fase_8_repository_boundary/8.2B_dockerignore/investigacao/docker_compose_files.txt:1:./auditoria_nex/02_configuracoes/docker-compose.yml
+./fase_8_repository_boundary/8.2B_dockerignore/investigacao/docker_compose_files.txt:2:./docker-compose.yml
+./fase_8_repository_boundary/8.2B_gitignore/git_status_apos_data_ignore.txt:4:?? .dockerignore
+./fase_8_repository_boundary/8.2B_gitignore/git_status_apos_data_ignore.txt:8:?? Dockerfile
+./fase_8_repository_boundary/8.2B_gitignore/git_status_apos_data_ignore.txt:20:?? docker-compose.yml
+./fase_8_repository_boundary/8.2B_gitignore/git_status_apos_data_ignore.txt:21:?? docker-entrypoint.sh
+./fase_8_repository_boundary/8.2B_gitignore/git_status_apos_gitignore.txt:4:?? .dockerignore
+./fase_8_repository_boundary/8.2B_gitignore/git_status_apos_gitignore.txt:7:?? Dockerfile
+./fase_8_repository_boundary/8.2B_gitignore/git_status_apos_gitignore.txt:20:?? docker-compose.yml
+./fase_8_repository_boundary/8.2B_gitignore/git_status_apos_gitignore.txt:21:?? docker-entrypoint.sh
+./fase_8_repository_boundary/8.2B_verificacao/ACHADOS_ADICIONAIS.txt:18:2. .dockerignore também está untracked e também escapou do inventário da
+./fase_8_repository_boundary/8.2B_verificacao/ACHADOS_ADICIONAIS.txt:21:   `git status --porcelain | grep "dockerignore"` → `?? .dockerignore`.
+./Nex.spec.md:672:### 3.1 Dockerfile Otimizado
+./Nex.spec.md:674:```dockerfile
+./Nex.spec.md:675:# Dockerfile.multistage
+./Nex.spec.md:752:### 3.4 Docker Compose
+./Nex.spec.md:755:# docker-compose.yml
+./Nex.spec.md:816:docker-compose up --build -d
+./Nex.spec.md:834:watch -n 1 'docker stats --no-stream'
+./README.md:25:- **Docker**: Ambiente completo com Ollama + Nex + Monitor via docker-compose
+./README.md:98:### Executar com Docker
+./README.md:101:docker-compose up -d
+./README.md:149:Painel de monitoramento via docker-compose em `http://localhost:8080` (perfil `monitoring`), servindo o conteúdo de `monitor/index.html` via nginx.
+./scripts/build.sh:13:command -v docker >/dev/null 2>&1 || { echo "❌ Docker não encontrado. Instale Docker primeiro."; exit 1; }
+./scripts/build.sh:14:command -v docker-compose >/dev/null 2>&1 || { echo "❌ docker-compose não encontrado."; exit 1; }
+./scripts/build.sh:17:echo "📦 Build da imagem Docker..."
+./scripts/build.sh:18:docker-compose build
+./scripts/build.sh:23:    docker run --rm -v ollama-models:/root/.ollama ollama/ollama pull gemma2:2b
+./scripts/create_release.sh:40:cp Dockerfile ${RELEASE_DIR}/
+./scripts/create_release.sh:41:cp docker-compose.yml ${RELEASE_DIR}/
+./scripts/create_release.sh:42:cp .dockerignore ${RELEASE_DIR}/
+./scripts/start.sh:10:if docker-compose ps | grep -q "Up"; then
+./scripts/start.sh:12:    docker-compose ps
+./scripts/start.sh:17:docker-compose up -d
+./scripts/start.sh:28:docker-compose ps
+./scripts/start.sh:34:echo "📋 Logs: docker-compose logs -f"
+./scripts/stop.sh:7:docker-compose down
+./scripts/stop.sh:11:echo "Para remover volumes (dados): docker-compose down -v"
+./scripts/validate_system.sh:76:echo "Ou com Docker:"
+./scripts/validate_system.sh:77:echo "  docker-compose up -d"
+./scripts/windows/build.bat:14:REM Verifica Docker
+./scripts/windows/build.bat:15:where docker >nul 2>nul
+./scripts/windows/build.bat:17:    echo ❌ Docker não encontrado. Instale Docker Desktop primeiro.
+./scripts/windows/build.bat:22:echo 📦 Build da imagem Docker...
+./scripts/windows/build.bat:23:docker-compose build
+./scripts/windows/stop.bat:7:docker-compose down
+./scripts/windows/stop.bat:11:echo Para remover volumes (dados): docker-compose down -v
+./SYSTEM_MAP.md:95:+-- docker-compose.yml        # Orquestracao Docker
+./SYSTEM_MAP.md:96:+-- Dockerfile               # Imagem Docker
+./SYSTEM_MAP.md:482:# Docker
+./SYSTEM_MAP.md:483:docker-compose up -d

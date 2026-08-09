@@ -1,0 +1,2 @@
+ls: cannot access 'memoria.index': No such file or directory
+ls: cannot access 'memoria.db': No such file or directory

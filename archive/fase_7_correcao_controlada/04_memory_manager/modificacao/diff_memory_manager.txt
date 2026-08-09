@@ -1,0 +1,14 @@
+warning: in the working copy of 'src/core/memory_manager.py', LF will be replaced by CRLF the next time Git touches it
+diff --git a/src/core/memory_manager.py b/src/core/memory_manager.py
+index 3fae65f..4a07fe6 100644
+--- a/src/core/memory_manager.py
++++ b/src/core/memory_manager.py
+@@ -74,7 +74,7 @@ class MemoriaPersistente:
+     do SQLite para garantir consistencia mesmo apos delecoes.
+     """
+ 
+-    def __init__(self, db_path: str = "memoria.db",
++    def __init__(self, db_path: str,
+                  index_path: str = "memoria.index",
+                  max_memories: int = 500,
+                  ollama_client=None):

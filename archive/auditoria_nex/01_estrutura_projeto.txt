@@ -1,0 +1,688 @@
+
+FullName                                                                      Length  LastWriteTime
+--------                                                                      ------  -------------
+D:\Nex\.pytest_cache                                                                  02/06/2026 08:40:45
+D:\Nex\.streamlit                                                                     02/06/2026 08:40:45
+D:\Nex\agents                                                                         29/06/2026 15:17:49
+D:\Nex\auditoria_nex                                                                  08/08/2026 22:24:43
+D:\Nex\data                                                                           02/06/2026 08:40:45
+D:\Nex\docs                                                                           02/06/2026 08:40:45
+D:\Nex\examples                                                                       02/06/2026 08:40:45
+D:\Nex\logs                                                                           02/06/2026 08:40:45
+D:\Nex\monitor                                                                        02/06/2026 08:40:45
+D:\Nex\rules                                                                          29/06/2026 15:17:48
+D:\Nex\scripts                                                                        02/06/2026 08:40:45
+D:\Nex\src                                                                            02/06/2026 08:40:45
+D:\Nex\static                                                                         02/06/2026 08:40:45
+D:\Nex\templates                                                                      02/06/2026 08:40:45
+D:\Nex\test_memory                                                                    02/06/2026 08:40:45
+D:\Nex\tests                                                                          29/06/2026 16:06:12
+D:\Nex\venv                                                                           02/06/2026 09:22:46
+D:\Nex\.dockerignore                                                          432     13/04/2026 12:12:28
+D:\Nex\.env                                                                   1029    29/06/2026 16:17:17
+D:\Nex\.gitignore                                                             290     19/04/2026 21:29:12
+D:\Nex\check_environment.ps1                                                  3258    13/04/2026 17:28:58
+D:\Nex\CLAUDE.md                                                              4018    13/06/2026 09:46:38
+D:\Nex\docker-compose.yml                                                     1597    13/04/2026 12:12:26
+D:\Nex\docker-entrypoint.sh                                                   1220    13/04/2026 12:12:24
+D:\Nex\Dockerfile                                                             1520    13/04/2026 12:12:22
+D:\Nex\ligar Nex.txt                                                          975     29/06/2026 16:36:32
+D:\Nex\Makefile                                                               1883    13/04/2026 12:13:24
+D:\Nex\Manual de Bolso do Nex Chat.pdf                                        3875530 16/04/2026 09:56:40
+D:\Nex\MANUAL SISTEMA Nex 1.pdf                                               4249505 16/04/2026 10:14:48
+D:\Nex\memoria.db                                                             4096    17/04/2026 22:37:58
+D:\Nex\memoria.db-shm                                                         32768   17/04/2026 22:37:58
+D:\Nex\memoria.db-wal                                                         28872   17/04/2026 22:37:58
+D:\Nex\nex_chat_error.log                                                     0       13/04/2026 18:54:44
+D:\Nex\nex_chat.log                                                           0       13/04/2026 18:54:44
+D:\Nex\Nex.spec.md                                                            27369   13/04/2026 08:49:34
+D:\Nex\README.md                                                              22703   14/07/2026 20:07:00
+D:\Nex\requirements.txt                                                       2148    02/06/2026 09:13:14
+D:\Nex\server.log                                                             15984   02/06/2026 05:53:48
+D:\Nex\start_services.ps1                                                     4285    13/04/2026 17:31:40
+D:\Nex\streamlit_app.py                                                       12019   29/06/2026 16:32:12
+D:\Nex\SYSTEM_MAP.md                                                          15696   02/06/2026 01:07:00
+D:\Nex\test_ollama_integration.py                                             9431    13/04/2026 16:50:46
+D:\Nex\test_orch.py                                                           1760    02/06/2026 05:44:28
+D:\Nex\test_system.py                                                         8829    13/04/2026 16:36:10
+D:\Nex\.pytest_cache\v                                                                02/06/2026 08:40:45
+D:\Nex\.pytest_cache\.gitignore                                               39      17/04/2026 21:54:16
+D:\Nex\.pytest_cache\CACHEDIR.TAG                                             191     17/04/2026 21:54:16
+D:\Nex\.pytest_cache\README.md                                                310     17/04/2026 21:54:16
+D:\Nex\.pytest_cache\v\cache                                                          02/06/2026 08:40:45
+D:\Nex\.pytest_cache\v\cache\lastfailed                                       1064    02/06/2026 00:03:58
+D:\Nex\.pytest_cache\v\cache\nodeids                                          6371    02/06/2026 00:03:58
+D:\Nex\.streamlit\config.toml                                                 233     02/06/2026 01:03:26
+D:\Nex\agents\a11y-architect.md                                               7500    13/06/2026 09:46:38
+D:\Nex\agents\architect.md                                                    7504    13/06/2026 09:46:38
+D:\Nex\agents\build-error-resolver.md                                         4886    13/06/2026 09:46:38
+D:\Nex\agents\chief-of-staff.md                                               6772    13/06/2026 09:46:38
+D:\Nex\agents\code-architect.md                                               2607    13/06/2026 09:46:38
+D:\Nex\agents\code-explorer.md                                                2665    13/06/2026 09:46:38
+D:\Nex\agents\code-reviewer.md                                                14210   13/06/2026 09:46:38
+D:\Nex\agents\code-simplifier.md                                              2323    13/06/2026 09:46:38
+D:\Nex\agents\comment-analyzer.md                                             2091    13/06/2026 09:46:38
+D:\Nex\agents\conversation-analyzer.md                                        2499    13/06/2026 09:46:38
+D:\Nex\agents\cpp-build-resolver.md                                           4221    13/06/2026 09:46:38
+D:\Nex\agents\cpp-reviewer.md                                                 4063    13/06/2026 09:46:38
+D:\Nex\agents\csharp-reviewer.md                                              5812    13/06/2026 09:46:38
+D:\Nex\agents\dart-build-resolver.md                                          7895    13/06/2026 09:46:38
+D:\Nex\agents\database-reviewer.md                                            5441    13/06/2026 09:46:38
+D:\Nex\agents\django-build-resolver.md                                        9785    13/06/2026 09:46:38
+D:\Nex\agents\django-reviewer.md                                              8164    13/06/2026 09:46:38
+D:\Nex\agents\doc-updater.md                                                  4492    13/06/2026 09:46:38
+D:\Nex\agents\docs-lookup.md                                                  4654    13/06/2026 09:46:38
+D:\Nex\agents\e2e-runner.md                                                   5209    13/06/2026 09:46:38
+D:\Nex\agents\fastapi-reviewer.md                                             3603    13/06/2026 09:46:38
+D:\Nex\agents\flutter-reviewer.md                                             15501   13/06/2026 09:46:38
+D:\Nex\agents\fsharp-reviewer.md                                              5737    13/06/2026 09:46:38
+D:\Nex\agents\gan-evaluator.md                                                8179    13/06/2026 09:46:38
+D:\Nex\agents\gan-generator.md                                                6043    13/06/2026 09:46:38
+D:\Nex\agents\gan-planner.md                                                  4618    13/06/2026 09:46:38
+D:\Nex\agents\go-build-resolver.md                                            4362    13/06/2026 09:46:38
+D:\Nex\agents\go-reviewer.md                                                  3866    13/06/2026 09:46:38
+D:\Nex\agents\harmonyos-app-resolver.md                                       9579    13/06/2026 09:46:38
+D:\Nex\agents\harness-optimizer.md                                            1965    13/06/2026 09:46:38
+D:\Nex\agents\healthcare-reviewer.md                                          4404    13/06/2026 09:46:38
+D:\Nex\agents\homelab-architect.md                                            4618    13/06/2026 09:46:38
+D:\Nex\agents\java-build-resolver.md                                          12470   13/06/2026 09:46:38
+D:\Nex\agents\java-reviewer.md                                                13533   13/06/2026 09:46:38
+D:\Nex\agents\kotlin-build-resolver.md                                        5344    13/06/2026 09:46:38
+D:\Nex\agents\kotlin-reviewer.md                                              7857    13/06/2026 09:46:38
+D:\Nex\agents\loop-operator.md                                                1960    13/06/2026 09:46:38
+D:\Nex\agents\marketing-agent.md                                              7446    13/06/2026 09:46:38
+D:\Nex\agents\mle-reviewer.md                                                 10425   13/06/2026 09:46:38
+D:\Nex\agents\network-architect.md                                            4935    13/06/2026 09:46:38
+D:\Nex\agents\network-config-reviewer.md                                      4463    13/06/2026 09:46:38
+D:\Nex\agents\network-troubleshooter.md                                       4428    13/06/2026 09:46:38
+D:\Nex\agents\opensource-forker.md                                            7607    13/06/2026 09:46:38
+D:\Nex\agents\opensource-packager.md                                          8213    13/06/2026 09:46:38
+D:\Nex\agents\opensource-sanitizer.md                                         7360    13/06/2026 09:46:38
+D:\Nex\agents\performance-optimizer.md                                        13923   13/06/2026 09:46:38
+D:\Nex\agents\php-reviewer.md                                                 5831    13/06/2026 09:46:38
+D:\Nex\agents\planner.md                                                      8284    13/06/2026 09:46:38
+D:\Nex\agents\pr-test-analyzer.md                                             1993    13/06/2026 09:46:38
+D:\Nex\agents\python-reviewer.md                                              4508    13/06/2026 09:46:38
+D:\Nex\agents\pytorch-build-resolver.md                                       6642    13/06/2026 09:46:38
+D:\Nex\agents\react-build-resolver.md                                         11416   13/06/2026 09:46:38
+D:\Nex\agents\react-reviewer.md                                               11588   13/06/2026 09:46:38
+D:\Nex\agents\refactor-cleaner.md                                             3794    13/06/2026 09:46:38
+D:\Nex\agents\rust-build-resolver.md                                          7028    13/06/2026 09:46:38
+D:\Nex\agents\rust-reviewer.md                                                5769    13/06/2026 09:46:38
+D:\Nex\agents\security-reviewer.md                                            5590    13/06/2026 09:46:38
+D:\Nex\agents\seo-specialist.md                                               2929    13/06/2026 09:46:38
+D:\Nex\agents\silent-failure-hunter.md                                        2050    13/06/2026 09:46:38
+D:\Nex\agents\swift-build-resolver.md                                         7418    13/06/2026 09:46:38
+D:\Nex\agents\swift-reviewer.md                                               7451    13/06/2026 09:46:38
+D:\Nex\agents\tdd-guide.md                                                    3977    13/06/2026 09:46:38
+D:\Nex\agents\type-design-analyzer.md                                         1933    13/06/2026 09:46:38
+D:\Nex\agents\typescript-reviewer.md                                          9202    13/06/2026 09:46:38
+D:\Nex\auditoria_nex\02_configuracoes                                                 08/08/2026 22:24:43
+D:\Nex\auditoria_nex\04_agentes                                                       08/08/2026 22:24:43
+D:\Nex\auditoria_nex\05_testes                                                        08/08/2026 22:24:43
+D:\Nex\auditoria_nex\06_dependencias                                                  08/08/2026 22:24:43
+D:\Nex\auditoria_nex\07_ambiente                                                      08/08/2026 22:24:43
+D:\Nex\auditoria_nex\08_dados                                                         08/08/2026 22:24:43
+D:\Nex\auditoria_nex\09_logs                                                          08/08/2026 22:24:43
+D:\Nex\auditoria_nex\10_health                                                        08/08/2026 22:24:43
+D:\Nex\auditoria_nex\01_estrutura_projeto.txt                                 0       08/08/2026 22:24:49
+D:\Nex\data\sessions                                                                  02/06/2026 08:40:45
+D:\Nex\data\config.json                                                       37      13/04/2026 18:25:52
+D:\Nex\data\memoria.db                                                        245760  14/07/2026 18:16:27
+D:\Nex\data\memoria.db-shm                                                    32768   14/07/2026 17:59:18
+D:\Nex\data\memoria.db-wal                                                    4140632 14/07/2026 20:50:23
+D:\Nex\data\memoria.index                                                     186579  14/07/2026 20:50:23
+D:\Nex\data\sessions\19836627                                                         02/06/2026 08:40:45
+D:\Nex\data\sessions\37fe9520                                                         02/06/2026 08:40:45
+D:\Nex\data\sessions\5d3be55c                                                         02/06/2026 08:40:45
+D:\Nex\data\sessions\ba3bb938                                                         02/06/2026 08:40:45
+D:\Nex\data\sessions\bea31119                                                         02/06/2026 08:40:45
+D:\Nex\data\sessions\cb6afad6                                                         02/06/2026 08:40:45
+D:\Nex\data\sessions\19836627\long_term                                               02/06/2026 08:40:45
+D:\Nex\data\sessions\37fe9520\long_term                                               13/04/2026 19:21:34
+D:\Nex\data\sessions\5d3be55c\long_term                                               02/06/2026 08:40:45
+D:\Nex\data\sessions\5d3be55c\profile.json                                    70      13/04/2026 19:13:24
+D:\Nex\data\sessions\ba3bb938\long_term                                               13/04/2026 18:16:14
+D:\Nex\data\sessions\bea31119\long_term                                               13/04/2026 18:25:24
+D:\Nex\data\sessions\cb6afad6\long_term                                               02/06/2026 08:40:45
+D:\Nex\data\sessions\cb6afad6\profile.json                                    70      13/04/2026 19:16:40
+D:\Nex\docs\API_REFERENCE.md                                                  3443    02/06/2026 00:16:08
+D:\Nex\docs\DEVELOPER_GUIDE.md                                                12491   13/04/2026 17:00:12
+D:\Nex\docs\TEST_REPORT_FASE4.md                                              2773    02/06/2026 00:13:00
+D:\Nex\docs\USER_GUIDE.md                                                     7984    02/06/2026 00:15:30
+D:\Nex\examples\curl_examples.sh                                              1782    13/04/2026 17:00:36
+D:\Nex\examples\python_client.py                                              3927    13/04/2026 17:00:34
+D:\Nex\logs\server_test.err                                                   1149    02/06/2026 00:12:26
+D:\Nex\logs\server_test.log                                                   739     02/06/2026 00:12:38
+D:\Nex\monitor\index.html                                                     8961    13/04/2026 12:13:26
+D:\Nex\rules\angular                                                                  29/06/2026 15:17:47
+D:\Nex\rules\arkts                                                                    29/06/2026 15:17:47
+D:\Nex\rules\common                                                                   29/06/2026 15:17:47
+D:\Nex\rules\cpp                                                                      29/06/2026 15:17:47
+D:\Nex\rules\csharp                                                                   29/06/2026 15:17:47
+D:\Nex\rules\dart                                                                     29/06/2026 15:17:47
+D:\Nex\rules\fsharp                                                                   29/06/2026 15:17:47
+D:\Nex\rules\golang                                                                   29/06/2026 15:17:47
+D:\Nex\rules\java                                                                     29/06/2026 15:17:47
+D:\Nex\rules\kotlin                                                                   29/06/2026 15:17:47
+D:\Nex\rules\perl                                                                     29/06/2026 15:17:47
+D:\Nex\rules\php                                                                      29/06/2026 15:17:47
+D:\Nex\rules\python                                                                   29/06/2026 15:17:47
+D:\Nex\rules\react                                                                    29/06/2026 15:17:48
+D:\Nex\rules\ruby                                                                     29/06/2026 15:17:48
+D:\Nex\rules\rust                                                                     29/06/2026 15:17:48
+D:\Nex\rules\swift                                                                    29/06/2026 15:17:48
+D:\Nex\rules\typescript                                                               29/06/2026 15:17:48
+D:\Nex\rules\web                                                                      29/06/2026 15:17:48
+D:\Nex\rules\README.md                                                        5476    13/06/2026 09:46:39
+D:\Nex\rules\angular\coding-style.md                                          5394    13/06/2026 09:46:39
+D:\Nex\rules\angular\hooks.md                                                 870     13/06/2026 09:46:39
+D:\Nex\rules\angular\patterns.md                                              6757    13/06/2026 09:46:39
+D:\Nex\rules\angular\security.md                                              2992    13/06/2026 09:46:39
+D:\Nex\rules\angular\testing.md                                               4692    13/06/2026 09:46:39
+D:\Nex\rules\arkts\coding-style.md                                            6249    13/06/2026 09:46:39
+D:\Nex\rules\arkts\hooks.md                                                   2657    13/06/2026 09:46:39
+D:\Nex\rules\arkts\patterns.md                                                5800    13/06/2026 09:46:39
+D:\Nex\rules\arkts\security.md                                                4803    13/06/2026 09:46:39
+D:\Nex\rules\arkts\testing.md                                                 3924    13/06/2026 09:46:39
+D:\Nex\rules\common\agents.md                                                 1677    13/06/2026 09:46:39
+D:\Nex\rules\common\code-review.md                                            3626    13/06/2026 09:46:39
+D:\Nex\rules\common\coding-style.md                                           2627    13/06/2026 09:46:39
+D:\Nex\rules\common\development-workflow.md                                   2296    13/06/2026 09:46:39
+D:\Nex\rules\common\git-workflow.md                                           646     13/06/2026 09:46:39
+D:\Nex\rules\common\hooks.md                                                  798     13/06/2026 09:46:39
+D:\Nex\rules\common\patterns.md                                               1053    13/06/2026 09:46:39
+D:\Nex\rules\common\performance.md                                            1714    13/06/2026 09:46:39
+D:\Nex\rules\common\security.md                                               891     13/06/2026 09:46:39
+D:\Nex\rules\common\testing.md                                                1457    13/06/2026 09:46:39
+D:\Nex\rules\cpp\coding-style.md                                              1273    13/06/2026 09:46:39
+D:\Nex\rules\cpp\hooks.md                                                     773     13/06/2026 09:46:39
+D:\Nex\rules\cpp\patterns.md                                                  1383    13/06/2026 09:46:39
+D:\Nex\rules\cpp\security.md                                                  1243    13/06/2026 09:46:39
+D:\Nex\rules\cpp\testing.md                                                   887     13/06/2026 09:46:39
+D:\Nex\rules\csharp\coding-style.md                                           2104    13/06/2026 09:46:39
+D:\Nex\rules\csharp\hooks.md                                                  740     13/06/2026 09:46:39
+D:\Nex\rules\csharp\patterns.md                                               1442    13/06/2026 09:46:39
+D:\Nex\rules\csharp\security.md                                               1777    13/06/2026 09:46:39
+D:\Nex\rules\csharp\testing.md                                                1220    13/06/2026 09:46:39
+D:\Nex\rules\dart\coding-style.md                                             4710    13/06/2026 09:46:39
+D:\Nex\rules\dart\hooks.md                                                    1366    13/06/2026 09:46:39
+D:\Nex\rules\dart\patterns.md                                                 7080    13/06/2026 09:46:39
+D:\Nex\rules\dart\security.md                                                 5320    13/06/2026 09:46:39
+D:\Nex\rules\dart\testing.md                                                  5632    13/06/2026 09:46:39
+D:\Nex\rules\fsharp\coding-style.md                                           2990    13/06/2026 09:46:39
+D:\Nex\rules\fsharp\hooks.md                                                  727     13/06/2026 09:46:39
+D:\Nex\rules\fsharp\patterns.md                                               3449    13/06/2026 09:46:39
+D:\Nex\rules\fsharp\security.md                                               2249    13/06/2026 09:46:39
+D:\Nex\rules\fsharp\testing.md                                                1834    13/06/2026 09:46:39
+D:\Nex\rules\golang\coding-style.md                                           612     13/06/2026 09:46:39
+D:\Nex\rules\golang\hooks.md                                                  423     13/06/2026 09:46:39
+D:\Nex\rules\golang\patterns.md                                               934     13/06/2026 09:46:39
+D:\Nex\rules\golang\security.md                                               592     13/06/2026 09:46:39
+D:\Nex\rules\golang\testing.md                                                488     13/06/2026 09:46:39
+D:\Nex\rules\java\coding-style.md                                             3616    13/06/2026 09:46:39
+D:\Nex\rules\java\hooks.md                                                    485     13/06/2026 09:46:39
+D:\Nex\rules\java\patterns.md                                                 4252    13/06/2026 09:46:39
+D:\Nex\rules\java\security.md                                                 3637    13/06/2026 09:46:39
+D:\Nex\rules\java\testing.md                                                  3784    13/06/2026 09:46:39
+D:\Nex\rules\kotlin\coding-style.md                                           2767    13/06/2026 09:46:39
+D:\Nex\rules\kotlin\hooks.md                                                  438     13/06/2026 09:46:39
+D:\Nex\rules\kotlin\patterns.md                                               3760    13/06/2026 09:46:39
+D:\Nex\rules\kotlin\security.md                                               2883    13/06/2026 09:46:39
+D:\Nex\rules\kotlin\testing.md                                                3489    13/06/2026 09:46:39
+D:\Nex\rules\perl\coding-style.md                                             1183    13/06/2026 09:46:39
+D:\Nex\rules\perl\hooks.md                                                    507     13/06/2026 09:46:39
+D:\Nex\rules\perl\patterns.md                                                 1541    13/06/2026 09:46:39
+D:\Nex\rules\perl\security.md                                                 1543    13/06/2026 09:46:39
+D:\Nex\rules\perl\testing.md                                                  991     13/06/2026 09:46:39
+D:\Nex\rules\php\coding-style.md                                              1425    13/06/2026 09:46:39
+D:\Nex\rules\php\hooks.md                                                     705     13/06/2026 09:46:39
+D:\Nex\rules\php\patterns.md                                                  1238    13/06/2026 09:46:39
+D:\Nex\rules\php\security.md                                                  1403    13/06/2026 09:46:39
+D:\Nex\rules\php\testing.md                                                   1214    13/06/2026 09:46:39
+D:\Nex\rules\python\coding-style.md                                           753     13/06/2026 09:46:39
+D:\Nex\rules\python\fastapi.md                                                1794    13/06/2026 09:46:39
+D:\Nex\rules\python\hooks.md                                                  443     13/06/2026 09:46:39
+D:\Nex\rules\python\patterns.md                                               862     13/06/2026 09:46:39
+D:\Nex\rules\python\security.md                                               554     13/06/2026 09:46:39
+D:\Nex\rules\python\testing.md                                                619     13/06/2026 09:46:39
+D:\Nex\rules\react\coding-style.md                                            4563    13/06/2026 09:46:39
+D:\Nex\rules\react\hooks.md                                                   6761    13/06/2026 09:46:39
+D:\Nex\rules\react\patterns.md                                                7446    13/06/2026 09:46:39
+D:\Nex\rules\react\security.md                                                6575    13/06/2026 09:46:39
+D:\Nex\rules\react\testing.md                                                 7235    13/06/2026 09:46:39
+D:\Nex\rules\ruby\coding-style.md                                             1992    13/06/2026 09:46:39
+D:\Nex\rules\ruby\hooks.md                                                    1418    13/06/2026 09:46:39
+D:\Nex\rules\ruby\patterns.md                                                 2298    13/06/2026 09:46:39
+D:\Nex\rules\ruby\security.md                                                 2007    13/06/2026 09:46:39
+D:\Nex\rules\ruby\testing.md                                                  1773    13/06/2026 09:46:39
+D:\Nex\rules\rust\coding-style.md                                             4326    13/06/2026 09:46:39
+D:\Nex\rules\rust\hooks.md                                                    422     13/06/2026 09:46:39
+D:\Nex\rules\rust\patterns.md                                                 4171    13/06/2026 09:46:39
+D:\Nex\rules\rust\security.md                                                 4541    13/06/2026 09:46:39
+D:\Nex\rules\rust\testing.md                                                  4079    13/06/2026 09:46:39
+D:\Nex\rules\swift\coding-style.md                                            1401    13/06/2026 09:46:39
+D:\Nex\rules\swift\hooks.md                                                   529     13/06/2026 09:46:39
+D:\Nex\rules\swift\patterns.md                                                1593    13/06/2026 09:46:39
+D:\Nex\rules\swift\security.md                                                1053    13/06/2026 09:46:39
+D:\Nex\rules\swift\testing.md                                                 1050    13/06/2026 09:46:39
+D:\Nex\rules\typescript\coding-style.md                                       4490    13/06/2026 09:46:39
+D:\Nex\rules\typescript\hooks.md                                              583     13/06/2026 09:46:39
+D:\Nex\rules\typescript\patterns.md                                           1082    13/06/2026 09:46:39
+D:\Nex\rules\typescript\security.md                                           562     13/06/2026 09:46:39
+D:\Nex\rules\typescript\testing.md                                            393     13/06/2026 09:46:39
+D:\Nex\rules\web\coding-style.md                                              2285    13/06/2026 09:46:39
+D:\Nex\rules\web\design-quality.md                                            2579    13/06/2026 09:46:39
+D:\Nex\rules\web\hooks.md                                                     3572    13/06/2026 09:46:39
+D:\Nex\rules\web\patterns.md                                                  2076    13/06/2026 09:46:39
+D:\Nex\rules\web\performance.md                                               1904    13/06/2026 09:46:39
+D:\Nex\rules\web\security.md                                                  1647    13/06/2026 09:46:39
+D:\Nex\rules\web\testing.md                                                   1437    13/06/2026 09:46:39
+D:\Nex\scripts\windows                                                                29/06/2026 16:03:03
+D:\Nex\scripts\build.sh                                                       820     13/04/2026 12:12:30
+D:\Nex\scripts\create_release.sh                                              2124    13/04/2026 17:00:26
+D:\Nex\scripts\download_model.bat                                             844     13/04/2026 16:50:04
+D:\Nex\scripts\download_model.sh                                              930     13/04/2026 16:49:56
+D:\Nex\scripts\install_ollama.bat                                             657     13/04/2026 16:49:52
+D:\Nex\scripts\install_ollama.sh                                              1073    13/04/2026 16:49:46
+D:\Nex\scripts\start.bat                                                      635     17/04/2026 22:44:24
+D:\Nex\scripts\start.sh                                                       798     13/04/2026 12:12:34
+D:\Nex\scripts\stop.sh                                                        225     13/04/2026 12:13:04
+D:\Nex\scripts\validate_system.bat                                            1218    13/04/2026 16:50:44
+D:\Nex\scripts\validate_system.sh                                             1995    13/04/2026 16:50:06
+D:\Nex\scripts\windows\backup.bat                                             779     21/04/2026 21:27:32
+D:\Nex\scripts\windows\build.bat                                              658     13/04/2026 12:13:06
+D:\Nex\scripts\windows\download_tinyllama.bat                                 971     21/04/2026 23:30:42
+D:\Nex\scripts\windows\fix_env.bat                                            3012    02/06/2026 09:13:25
+D:\Nex\scripts\windows\setup_ollama.bat                                       1193    29/06/2026 16:17:41
+D:\Nex\scripts\windows\setup_openrouter.bat                                   1096    02/06/2026 00:15:42
+D:\Nex\scripts\windows\setup_venv.bat                                         1557    20/04/2026 12:29:54
+D:\Nex\scripts\windows\start_local.bat                                        871     29/06/2026 16:17:31
+D:\Nex\scripts\windows\start_ui.bat                                           1364    02/06/2026 09:13:30
+D:\Nex\scripts\windows\start_venv.bat                                         1216    20/04/2026 12:29:56
+D:\Nex\scripts\windows\start.bat                                              1152    19/04/2026 21:53:22
+D:\Nex\scripts\windows\stop.bat                                               213     13/04/2026 12:13:10
+D:\Nex\scripts\windows\test_venv.bat                                          474     20/04/2026 12:29:56
+D:\Nex\scripts\windows\test.bat                                               1374    19/04/2026 21:46:24
+D:\Nex\scripts\windows\validate_venv.bat                                      1462    02/06/2026 00:16:20
+D:\Nex\scripts\windows\validate.bat                                           1533    02/06/2026 00:16:22
+D:\Nex\src\__pycache__                                                                29/06/2026 16:35:26
+D:\Nex\src\agents                                                                     02/06/2026 08:40:45
+D:\Nex\src\core                                                                       29/06/2026 16:06:38
+D:\Nex\src\api_gateway.py                                                     20311   29/06/2026 16:32:06
+D:\Nex\src\config.py                                                          7351    29/06/2026 16:17:15
+D:\Nex\src\main.py                                                            6075    29/06/2026 16:31:53
+D:\Nex\src\metrics.py                                                         4729    01/06/2026 23:56:50
+D:\Nex\src\ws_handler.py                                                      5362    21/04/2026 22:29:34
+D:\Nex\src\agents\__pycache__                                                         29/06/2026 15:55:22
+D:\Nex\src\agents\__init__.py                                                 415     02/06/2026 01:10:08
+D:\Nex\src\agents\analyst_agent.py                                            2432    02/06/2026 09:50:31
+D:\Nex\src\agents\base_agent.py                                               3440    02/06/2026 09:49:50
+D:\Nex\src\agents\coordinator.py                                              12863   29/06/2026 15:54:49
+D:\Nex\src\agents\researcher_agent.py                                         12184   02/06/2026 14:31:35
+D:\Nex\src\agents\writer_agent.py                                             2694    02/06/2026 09:50:36
+D:\Nex\src\agents\__pycache__\__init__.cpython-311.pyc                        646     02/06/2026 09:27:50
+D:\Nex\src\agents\__pycache__\__init__.cpython-313.pyc                        543     02/06/2026 01:11:50
+D:\Nex\src\agents\__pycache__\analyst_agent.cpython-311.pyc                   5867    02/06/2026 09:50:45
+D:\Nex\src\agents\__pycache__\analyst_agent.cpython-313.pyc                   5226    02/06/2026 01:23:44
+D:\Nex\src\agents\__pycache__\base_agent.cpython-311.pyc                      6975    02/06/2026 09:50:45
+D:\Nex\src\agents\__pycache__\base_agent.cpython-313.pyc                      4437    02/06/2026 05:47:40
+D:\Nex\src\agents\__pycache__\coordinator.cpython-311.pyc                     15934   29/06/2026 15:55:22
+D:\Nex\src\agents\__pycache__\coordinator.cpython-313.pyc                     10572   02/06/2026 05:47:40
+D:\Nex\src\agents\__pycache__\researcher_agent.cpython-311.pyc                19267   29/06/2026 15:47:27
+D:\Nex\src\agents\__pycache__\researcher_agent.cpython-313.pyc                5680    02/06/2026 01:23:44
+D:\Nex\src\agents\__pycache__\writer_agent.cpython-311.pyc                    5323    02/06/2026 09:50:45
+D:\Nex\src\agents\__pycache__\writer_agent.cpython-313.pyc                    4798    02/06/2026 01:23:44
+D:\Nex\src\core\__pycache__                                                           29/06/2026 16:17:47
+D:\Nex\src\core\__init__.py                                                   66      01/06/2026 23:55:42
+D:\Nex\src\core\document_manager.py                                           3375    02/06/2026 00:31:32
+D:\Nex\src\core\document_reader.py                                            3097    02/06/2026 00:33:04
+D:\Nex\src\core\llm_manager.py                                                32454   29/06/2026 16:17:14
+D:\Nex\src\core\memory_manager.py                                             15172   29/06/2026 16:02:20
+D:\Nex\src\core\ollama_client.py                                              10295   29/06/2026 16:17:13
+D:\Nex\src\core\openrouter_client.py                                          8798    02/06/2026 00:09:38
+D:\Nex\src\core\web_search_engine.py                                          4350    02/06/2026 00:22:32
+D:\Nex\src\core\web_search.py                                                 10195   02/06/2026 00:22:46
+D:\Nex\src\core\__pycache__\__init__.cpython-311.pyc                          217     29/06/2026 16:06:38
+D:\Nex\src\core\__pycache__\document_manager.cpython-311.pyc                  6050    29/06/2026 16:10:44
+D:\Nex\src\core\__pycache__\document_reader.cpython-311.pyc                   6851    29/06/2026 16:10:44
+D:\Nex\src\core\__pycache__\llm_manager.cpython-311.pyc                       48493   29/06/2026 16:17:47
+D:\Nex\src\core\__pycache__\memory_manager.cpython-311.pyc                    26103   29/06/2026 16:07:17
+D:\Nex\src\core\__pycache__\ollama_client.cpython-311.pyc                     20455   29/06/2026 16:17:47
+D:\Nex\src\core\__pycache__\openrouter_client.cpython-311.pyc                 14855   29/06/2026 16:06:38
+D:\Nex\src\core\__pycache__\web_search.cpython-311.pyc                        18258   29/06/2026 16:06:38
+D:\Nex\src\__pycache__\api_gateway.cpython-311.pyc                            33120   29/06/2026 16:35:26
+D:\Nex\src\__pycache__\api_gateway.cpython-313.pyc                            29572   02/06/2026 05:47:40
+D:\Nex\src\__pycache__\config.cpython-311.pyc                                 10617   29/06/2026 16:21:48
+D:\Nex\src\__pycache__\config.cpython-313.pyc                                 7946    02/06/2026 00:56:48
+D:\Nex\src\__pycache__\main.cpython-311.pyc                                   9655    29/06/2026 16:35:26
+D:\Nex\src\__pycache__\main.cpython-313.pyc                                   7904    02/06/2026 01:12:06
+D:\Nex\src\__pycache__\metrics.cpython-311.pyc                                8366    02/06/2026 09:27:48
+D:\Nex\src\__pycache__\metrics.cpython-313.pyc                                7432    02/06/2026 00:04:04
+D:\Nex\src\__pycache__\ws_handler.cpython-311.pyc                             8672    02/06/2026 09:27:48
+D:\Nex\src\__pycache__\ws_handler.cpython-313.pyc                             8008    21/04/2026 22:30:06
+D:\Nex\static\script.js                                                       14633   29/06/2026 16:40:07
+D:\Nex\static\style.css                                                       17077   29/06/2026 16:33:05
+D:\Nex\templates\index.html                                                   8470    29/06/2026 16:32:25
+D:\Nex\tests\debug_test.py                                                    2068    17/04/2026 22:14:36
+D:\Nex\tests\quick_test.py                                                    1067    17/04/2026 22:00:32
+D:\Nex\tests\test_api_gateway.py                                              4891    17/04/2026 22:47:42
+D:\Nex\tests\test_config.py                                                   6596    17/04/2026 22:45:40
+D:\Nex\tests\test_coordinator_triage.py                                       5875    29/06/2026 15:47:20
+D:\Nex\tests\test_fallback_activation.py                                      3570    22/04/2026 00:17:26
+D:\Nex\tests\test_fallback_chain.py                                           5867    29/06/2026 15:43:21
+D:\Nex\tests\test_fallback.py                                                 2469    21/04/2026 23:31:16
+D:\Nex\tests\test_llm_manager.py                                              5415    17/04/2026 22:32:18
+D:\Nex\tests\test_memory_integration.py                                       5689    29/06/2026 15:35:53
+D:\Nex\tests\test_memory_opt.py                                               5457    17/04/2026 21:54:48
+D:\Nex\tests\test_ollama_client.py                                            7195    29/06/2026 16:18:13
+D:\Nex\tests\test_web_search.py                                               7417    19/04/2026 21:48:48
+D:\Nex\tests\test_ws_metrics.py                                               6304    17/04/2026 22:52:28
+D:\Nex\test_memory\long_term                                                          02/06/2026 08:40:45
+D:\Nex\test_memory\long_term\long_term_memories.json                          45767   13/04/2026 16:45:18
+D:\Nex\venv\etc                                                                       02/06/2026 09:22:46
+D:\Nex\venv\Include                                                                   02/06/2026 09:19:46
+D:\Nex\venv\Lib                                                                       02/06/2026 09:19:46
+D:\Nex\venv\Scripts                                                                   02/06/2026 09:27:21
+D:\Nex\venv\share                                                                     02/06/2026 09:22:46
+D:\Nex\venv\pyvenv.cfg                                                        170     02/06/2026 09:19:46
+D:\Nex\venv\etc\jupyter                                                               02/06/2026 09:22:46
+D:\Nex\venv\etc\jupyter\nbconfig                                                      02/06/2026 09:26:58
+D:\Nex\venv\Lib\site-packages                                                         02/06/2026 09:27:21
+D:\Nex\venv\Lib\site-packages\__pycache__                                             02/06/2026 09:26:39
+D:\Nex\venv\Lib\site-packages\_distutils_hack                                         02/06/2026 09:21:15
+D:\Nex\venv\Lib\site-packages\_yaml                                                   02/06/2026 09:21:17
+D:\Nex\venv\Lib\site-packages\accelerate                                              02/06/2026 09:23:19
+D:\Nex\venv\Lib\site-packages\accelerate-1.13.0.dist-info                             02/06/2026 09:23:20
+D:\Nex\venv\Lib\site-packages\aiohappyeyeballs                                        02/06/2026 09:21:45
+D:\Nex\venv\Lib\site-packages\aiohappyeyeballs-2.6.2.dist-info                        02/06/2026 09:21:45
+D:\Nex\venv\Lib\site-packages\aiohttp                                                 02/06/2026 09:23:05
+D:\Nex\venv\Lib\site-packages\aiohttp-3.14.0.dist-info                                02/06/2026 09:23:06
+D:\Nex\venv\Lib\site-packages\aiosignal                                               02/06/2026 09:22:04
+D:\Nex\venv\Lib\site-packages\aiosignal-1.4.0.dist-info                               02/06/2026 09:22:04
+D:\Nex\venv\Lib\site-packages\altair                                                  02/06/2026 09:27:16
+D:\Nex\venv\Lib\site-packages\altair-6.1.0.dist-info                                  02/06/2026 09:27:17
+D:\Nex\venv\Lib\site-packages\annotated_doc                                           02/06/2026 09:26:54
+D:\Nex\venv\Lib\site-packages\annotated_doc-0.0.4.dist-info                           02/06/2026 09:26:54
+D:\Nex\venv\Lib\site-packages\annotated_types                                         02/06/2026 09:26:54
+D:\Nex\venv\Lib\site-packages\annotated_types-0.7.0.dist-info                         02/06/2026 09:26:54
+D:\Nex\venv\Lib\site-packages\anyio                                                   02/06/2026 09:26:56
+D:\Nex\venv\Lib\site-packages\anyio-4.13.0.dist-info                                  02/06/2026 09:26:57
+D:\Nex\venv\Lib\site-packages\attr                                                    02/06/2026 09:26:54
+D:\Nex\venv\Lib\site-packages\attrs                                                   02/06/2026 09:26:54
+D:\Nex\venv\Lib\site-packages\attrs-26.1.0.dist-info                                  02/06/2026 09:26:54
+D:\Nex\venv\Lib\site-packages\beautifulsoup4-4.14.3.dist-info                         02/06/2026 09:22:03
+D:\Nex\venv\Lib\site-packages\bin                                                     02/06/2026 09:23:04
+D:\Nex\venv\Lib\site-packages\blinker                                                 02/06/2026 09:26:54
+D:\Nex\venv\Lib\site-packages\blinker-1.9.0.dist-info                                 02/06/2026 09:26:54
+D:\Nex\venv\Lib\site-packages\bs4                                                     02/06/2026 09:22:03
+D:\Nex\venv\Lib\site-packages\cachetools                                              02/06/2026 09:26:54
+D:\Nex\venv\Lib\site-packages\cachetools-7.1.4.dist-info                              02/06/2026 09:26:54
+D:\Nex\venv\Lib\site-packages\certifi                                                 02/06/2026 09:26:54
+D:\Nex\venv\Lib\site-packages\certifi-2026.5.20.dist-info                             02/06/2026 09:26:54
+D:\Nex\venv\Lib\site-packages\charset_normalizer                                      02/06/2026 09:26:54
+D:\Nex\venv\Lib\site-packages\charset_normalizer-3.4.7.dist-info                      02/06/2026 09:26:54
+D:\Nex\venv\Lib\site-packages\click                                                   02/06/2026 09:26:56
+D:\Nex\venv\Lib\site-packages\click-8.4.1.dist-info                                   02/06/2026 09:26:56
+D:\Nex\venv\Lib\site-packages\colorama                                                02/06/2026 09:26:53
+D:\Nex\venv\Lib\site-packages\colorama-0.4.6.dist-info                                02/06/2026 09:26:53
+D:\Nex\venv\Lib\site-packages\dateutil                                                02/06/2026 09:26:55
+D:\Nex\venv\Lib\site-packages\diskcache                                               02/06/2026 09:21:44
+D:\Nex\venv\Lib\site-packages\diskcache-5.6.3.dist-info                               02/06/2026 09:21:44
+D:\Nex\venv\Lib\site-packages\docx                                                    02/06/2026 09:21:59
+D:\Nex\venv\Lib\site-packages\dotenv                                                  02/06/2026 09:21:18
+D:\Nex\venv\Lib\site-packages\faiss                                                   02/06/2026 09:22:02
+D:\Nex\venv\Lib\site-packages\faiss_cpu-1.14.2.dist-info                              02/06/2026 09:22:03
+D:\Nex\venv\Lib\site-packages\faiss_cpu.libs                                          02/06/2026 09:22:02
+D:\Nex\venv\Lib\site-packages\fastapi                                                 02/06/2026 09:27:16
+D:\Nex\venv\Lib\site-packages\fastapi-0.136.3.dist-info                               02/06/2026 09:27:16
+D:\Nex\venv\Lib\site-packages\filelock                                                02/06/2026 09:21:44
+D:\Nex\venv\Lib\site-packages\filelock-3.29.0.dist-info                               02/06/2026 09:21:44
+D:\Nex\venv\Lib\site-packages\frozenlist                                              02/06/2026 09:21:44
+D:\Nex\venv\Lib\site-packages\frozenlist-1.8.0.dist-info                              02/06/2026 09:21:44
+D:\Nex\venv\Lib\site-packages\fsspec                                                  02/06/2026 09:21:43
+D:\Nex\venv\Lib\site-packages\fsspec-2026.4.0.dist-info                               02/06/2026 09:21:44
+D:\Nex\venv\Lib\site-packages\functorch                                               02/06/2026 09:22:11
+D:\Nex\venv\Lib\site-packages\git                                                     02/06/2026 09:27:15
+D:\Nex\venv\Lib\site-packages\gitdb                                                   02/06/2026 09:26:56
+D:\Nex\venv\Lib\site-packages\gitdb-4.0.12.dist-info                                  02/06/2026 09:26:56
+D:\Nex\venv\Lib\site-packages\gitpython-3.1.50.dist-info                              02/06/2026 09:27:15
+D:\Nex\venv\Lib\site-packages\google                                                  02/06/2026 09:26:42
+D:\Nex\venv\Lib\site-packages\h11                                                     02/06/2026 09:26:53
+D:\Nex\venv\Lib\site-packages\h11-0.16.0.dist-info                                    02/06/2026 09:26:53
+D:\Nex\venv\Lib\site-packages\hf_xet                                                  02/06/2026 09:21:43
+D:\Nex\venv\Lib\site-packages\hf_xet-1.5.0.dist-info                                  02/06/2026 09:21:43
+D:\Nex\venv\Lib\site-packages\httpcore                                                02/06/2026 09:22:01
+D:\Nex\venv\Lib\site-packages\httpcore-1.0.9.dist-info                                02/06/2026 09:22:02
+D:\Nex\venv\Lib\site-packages\httptools                                               02/06/2026 09:26:53
+D:\Nex\venv\Lib\site-packages\httptools-0.8.0.dist-info                               02/06/2026 09:26:53
+D:\Nex\venv\Lib\site-packages\httpx                                                   02/06/2026 09:23:04
+D:\Nex\venv\Lib\site-packages\httpx-0.28.1.dist-info                                  02/06/2026 09:23:04
+D:\Nex\venv\Lib\site-packages\huggingface_hub                                         02/06/2026 09:23:11
+D:\Nex\venv\Lib\site-packages\huggingface_hub-1.17.0.dist-info                        02/06/2026 09:23:13
+D:\Nex\venv\Lib\site-packages\idna                                                    02/06/2026 09:26:52
+D:\Nex\venv\Lib\site-packages\idna-3.17.dist-info                                     02/06/2026 09:26:53
+D:\Nex\venv\Lib\site-packages\include                                                 02/06/2026 09:23:04
+D:\Nex\venv\Lib\site-packages\itsdangerous                                            02/06/2026 09:26:52
+D:\Nex\venv\Lib\site-packages\itsdangerous-2.2.0.dist-info                            02/06/2026 09:26:52
+D:\Nex\venv\Lib\site-packages\jinja2                                                  02/06/2026 09:26:55
+D:\Nex\venv\Lib\site-packages\jinja2-3.1.6.dist-info                                  02/06/2026 09:26:56
+D:\Nex\venv\Lib\site-packages\joblib                                                  02/06/2026 09:21:42
+D:\Nex\venv\Lib\site-packages\joblib-1.5.3.dist-info                                  02/06/2026 09:21:42
+D:\Nex\venv\Lib\site-packages\jsonpatch-1.33.dist-info                                02/06/2026 09:22:01
+D:\Nex\venv\Lib\site-packages\jsonpointer-3.1.1.dist-info                             02/06/2026 09:21:42
+D:\Nex\venv\Lib\site-packages\jsonschema                                              02/06/2026 09:27:15
+D:\Nex\venv\Lib\site-packages\jsonschema_specifications                               02/06/2026 09:27:15
+D:\Nex\venv\Lib\site-packages\jsonschema_specifications-2025.9.1.dist-info            02/06/2026 09:27:15
+D:\Nex\venv\Lib\site-packages\jsonschema-4.26.0.dist-info                             02/06/2026 09:27:16
+D:\Nex\venv\Lib\site-packages\langchain                                               02/06/2026 09:23:54
+D:\Nex\venv\Lib\site-packages\langchain_core                                          02/06/2026 09:23:09
+D:\Nex\venv\Lib\site-packages\langchain_core-1.4.0.dist-info                          02/06/2026 09:23:11
+D:\Nex\venv\Lib\site-packages\langchain_protocol                                      02/06/2026 09:22:01
+D:\Nex\venv\Lib\site-packages\langchain_protocol-0.0.16.dist-info                     02/06/2026 09:22:01
+D:\Nex\venv\Lib\site-packages\langchain-1.3.2.dist-info                               02/06/2026 09:23:54
+D:\Nex\venv\Lib\site-packages\langgraph                                               02/06/2026 09:23:53
+D:\Nex\venv\Lib\site-packages\langgraph_checkpoint-4.1.1.dist-info                    02/06/2026 09:23:19
+D:\Nex\venv\Lib\site-packages\langgraph_prebuilt-1.1.0.dist-info                      02/06/2026 09:23:51
+D:\Nex\venv\Lib\site-packages\langgraph_sdk                                           02/06/2026 09:23:07
+D:\Nex\venv\Lib\site-packages\langgraph_sdk-0.3.15.dist-info                          02/06/2026 09:23:08
+D:\Nex\venv\Lib\site-packages\langgraph-1.2.2.dist-info                               02/06/2026 09:23:54
+D:\Nex\venv\Lib\site-packages\langsmith                                               02/06/2026 09:23:06
+D:\Nex\venv\Lib\site-packages\langsmith-0.8.8.dist-info                               02/06/2026 09:23:07
+D:\Nex\venv\Lib\site-packages\lib                                                     02/06/2026 09:23:04
+D:\Nex\venv\Lib\site-packages\llama_cpp                                               02/06/2026 09:23:04
+D:\Nex\venv\Lib\site-packages\llama_cpp_python-0.3.25.dist-info                       02/06/2026 09:23:04
+D:\Nex\venv\Lib\site-packages\lxml                                                    02/06/2026 09:21:41
+D:\Nex\venv\Lib\site-packages\lxml-6.1.1.dist-info                                    02/06/2026 09:21:41
+D:\Nex\venv\Lib\site-packages\magic                                                   02/06/2026 09:21:18
+D:\Nex\venv\Lib\site-packages\markdown_it                                             02/06/2026 09:22:00
+D:\Nex\venv\Lib\site-packages\markdown_it_py-4.2.0.dist-info                          02/06/2026 09:22:01
+D:\Nex\venv\Lib\site-packages\markupsafe                                              02/06/2026 09:26:52
+D:\Nex\venv\Lib\site-packages\markupsafe-3.0.3.dist-info                              02/06/2026 09:26:52
+D:\Nex\venv\Lib\site-packages\mdurl                                                   02/06/2026 09:21:41
+D:\Nex\venv\Lib\site-packages\mdurl-0.1.2.dist-info                                   02/06/2026 09:21:41
+D:\Nex\venv\Lib\site-packages\mpmath                                                  02/06/2026 09:20:52
+D:\Nex\venv\Lib\site-packages\mpmath-1.3.0.dist-info                                  02/06/2026 09:20:53
+D:\Nex\venv\Lib\site-packages\multidict                                               02/06/2026 09:21:41
+D:\Nex\venv\Lib\site-packages\multidict-6.7.1.dist-info                               02/06/2026 09:21:41
+D:\Nex\venv\Lib\site-packages\multipart                                               02/06/2026 09:26:39
+D:\Nex\venv\Lib\site-packages\narwhals                                                02/06/2026 09:26:51
+D:\Nex\venv\Lib\site-packages\narwhals-2.22.0.dist-info                               02/06/2026 09:26:52
+D:\Nex\venv\Lib\site-packages\networkx                                                02/06/2026 09:21:33
+D:\Nex\venv\Lib\site-packages\networkx-3.6.1.dist-info                                02/06/2026 09:21:39
+D:\Nex\venv\Lib\site-packages\numpy                                                   02/06/2026 09:26:45
+D:\Nex\venv\Lib\site-packages\numpy-2.4.6.dist-info                                   02/06/2026 09:26:50
+D:\Nex\venv\Lib\site-packages\numpy.libs                                              02/06/2026 09:26:45
+D:\Nex\venv\Lib\site-packages\orjson                                                  02/06/2026 09:21:27
+D:\Nex\venv\Lib\site-packages\orjson-3.11.9.dist-info                                 02/06/2026 09:21:27
+D:\Nex\venv\Lib\site-packages\ormsgpack                                               02/06/2026 09:21:27
+D:\Nex\venv\Lib\site-packages\ormsgpack-1.12.2.dist-info                              02/06/2026 09:21:27
+D:\Nex\venv\Lib\site-packages\packaging                                               02/06/2026 09:26:44
+D:\Nex\venv\Lib\site-packages\packaging-26.2.dist-info                                02/06/2026 09:26:44
+D:\Nex\venv\Lib\site-packages\pandas                                                  02/06/2026 09:27:00
+D:\Nex\venv\Lib\site-packages\pandas-3.0.3.dist-info                                  02/06/2026 09:27:14
+D:\Nex\venv\Lib\site-packages\pandas.libs                                             02/06/2026 09:27:00
+D:\Nex\venv\Lib\site-packages\PIL                                                     02/06/2026 09:26:42
+D:\Nex\venv\Lib\site-packages\pillow-12.2.0.dist-info                                 02/06/2026 09:26:43
+D:\Nex\venv\Lib\site-packages\pip                                                     02/06/2026 09:20:01
+D:\Nex\venv\Lib\site-packages\pip-26.1.2.dist-info                                    02/06/2026 09:20:06
+D:\Nex\venv\Lib\site-packages\pkg_resources                                           02/06/2026 09:21:15
+D:\Nex\venv\Lib\site-packages\propcache                                               02/06/2026 09:21:26
+D:\Nex\venv\Lib\site-packages\propcache-0.5.2.dist-info                               02/06/2026 09:21:26
+D:\Nex\venv\Lib\site-packages\protobuf-7.35.0.dist-info                               02/06/2026 09:26:42
+D:\Nex\venv\Lib\site-packages\psutil                                                  02/06/2026 09:21:25
+D:\Nex\venv\Lib\site-packages\psutil-7.2.2.dist-info                                  02/06/2026 09:21:25
+D:\Nex\venv\Lib\site-packages\pyarrow                                                 02/06/2026 09:26:40
+D:\Nex\venv\Lib\site-packages\pyarrow-24.0.0.dist-info                                02/06/2026 09:26:41
+D:\Nex\venv\Lib\site-packages\pyarrow.libs                                            02/06/2026 09:26:40
+D:\Nex\venv\Lib\site-packages\pydantic                                                02/06/2026 09:26:58
+D:\Nex\venv\Lib\site-packages\pydantic_core                                           02/06/2026 09:26:55
+D:\Nex\venv\Lib\site-packages\pydantic_core-2.46.4.dist-info                          02/06/2026 09:26:55
+D:\Nex\venv\Lib\site-packages\pydantic_settings                                       02/06/2026 09:23:06
+D:\Nex\venv\Lib\site-packages\pydantic_settings-2.14.1.dist-info                      02/06/2026 09:23:06
+D:\Nex\venv\Lib\site-packages\pydantic-2.13.4.dist-info                               02/06/2026 09:26:59
+D:\Nex\venv\Lib\site-packages\pydeck                                                  02/06/2026 09:26:58
+D:\Nex\venv\Lib\site-packages\pydeck-0.9.2.dist-info                                  02/06/2026 09:26:58
+D:\Nex\venv\Lib\site-packages\pygments                                                02/06/2026 09:21:19
+D:\Nex\venv\Lib\site-packages\pygments-2.20.0.dist-info                               02/06/2026 09:21:23
+D:\Nex\venv\Lib\site-packages\pypdf                                                   02/06/2026 09:21:18
+D:\Nex\venv\Lib\site-packages\pypdf-6.12.2.dist-info                                  02/06/2026 09:21:19
+D:\Nex\venv\Lib\site-packages\python_dateutil-2.9.0.post0.dist-info                   02/06/2026 09:26:55
+D:\Nex\venv\Lib\site-packages\python_docx-1.2.0.dist-info                             02/06/2026 09:22:00
+D:\Nex\venv\Lib\site-packages\python_dotenv-1.2.2.dist-info                           02/06/2026 09:21:18
+D:\Nex\venv\Lib\site-packages\python_magic_bin-0.4.14.dist-info                       02/06/2026 09:20:52
+D:\Nex\venv\Lib\site-packages\python_magic-0.4.27.dist-info                           02/06/2026 09:21:18
+D:\Nex\venv\Lib\site-packages\python_multipart                                        02/06/2026 09:26:39
+D:\Nex\venv\Lib\site-packages\python_multipart-0.0.30.dist-info                       02/06/2026 09:26:39
+D:\Nex\venv\Lib\site-packages\pyyaml-6.0.3.dist-info                                  02/06/2026 09:21:18
+D:\Nex\venv\Lib\site-packages\referencing                                             02/06/2026 09:26:55
+D:\Nex\venv\Lib\site-packages\referencing-0.37.0.dist-info                            02/06/2026 09:26:55
+D:\Nex\venv\Lib\site-packages\regex                                                   02/06/2026 09:21:17
+D:\Nex\venv\Lib\site-packages\regex-2026.5.9.dist-info                                02/06/2026 09:21:17
+D:\Nex\venv\Lib\site-packages\requests                                                02/06/2026 09:26:54
+D:\Nex\venv\Lib\site-packages\requests_toolbelt                                       02/06/2026 09:22:46
+D:\Nex\venv\Lib\site-packages\requests_toolbelt-1.0.0.dist-info                       02/06/2026 09:22:46
+D:\Nex\venv\Lib\site-packages\requests-2.34.2.dist-info                               02/06/2026 09:26:55
+D:\Nex\venv\Lib\site-packages\rich                                                    02/06/2026 09:22:45
+D:\Nex\venv\Lib\site-packages\rich-15.0.0.dist-info                                   02/06/2026 09:22:46
+D:\Nex\venv\Lib\site-packages\rpds                                                    02/06/2026 09:26:39
+D:\Nex\venv\Lib\site-packages\rpds_py-2026.5.1.dist-info                              02/06/2026 09:26:39
+D:\Nex\venv\Lib\site-packages\safetensors                                             02/06/2026 09:21:17
+D:\Nex\venv\Lib\site-packages\safetensors-0.7.0.dist-info                             02/06/2026 09:21:17
+D:\Nex\venv\Lib\site-packages\scikit_learn-1.9.0.dist-info                            02/06/2026 09:22:45
+D:\Nex\venv\Lib\site-packages\scipy                                                   02/06/2026 09:21:46
+D:\Nex\venv\Lib\site-packages\scipy-1.17.1.dist-info                                  02/06/2026 09:21:59
+D:\Nex\venv\Lib\site-packages\scipy.libs                                              02/06/2026 09:21:46
+D:\Nex\venv\Lib\site-packages\sentence_transformers                                   02/06/2026 09:23:51
+D:\Nex\venv\Lib\site-packages\sentence_transformers-5.5.1.dist-info                   02/06/2026 09:23:53
+D:\Nex\venv\Lib\site-packages\setuptools                                              02/06/2026 09:21:15
+D:\Nex\venv\Lib\site-packages\setuptools-81.0.0.dist-info                             02/06/2026 09:21:17
+D:\Nex\venv\Lib\site-packages\shellingham                                             02/06/2026 09:21:14
+D:\Nex\venv\Lib\site-packages\shellingham-1.5.4.dist-info                             02/06/2026 09:21:14
+D:\Nex\venv\Lib\site-packages\six-1.17.0.dist-info                                    02/06/2026 09:26:39
+D:\Nex\venv\Lib\site-packages\sklearn                                                 02/06/2026 09:22:37
+D:\Nex\venv\Lib\site-packages\smmap                                                   02/06/2026 09:26:38
+D:\Nex\venv\Lib\site-packages\smmap-5.0.3.dist-info                                   02/06/2026 09:26:38
+D:\Nex\venv\Lib\site-packages\soupsieve                                               02/06/2026 09:21:14
+D:\Nex\venv\Lib\site-packages\soupsieve-2.8.4.dist-info                               02/06/2026 09:21:14
+D:\Nex\venv\Lib\site-packages\starlette                                               02/06/2026 09:26:57
+D:\Nex\venv\Lib\site-packages\starlette-1.2.1.dist-info                               02/06/2026 09:26:57
+D:\Nex\venv\Lib\site-packages\streamlit                                               02/06/2026 09:27:18
+D:\Nex\venv\Lib\site-packages\streamlit-1.58.0.dist-info                              02/06/2026 09:27:21
+D:\Nex\venv\Lib\site-packages\sympy                                                   02/06/2026 09:20:56
+D:\Nex\venv\Lib\site-packages\sympy-1.14.0.dist-info                                  02/06/2026 09:21:14
+D:\Nex\venv\Lib\site-packages\tenacity                                                02/06/2026 09:26:38
+D:\Nex\venv\Lib\site-packages\tenacity-9.1.4.dist-info                                02/06/2026 09:26:38
+D:\Nex\venv\Lib\site-packages\threadpoolctl-3.6.0.dist-info                           02/06/2026 09:20:55
+D:\Nex\venv\Lib\site-packages\tokenizers                                              02/06/2026 09:23:14
+D:\Nex\venv\Lib\site-packages\tokenizers-0.22.2.dist-info                             02/06/2026 09:23:15
+D:\Nex\venv\Lib\site-packages\toml                                                    02/06/2026 09:26:38
+D:\Nex\venv\Lib\site-packages\toml-0.10.2.dist-info                                   02/06/2026 09:26:38
+D:\Nex\venv\Lib\site-packages\torch                                                   02/06/2026 09:22:11
+D:\Nex\venv\Lib\site-packages\torch-2.12.0.dist-info                                  02/06/2026 09:22:36
+D:\Nex\venv\Lib\site-packages\torchgen                                                02/06/2026 09:22:35
+D:\Nex\venv\Lib\site-packages\tqdm                                                    02/06/2026 09:21:45
+D:\Nex\venv\Lib\site-packages\tqdm-4.67.3.dist-info                                   02/06/2026 09:21:45
+D:\Nex\venv\Lib\site-packages\transformers                                            02/06/2026 09:23:22
+D:\Nex\venv\Lib\site-packages\transformers-5.9.0.dist-info                            02/06/2026 09:23:50
+D:\Nex\venv\Lib\site-packages\typer                                                   02/06/2026 09:23:06
+D:\Nex\venv\Lib\site-packages\typer-0.25.1.dist-info                                  02/06/2026 09:23:06
+D:\Nex\venv\Lib\site-packages\typing_extensions-4.15.0.dist-info                      02/06/2026 09:26:38
+D:\Nex\venv\Lib\site-packages\typing_inspection                                       02/06/2026 09:26:54
+D:\Nex\venv\Lib\site-packages\typing_inspection-0.4.2.dist-info                       02/06/2026 09:26:54
+D:\Nex\venv\Lib\site-packages\tzdata                                                  02/06/2026 09:26:37
+D:\Nex\venv\Lib\site-packages\tzdata-2026.2.dist-info                                 02/06/2026 09:26:37
+D:\Nex\venv\Lib\site-packages\urllib3                                                 02/06/2026 09:26:36
+D:\Nex\venv\Lib\site-packages\urllib3-2.7.0.dist-info                                 02/06/2026 09:26:36
+D:\Nex\venv\Lib\site-packages\uuid_utils                                              02/06/2026 09:20:54
+D:\Nex\venv\Lib\site-packages\uuid_utils-0.16.0.dist-info                             02/06/2026 09:20:54
+D:\Nex\venv\Lib\site-packages\uvicorn                                                 02/06/2026 09:26:57
+D:\Nex\venv\Lib\site-packages\uvicorn-0.48.0.dist-info                                02/06/2026 09:26:57
+D:\Nex\venv\Lib\site-packages\watchdog                                                02/06/2026 09:26:36
+D:\Nex\venv\Lib\site-packages\watchdog-6.0.0.dist-info                                02/06/2026 09:26:36
+D:\Nex\venv\Lib\site-packages\websockets                                              02/06/2026 09:26:35
+D:\Nex\venv\Lib\site-packages\websockets-16.0.dist-info                               02/06/2026 09:26:36
+D:\Nex\venv\Lib\site-packages\wheel                                                   02/06/2026 09:20:06
+D:\Nex\venv\Lib\site-packages\wheel-0.47.0.dist-info                                  02/06/2026 09:20:06
+D:\Nex\venv\Lib\site-packages\xxhash                                                  02/06/2026 09:20:53
+D:\Nex\venv\Lib\site-packages\xxhash-3.7.0.dist-info                                  02/06/2026 09:20:53
+D:\Nex\venv\Lib\site-packages\yaml                                                    02/06/2026 09:21:17
+D:\Nex\venv\Lib\site-packages\yarl                                                    02/06/2026 09:21:45
+D:\Nex\venv\Lib\site-packages\yarl-1.24.2.dist-info                                   02/06/2026 09:21:45
+D:\Nex\venv\Lib\site-packages\zstandard                                               02/06/2026 09:20:53
+D:\Nex\venv\Lib\site-packages\zstandard-0.25.0.dist-info                              02/06/2026 09:20:53
+D:\Nex\venv\Lib\site-packages\81d243bd2c585b0f4821__mypyc.cp311-win_amd64.pyd 216064  02/06/2026 09:26:54
+D:\Nex\venv\Lib\site-packages\distutils-precedence.pth                        151     02/06/2026 09:21:14
+D:\Nex\venv\Lib\site-packages\isympy.py                                       11220   02/06/2026 09:20:55
+D:\Nex\venv\Lib\site-packages\jsonpatch.py                                    29778   02/06/2026 09:22:01
+D:\Nex\venv\Lib\site-packages\jsonpointer.py                                  10551   02/06/2026 09:21:41
+D:\Nex\venv\Lib\site-packages\scipy-1.17.1-cp311-cp311-win_amd64.whl          0       02/06/2026 09:21:45
+D:\Nex\venv\Lib\site-packages\six.py                                          34703   02/06/2026 09:26:39
+D:\Nex\venv\Lib\site-packages\threadpoolctl.py                                50722   02/06/2026 09:20:55
+D:\Nex\venv\Lib\site-packages\typing_extensions.py                            160429  02/06/2026 09:26:38
+D:\Nex\venv\Scripts\accelerate-config.exe                                     108339  02/06/2026 09:23:20
+D:\Nex\venv\Scripts\accelerate-estimate-memory.exe                            108341  02/06/2026 09:23:20
+D:\Nex\venv\Scripts\accelerate-launch.exe                                     108339  02/06/2026 09:23:20
+D:\Nex\venv\Scripts\accelerate-merge-weights.exe                              108338  02/06/2026 09:23:20
+D:\Nex\venv\Scripts\accelerate.exe                                            108347  02/06/2026 09:23:20
+D:\Nex\venv\Scripts\activate                                                  1747    02/06/2026 09:19:55
+D:\Nex\venv\Scripts\activate.bat                                              980     02/06/2026 09:19:55
+D:\Nex\venv\Scripts\Activate.ps1                                              26199   02/06/2026 09:19:55
+D:\Nex\venv\Scripts\deactivate.bat                                            393     02/06/2026 09:19:55
+D:\Nex\venv\Scripts\dotenv.exe                                                108326  02/06/2026 09:21:18
+D:\Nex\venv\Scripts\f2py.exe                                                  108330  02/06/2026 09:26:50
+D:\Nex\venv\Scripts\fastapi.exe                                               108324  02/06/2026 09:27:16
+D:\Nex\venv\Scripts\hf.exe                                                    108335  02/06/2026 09:23:13
+D:\Nex\venv\Scripts\httpx.exe                                                 108318  02/06/2026 09:23:04
+D:\Nex\venv\Scripts\huggingface-cli.exe                                       108347  02/06/2026 09:23:13
+D:\Nex\venv\Scripts\idna.exe                                                  108321  02/06/2026 09:26:53
+D:\Nex\venv\Scripts\isympy.exe                                                108319  02/06/2026 09:21:14
+D:\Nex\venv\Scripts\jsondiff                                                  1212    02/06/2026 09:22:01
+D:\Nex\venv\Scripts\jsonpatch                                                 3873    02/06/2026 09:22:01
+D:\Nex\venv\Scripts\jsonpointer                                               1774    02/06/2026 09:21:42
+D:\Nex\venv\Scripts\jsonschema.exe                                            108327  02/06/2026 09:27:16
+D:\Nex\venv\Scripts\markdown-it.exe                                           108334  02/06/2026 09:22:01
+D:\Nex\venv\Scripts\normalizer.exe                                            108347  02/06/2026 09:26:54
+D:\Nex\venv\Scripts\numpy-config.exe                                          108330  02/06/2026 09:26:50
+D:\Nex\venv\Scripts\pip.exe                                                   108389  02/06/2026 09:20:05
+D:\Nex\venv\Scripts\pip3.11.exe                                               108389  02/06/2026 09:20:05
+D:\Nex\venv\Scripts\pip3.exe                                                  108389  02/06/2026 09:20:05
+D:\Nex\venv\Scripts\pygmentize.exe                                            108329  02/06/2026 09:21:23
+D:\Nex\venv\Scripts\python.exe                                                274712  02/06/2026 09:19:46
+D:\Nex\venv\Scripts\pythonw.exe                                               263448  02/06/2026 09:19:46
+D:\Nex\venv\Scripts\streamlit.exe                                             108330  02/06/2026 09:27:21
+D:\Nex\venv\Scripts\tiny-agents.exe                                           108345  02/06/2026 09:23:13
+D:\Nex\venv\Scripts\torchfrtrace.exe                                          108355  02/06/2026 09:22:36
+D:\Nex\venv\Scripts\torchrun.exe                                              108334  02/06/2026 09:22:36
+D:\Nex\venv\Scripts\tqdm.exe                                                  108321  02/06/2026 09:21:45
+D:\Nex\venv\Scripts\transformers.exe                                          108342  02/06/2026 09:23:50
+D:\Nex\venv\Scripts\typer.exe                                                 108322  02/06/2026 09:23:06
+D:\Nex\venv\Scripts\uvicorn.exe                                               108325  02/06/2026 09:26:57
+D:\Nex\venv\Scripts\watchmedo.exe                                             108331  02/06/2026 09:26:36
+D:\Nex\venv\Scripts\websockets.exe                                            108327  02/06/2026 09:26:36
+D:\Nex\venv\Scripts\wheel.exe                                                 108382  02/06/2026 09:20:06
+D:\Nex\venv\share\jupyter                                                             02/06/2026 09:22:46
+D:\Nex\venv\share\man                                                                 02/06/2026 09:20:56
+D:\Nex\venv\share\jupyter\nbextensions                                                02/06/2026 09:26:58
+D:\Nex\venv\share\man\man1                                                            02/06/2026 09:20:56
+

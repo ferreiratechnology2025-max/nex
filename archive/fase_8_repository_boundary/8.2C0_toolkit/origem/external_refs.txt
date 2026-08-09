@@ -1,0 +1,2 @@
+agents/chief-of-staff.md:34:- From `@github.com`, `@slack.com`, `@jira`, `@notion.so`
+agents/opensource-packager.md:174:git clone https://github.com/{org}/{repo}.git

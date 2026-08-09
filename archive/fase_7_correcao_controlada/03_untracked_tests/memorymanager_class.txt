@@ -1,0 +1,1 @@
+src/core/memory_manager.py:70:class MemoriaPersistente:

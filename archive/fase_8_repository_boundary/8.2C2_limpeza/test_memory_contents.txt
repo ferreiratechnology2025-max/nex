@@ -1,0 +1,5 @@
+total 8
+drwxr-xr-x 1 ferre 197609 0 Jun  2 08:40 .
+drwxr-xr-x 1 ferre 197609 0 Aug  8 23:32 ..
+drwxr-xr-x 1 ferre 197609 0 Jun  2 08:40 long_term
+-rw-r--r-- 1 ferre 197609 45767 Apr 13 16:45 test_memory/long_term/long_term_memories.json

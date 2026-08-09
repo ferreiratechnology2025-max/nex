@@ -1,0 +1,98 @@
+=== CLASSIFICAÇÃO — CLAUDE.md + agents/ + rules/ ===
+
+SUBSISTEMA:
+- CLAUDE.md: descreve um "Claude Code plugin - a collection of
+  production-ready agents, skills, hooks, commands, rules, and MCP
+  configurations".
+- agents/: 64 arquivos .md (contagem por `find -name "*.md"`; a Fase 8.1
+  havia contado 66 por `ls`, incluindo entradas não-.md — número exato de
+  agentes reais é 64), cada um um subagente do Claude Code com frontmatter
+  YAML (name/tools/model), cobrindo reviewers e build-resolvers por
+  linguagem (Python, Rust, Go, Java, Kotlin, Swift, etc.), mais agentes
+  transversais (architect, planner, security-reviewer, tdd-guide, etc.).
+- rules/: 104 arquivos (.md/.json/.txt) organizados por linguagem em 17
+  subpastas (angular, arkts, common, cpp, csharp, dart, fsharp, golang,
+  java, kotlin, perl, php, python, react, ruby, rust, swift, typescript,
+  web) + `rules/README.md`.
+- `skills/`, `commands/`, `hooks/`, `mcp-configs/` — também citados por
+  CLAUDE.md como componentes do plugin — **NÃO EXISTEM** neste repositório
+  (`ls -d skills commands hooks mcp-configs` → todos "No such file or
+  directory"). O plugin está parcialmente presente: só os componentes
+  `agents/` e `rules/` foram trazidos para este repo.
+
+CONSUMIDORES:
+- Nex Chat (código-fonte, `src/`): NÃO. `grep -rn "rule" src/` → zero
+  ocorrências. As 4 ocorrências de "agent" em `src/` são todas sobre
+  `src/agents/` (o sistema multi-agente PRÓPRIO do Nex — Researcher/
+  Analyst/Writer/Coordinator), não sobre o `agents/` da raiz. Zero
+  acoplamento de código entre a aplicação e o toolkit.
+- Testes: NÃO — nenhum teste (`tests/*.py`, já classificados na Fase 8.1)
+  importa ou referencia `agents/` ou `rules/` da raiz.
+- Scripts: NÃO — nenhuma referência em `scripts/*.sh`/`*.bat`.
+- Documentação: **SIM, ativamente** — `README.md` (já PROMOTE na Fase 8.1)
+  documenta `agents/` e `rules/` como feature explícita do projeto: linha 7
+  ("Também inclui 90+ **agentes Claude Code**..."), linha 18 (bullet de
+  feature dedicado), linhas 276-288 (árvore de diretórios do projeto,
+  lista `agents/` e `rules/` como partes documentadas da estrutura),
+  linhas 304-313 (seções dedicadas "### Claude Code Agents (`agents/`)" e
+  "### Regras de Coding Style (`rules/`)"), linha 486 (agradecimento à
+  Anthropic "pelo Claude Code e inspiração para os agentes").
+- `CLAUDE.md` é referenciado por 7 arquivos de `agents/*.md` como fonte de
+  convenções de projeto — é consumido pelo próprio toolkit, não pela
+  aplicação.
+
+RELAÇÃO COM O NEX:
+- O toolkit é parte integrante do Nex? **SIM, por decisão documentada do
+  próprio projeto** — o README oficial (já validado como preciso na Fase
+  8.1) o declara como uma feature inclusa, não um acidente de bundling.
+- É uma dependência de desenvolvimento? Não no sentido de import/runtime
+  (zero acoplamento de código) — é uma dependência de FERRAMENTAL para
+  quem desenvolve o Nex usando Claude Code (reviewers, build-resolvers),
+  documentada e distribuída junto ao repositório como valor agregado.
+- É um subsistema separado? Sim, tecnicamente (não compartilha nenhum
+  import, classe ou função com `src/`), mas é declarado como parte do
+  produto entregável pelo próprio README.
+- Pode ser extraído para outro repositório? Sim, sem quebrar o Nex Chat
+  (confirmado pela ausência total de acoplamento de código) — mas isso
+  contradiria a documentação pública do projeto (README), que promete
+  "90+ agentes Claude Code... em `agents/`" como parte da entrega.
+
+ORIGEM:
+- Nenhum histórico de commit para `agents/` ou `rules/` — nunca estiveram
+  no git (`git log --all -- agents/` e `-- rules/` → ambos vazios).
+- Nenhuma referência a repositório de origem externo encontrada dentro dos
+  próprios arquivos do toolkit (as 2 ocorrências de "github.com" são
+  exemplos genéricos de uso dentro de instruções de agente, não pointers
+  de proveniência).
+- Padrão de nomes e estrutura (subagentes com frontmatter YAML, `rules/`
+  por linguagem) é consistente com uma coleção pública conhecida de
+  plugins para Claude Code (mesmo padrão observado nos próprios agentes
+  built-in desta sessão de Claude Code) — não uma criação ad-hoc para
+  este projeto específico.
+
+DECISÃO: **PROMOTE** (CLAUDE.md, agents/, rules/ — os três juntos)
+
+JUSTIFICATIVA:
+1. O README oficial do Nex Chat (já auditado e confirmado preciso)
+   documenta `agents/` e `rules/` como feature deliberada e entregável do
+   projeto — removê-los ou arquivá-los contradiria a própria documentação
+   pública que a Fase 8.1 já promoveu.
+2. `CLAUDE.md`, embora não mencione o Nex Chat, descreve corretamente o
+   subsistema que de fato existe neste repo (agents/ + rules/) — está
+   incompleto (não documenta a aplicação Nex Chat), não errado. É
+   consumido ativamente por 7 arquivos do próprio `agents/`.
+3. Zero risco: nenhum segredo, nenhuma dependência quebrada, nenhum
+   acoplamento de código que possa regredir a aplicação.
+
+RESSALVA (não corrigida nesta etapa — fora de escopo "classificar, não
+modificar"): `CLAUDE.md` ficaria mais correto e completo se passasse a
+mencionar também o Nex Chat como o produto principal do repositório, já
+que hoje ele só descreve o subsistema de ferramental. Essa é uma reescrita
+de conteúdo, não uma reclassificação — proposta para uma fase futura, não
+para a 8.2C.
+
+REVISÃO DA CLASSIFICAÇÃO ANTERIOR (Fase 8.1):
+`CLAUDE.md` estava classificado ARCHIVE em `classificacao_docs.md`. Essa
+classificação está **superada** pela evidência desta etapa e deve ser
+considerada substituída por PROMOTE, junto com `agents/` e `rules/`
+(que nunca haviam sido classificados).

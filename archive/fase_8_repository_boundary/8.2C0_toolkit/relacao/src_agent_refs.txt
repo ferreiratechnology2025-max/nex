@@ -1,0 +1,4 @@
+src/api_gateway.py:583:    """Executa tarefa complexa com multiplos agentes (SSE streaming).
+src/main.py:114:    # Initialize agent coordinator
+src/main.py:115:    print("Initializing agent coordinator...")
+src/main.py:117:        from src.agents import Coordinator

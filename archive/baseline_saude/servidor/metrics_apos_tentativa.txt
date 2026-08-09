@@ -1,0 +1,1 @@
+{"requests_total":2,"active_connections":0,"avg_latency_ms":2.37,"peak_memory_mb":461.14,"fallback_counts":{"openrouter_to_llama":0,"openrouter_to_huggingface":0,"llama_to_huggingface":0},"llm_fallback_total":0,"llm_fallback_reasons":{}}

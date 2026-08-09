@@ -1,0 +1,79 @@
+=== REPOSITORY BOUNDARY — STAGING FINAL (8.2D) ===
+
+DATA: 2026-08-08 (sessão de auditoria)
+
+PROMOTE STAGED: 200 arquivos (33 itens explícitos da lista, expandidos —
+agents/ e rules/ contêm múltiplos arquivos cada)
+- 13 de src/ (agents/analyst_agent.py, base_agent.py, researcher_agent.py,
+  writer_agent.py, __init__.py; core/document_manager.py, document_reader.py,
+  openrouter_client.py, web_search.py, web_search_engine.py, __init__.py;
+  metrics.py; ws_handler.py)
+- 8 de tests/ (test_api_gateway.py, test_config.py, test_fallback.py,
+  test_fallback_activation.py, test_llm_manager.py, test_memory_opt.py,
+  test_web_search.py, test_ws_metrics.py)
+- 2 config (docker-compose.yml, pytest.ini)
+- 2 dirs (monitor/index.html, .streamlit/config.toml)
+- 4 docs (requirements.txt, README.md, SYSTEM_MAP.md, Nex.spec.md)
+- .dockerignore
+- CLAUDE.md (revisado de ARCHIVE para PROMOTE na 8.2C.0)
+- agents/ — 64 arquivos (revisado de "não classificado" para PROMOTE na 8.2C.0)
+- rules/ — ~104 arquivos (revisado de "não classificado" para PROMOTE na 8.2C.0)
+- .gitignore — já staged na 8.2B.1 (corrigido para ignorar data/ por completo)
+
+M (modificado, tracked, já staged por natureza): src/core/memory_manager.py
+  (as correções db_path/index_path da Fase 7, ainda pendente de `git add`
+  explícito — NÃO incluído no `git add` desta etapa porque não estava na
+  lista de PROMOTE de untracked; permanece como modificação não-staged de
+  arquivo já tracked, ver nota abaixo)
+
+KEEP-UNTRACKED: 4
+- tests/quick_test.py (sem asserts, falso sinal de qualidade)
+- tests/debug_test.py (não coletado pelo pytest, ferramenta manual)
+- data/ (estado de runtime, dados de sessão de usuário)
+- venv/ (ambiente virtual)
+
+ARCHIVE: 0
+- (CLAUDE.md reclassificado como PROMOTE na 8.2C.0 — não há mais itens
+  ARCHIVE nesta auditoria)
+
+DELETE (executados): 4
+- test_ollama_integration.py (Fase 7, Etapa 3 — API nunca existiu no histórico)
+- test_system.py (Fase 7, Etapa 3 — 3 subsistemas divergentes)
+- test_orch.py (Fase 8.2A — credencial hardcoded)
+- test_memory/ (Fase 8.2C.2 — resíduo órfão)
+
+NÃO CLASSIFICADO (⚠️ não estava no escopo original da Fase 8.1, achado
+durante a montagem da lista de staging desta etapa — NÃO incluído no
+staging): ~24 itens — docs/, examples/, Dockerfile, docker-entrypoint.sh,
+Makefile, check_environment.ps1, start_services.ps1, 17 scripts em
+scripts/ e scripts/windows/, 2 PDFs de manual, "ligar Nex.txt".
+Ver fase_8_repository_boundary/8.2D_promote/NAO_CLASSIFICADOS.txt para a
+lista completa e justificativa de exclusão do staging.
+
+AUDITORIA DO STAGING:
+- data/ staged: 0 arquivos ✓
+- .env staged: 0 arquivos ✓
+- segredos (nome de arquivo: .key/.pem/credentials/secret): 0 arquivos ✓
+- artefatos indesejados (.log/.pyc/__pycache__/.db/.index): 0 arquivos ✓
+- segredos por CONTEÚDO em .md recém-staged (agents/, rules/, docs): 330
+  ocorrências do padrão api_key|secret|token|password, todas verificadas
+  como documentação/instrução de agentes (não literais); 2 ocorrências de
+  prefixo de chave real (AKIA) verificadas como regex de DETECÇÃO dentro
+  de agentes sanitizadores, não chaves reais. Nenhum segredo literal
+  encontrado nos 200 arquivos staged.
+
+NOTA IMPORTANTE — src/core/memory_manager.py:
+As correções db_path/index_path da Fase 7 (Etapas 4-5) modificaram este
+arquivo TRACKED. Ele aparece como `M` no git status, MAS não foi incluído
+no `git add` desta etapa (a instrução era stagear os PROMOTE untracked;
+memory_manager.py já é tracked, não é um item de "promoção" no sentido
+desta fase). Ele permanece como modificação pendente de staging — decisão
+sobre incluí-lo no mesmo commit ou separadamente cabe ao Arquiteto.
+
+PRÓXIMO PASSO:
+- Revisar staging (200 arquivos, 22.863 inserções)
+- Decidir sobre os ~24 itens não classificados (nova sub-fase ou aceitar
+  ficarem untracked por ora)
+- Decidir sobre src/core/memory_manager.py (incluir no mesmo commit?)
+- Decidir sobre commit
+- Iniciar Fase 8.2E (validação pós-staging), se aprovado
