@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nex Chat - Monitor</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .header {
+            text-align: center;
+            color: white;
+            margin-bottom: 30px;
+        }
+        
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .card {
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        
+        .card h3 {
+            color: #667eea;
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+            border-bottom: 2px solid #e9ecef;
+            padding-bottom: 10px;
+        }
+        
+        .stat-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            border-bottom: 1px solid #f0f0f0;
+        }
+        
+        .stat-label {
+            font-weight: 500;
+            color: #6c757d;
+        }
+        
+        .stat-value {
+            font-weight: 600;
+            color: #2d2d3a;
+        }
+        
+        .status-ok {
+            color: #28a745;
+        }
+        
+        .status-warning {
+            color: #ffc107;
+        }
+        
+        .status-error {
+            color: #dc3545;
+        }
+        
+        .refresh-btn {
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1rem;
+            margin-top: 20px;
+            transition: all 0.3s;
+        }
+        
+        .refresh-btn:hover {
+            background: #5a67d8;
+            transform: scale(1.02);
+        }
+        
+        .timestamp {
+            text-align: center;
+            color: white;
+            margin-top: 30px;
+            font-size: 0.8rem;
+            opacity: 0.8;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🧠 Nex Chat Monitor</h1>
+            <p>Dashboard de monitoramento do sistema</p>
+        </div>
+        
+        <div class="stats-grid">
+            <div class="card">
+                <h3>📊 Estatísticas do Sistema</h3>
+                <div id="systemStats">
+                    <div class="stat-item">
+                        <span class="stat-label">Status:</span>
+                        <span class="stat-value" id="status">Carregando...</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">Uptime:</span>
+                        <span class="stat-value" id="uptime">-</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">Sessões ativas:</span>
+                        <span class="stat-value" id="activeSessions">-</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">Total de mensagens:</span>
+                        <span class="stat-value" id="totalMessages">-</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card">
+                <h3>🤖 Estatísticas do LLM</h3>
+                <div id="llmStats">
+                    <div class="stat-item">
+                        <span class="stat-label">Backend:</span>
+                        <span class="stat-value" id="backend">-</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">Modelo:</span>
+                        <span class="stat-value" id="model">-</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">Requests:</span>
+                        <span class="stat-value" id="requests">-</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">Cache hits:</span>
+                        <span class="stat-value" id="cacheHits">-</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">Latência média:</span>
+                        <span class="stat-value" id="avgLatency">-</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card">
+                <h3>💾 Estatísticas de Memória</h3>
+                <div id="memoryStats">
+                    <div class="stat-item">
+                        <span class="stat-label">Memórias LTP:</span>
+                        <span class="stat-value" id="totalMemories">-</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">Embeddings:</span>
+                        <span class="stat-value" id="embeddingsStatus">-</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">Contexto atual:</span>
+                        <span class="stat-value" id="contextTokens">-</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div style="text-align: center;">
+            <button class="refresh-btn" onclick="refreshStats()">🔄 Atualizar</button>
+        </div>
+        
+        <div class="timestamp" id="timestamp">
+            Última atualização: --
+        </div>
+    </div>
+    
+    <script>
+        async function refreshStats() {
+            try {
+                const response = await fetch('/api/stats');
+                const data = await response.json();
+                
+                // System Stats
+                document.getElementById('status').innerHTML = '<span class="status-ok">✅ Online</span>';
+                document.getElementById('uptime').textContent = formatUptime(data.uptime_seconds);
+                document.getElementById('activeSessions').textContent = data.sessions_count;
+                document.getElementById('totalMessages').textContent = data.memory_stats?.total_messages || 0;
+                
+                // LLM Stats
+                document.getElementById('backend').textContent = data.llm_stats?.backend || 'N/A';
+                document.getElementById('model').textContent = data.llm_stats?.model || 'N/A';
+                document.getElementById('requests').textContent = data.llm_stats?.requests || 0;
+                document.getElementById('cacheHits').textContent = data.llm_stats?.cache_hits || 0;
+                document.getElementById('avgLatency').textContent = `${data.llm_stats?.avg_latency_ms || 0}ms`;
+                
+                // Memory Stats
+                document.getElementById('totalMemories').textContent = data.memory_stats?.long_term?.total_memories || 0;
+                const embeddingsStatus = data.memory_stats?.long_term?.embedding_enabled ? '✅ Ativo' : '❌ Inativo';
+                document.getElementById('embeddingsStatus').textContent = embeddingsStatus;
+                document.getElementById('contextTokens').textContent = data.memory_stats?.short_term?.total_tokens || 0;
+                
+                // Timestamp
+                document.getElementById('timestamp').textContent = `Última atualização: ${new Date().toLocaleString()}`;
+                
+            } catch (error) {
+                console.error('Erro ao buscar stats:', error);
+                document.getElementById('status').innerHTML = '<span class="status-error">❌ Offline</span>';
+            }
+        }
+        
+        function formatUptime(seconds) {
+            const days = Math.floor(seconds / 86400);
+            const hours = Math.floor((seconds % 86400) / 3600);
+            const minutes = Math.floor((seconds % 3600) / 60);
+            
+            if (days > 0) return `${days}d ${hours}h`;
+            if (hours > 0) return `${hours}h ${minutes}m`;
+            return `${minutes}m`;
+        }
+        
+        // Auto-refresh a cada 10 segundos
+        refreshStats();
+        setInterval(refreshStats, 10000);
+    </script>
+</body>
+</html>

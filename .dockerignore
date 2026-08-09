@@ -1,0 +1,56 @@
+# Docker ignore file
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+*.so
+*.egg
+*.egg-info/
+dist/
+build/
+
+# Ambiente
+.env
+.venv
+venv/
+ENV/
+env/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Dados locais
+data/
+*.db
+*.sqlite
+
+# Logs
+*.log
+logs/
+
+# Git
+.git/
+.gitignore
+
+# READMEs
+README.md
+LICENSE
+
+# Testes
+tests/
+pytest_cache/
+.tox/
+
+# Modelos grandes (baixados via script)
+models/*.gguf
+models/*.bin
+
+# Arquivos temporários
+*.tmp
+*.bak
+*.cache
