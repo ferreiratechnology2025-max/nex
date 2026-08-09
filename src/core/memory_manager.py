@@ -74,8 +74,8 @@ class MemoriaPersistente:
     do SQLite para garantir consistencia mesmo apos delecoes.
     """
 
-    def __init__(self, db_path: str = "memoria.db",
-                 index_path: str = "memoria.index",
+    def __init__(self, db_path: str,
+                 index_path: str,
                  max_memories: int = 500,
                  ollama_client=None):
 
