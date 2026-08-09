@@ -375,7 +375,8 @@ async def health(request: Request):
     model_name = "unknown"
     device = "unknown"
     memory_count = 0
-    
+    llm = None
+
     llama_available = False
     llama_loaded = False
     hf_available = False
