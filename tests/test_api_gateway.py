@@ -78,8 +78,8 @@ class TestPydanticModels:
         from src.api_gateway import Query
         
         query = Query(text="Test")
-        
-        assert query.max_tokens == 256
+
+        assert query.max_tokens == 2048
         assert query.temperature == 0.7
         assert query.stream is False
         assert query.use_memory is True
@@ -125,10 +125,11 @@ class TestIntegration:
         # Test that the app can be instantiated
         client = TestClient(app)
         
-        # Test root endpoint (no model loading)
+        # Test root endpoint (no model loading) — "/" serve a UI de chat
+        # (HTMLResponse deliberado, src/api_gateway.py:616), não JSON.
         response = client.get("/")
         assert response.status_code == 200
-        assert "message" in response.json()
+        assert "text/html" in response.headers["content-type"]
     
     def test_health_without_models(self):
         """Teste health sem modelos carregados"""
@@ -146,15 +147,22 @@ class TestIntegration:
     def test_ask_without_memory_uses_test_client(self):
         """Teste /ask sem memória usando TestClient"""
         from fastapi.testclient import TestClient
-        from src.api_gateway import app
-        
-        client = TestClient(app)
-        
-        response = client.post("/ask", json={
-            "text": "Hello",
-            "use_memory": False
-        })
-        
+        from src.api_gateway import app, RateLimiter
+
+        # app.state.rate_limiter (e demais estado) é inicializado
+        # imperativamente em src/main.py:main() — não por um evento de
+        # lifespan do FastAPI. Como este teste importa `app` diretamente
+        # de api_gateway (sem passar por main()), precisa popular o
+        # estado mínimo necessário à mão, como já é feito em outros
+        # testes de integração deste arquivo.
+        app.state.rate_limiter = RateLimiter(requests_per_minute=1000)
+
+        with TestClient(app) as client:
+            response = client.post("/ask", json={
+                "text": "Hello",
+                "use_memory": False
+            })
+
         # May fail if no model, but tests the endpoint exists
         assert response.status_code in [200, 500]
 

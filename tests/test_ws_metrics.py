@@ -140,10 +140,11 @@ class TestWebSocketEndpoint:
         
         sig = inspect.signature(websocket_chat)
         params = list(sig.parameters.keys())
-        
-        # Should have websocket and request parameters
+
+        # websocket_chat(websocket: WebSocket) nunca teve parâmetro
+        # 'request' separado — o próprio WebSocket já expõe query_params/
+        # cookies diretamente.
         assert "websocket" in params
-        assert "request" in params
     
     def test_ws_route_registered(self):
         """Teste de registro da rota"""

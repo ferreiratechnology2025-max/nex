@@ -1,5 +1,5 @@
 """
-Teste de Fallback Z.ai -> Llama.cpp -> HuggingFace
+Teste de detecção de backend e estrutura de health check
 """
 import pytest
 import os
@@ -15,13 +15,13 @@ def test_backend_detection():
     """Testa detecção de backend"""
     config = {
         "LOCAL_MODEL_PATH": "",  # Sem modelo GGUF
-        "ZAI_API_KEY": "",       # Sem API key
     }
-    
+
     manager = LLMManager(config)
-    
-    # Sem ZAI_KEY e sem GGUF, deve usar HuggingFace
-    assert manager.backend == BackendType.HUGGINGFACE
+
+    # _detect_backend() só tem dois ramos: LLAMA_CPP (se GGUF local
+    # existir) ou OPENROUTER (caso contrário). Sem GGUF, cai em OpenRouter.
+    assert manager.backend == BackendType.OPENROUTER
     print(f"Backend: {manager.backend.value}")
 
 
@@ -42,19 +42,6 @@ def test_llama_cpp_detection():
     print(f"Backend detectado: {manager.backend.value}")
 
 
-def test_zai_detection():
-    """Testa detecção de Z.ai"""
-    config = {
-        "LOCAL_MODEL_PATH": "",
-        "ZAI_API_KEY": "test-key",  # Com API key
-    }
-    
-    manager = LLMManager(config)
-    
-    print(f"Backend: {manager.backend.value}")
-    # Nota: pode ser ZAI ou HuggingFace dependendo se API e valida
-
-
 def test_health_structure():
     """Testa estrutura de health check"""
     from src.api_gateway import app
@@ -72,7 +59,6 @@ def test_health_structure():
     
     # Verifica estrutura de backends
     backends = data["backends"]
-    assert "zai" in backends
     assert "llama_cpp" in backends
     assert "huggingface" in backends
     

@@ -14,49 +14,49 @@ sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', 'src'))
 from core.memory_manager import MemoriaPersistente, CacheLRU
 
 
-class TestCacheLRU(unittest.TestCase):
-    """Testes para o Cache LRU"""
-    
-    def test_cache_set_get(self):
+class TestCacheLRU(unittest.IsolatedAsyncioTestCase):
+    """Testes para o Cache LRU (CacheLRU.get/set/clear são async)"""
+
+    async def test_cache_set_get(self):
         """Teste básico de set/get"""
         cache = CacheLRU(max_size=3, ttl=60)
-        
+
         import numpy as np
         arr = np.array([1, 2, 3])
-        
-        cache.set("key1", arr)
-        result = cache.get("key1")
-        
+
+        await cache.set("key1", arr)
+        result = await cache.get("key1")
+
         self.assertIsNotNone(result)
         self.assertTrue(np.array_equal(result, arr))
-    
-    def test_cache_miss(self):
+
+    async def test_cache_miss(self):
         """Teste de cache miss"""
         cache = CacheLRU(max_size=3, ttl=60)
-        result = cache.get("nonexistent")
+        result = await cache.get("nonexistent")
         self.assertIsNone(result)
-    
-    def test_cache_eviction(self):
+
+    async def test_cache_eviction(self):
         """Teste de eviction LRU"""
         cache = CacheLRU(max_size=2, ttl=60)
-        
-        cache.set("key1", "value1")
-        cache.set("key2", "value2")
-        cache.set("key3", "value3")
-        
-        self.assertIsNone(cache.get("key1"))
-        self.assertIsNotNone(cache.get("key2"))
-        self.assertIsNotNone(cache.get("key3"))
-    
-    def test_cache_ttl(self):
+
+        await cache.set("key1", "value1")
+        await cache.set("key2", "value2")
+        await cache.set("key3", "value3")
+
+        self.assertIsNone(await cache.get("key1"))
+        self.assertIsNotNone(await cache.get("key2"))
+        self.assertIsNotNone(await cache.get("key3"))
+
+    async def test_cache_ttl(self):
         """Teste de expiração por TTL"""
         import time
         cache = CacheLRU(max_size=3, ttl=1)
-        
-        cache.set("key1", "value1")
+
+        await cache.set("key1", "value1")
         time.sleep(1.5)
-        
-        result = cache.get("key1")
+
+        result = await cache.get("key1")
         self.assertIsNone(result)
 
 
@@ -115,10 +115,10 @@ class TestMemoriaPersistente(unittest.TestCase):
         
         import numpy as np
         arr = np.array([1.0, 2.0, 3.0])
-        
-        memoria.cache_lru.set("test_key", arr)
-        result = memoria.cache_lru.get("test_key")
-        
+
+        asyncio.run(memoria.cache_lru.set("test_key", arr))
+        result = asyncio.run(memoria.cache_lru.get("test_key"))
+
         self.assertIsNotNone(result)
         self.assertTrue(np.array_equal(result, arr))
 

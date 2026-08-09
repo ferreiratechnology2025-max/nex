@@ -96,29 +96,28 @@ class TestWebSearchProcessor:
 class TestBackendDetection:
     """Testes para detecção de backend"""
 
-    def test_detect_huggingface_backend(self):
-        """Testa detecção de backend HuggingFace"""
+    def test_detect_backend_ignores_use_huggingface_flag(self):
+        """_detect_backend() só tem dois ramos (LLAMA_CPP/OPENROUTER);
+        USE_HUGGINGFACE não influencia mais a detecção automática."""
         from src.core.llm_manager import LLMManager, BackendType
 
         config = {
-            "ZAI_API_KEY": "",
             "USE_HUGGINGFACE": True
         }
 
         llm = LLMManager(config)
-        assert llm.backend == BackendType.HUGGINGFACE
+        assert llm.backend == BackendType.OPENROUTER
 
-    def test_detect_huggingface_placeholder_key(self):
-        """Testa fallback com chave placeholder"""
+    def test_detect_backend_without_local_model(self):
+        """Sem LOCAL_MODEL_PATH válido, cai sempre em OpenRouter."""
         from src.core.llm_manager import LLMManager, BackendType
 
         config = {
-            "ZAI_API_KEY": "sua-chave-api-aqui",
-            "USE_HUGGINGFACE": True
+            "LOCAL_MODEL_PATH": ""
         }
 
         llm = LLMManager(config)
-        assert llm.backend == BackendType.HUGGINGFACE
+        assert llm.backend == BackendType.OPENROUTER
 
 
 class TestLLMGenerate:
@@ -147,33 +146,6 @@ class TestLLMGenerate:
         assert response is not None
         assert isinstance(response, str)
 
-    def test_get_model_name_zai(self):
-        """Testa get_model_name para Z.ai com API key mas sem cliente real"""
-        from src.core.llm_manager import LLMManager, BackendType
-
-        config = {
-            "ZAI_API_KEY": "",  # Sem key real
-            "ZAI_MODEL": "glm-4.7-flash"
-        }
-
-        llm = LLMManager(config)
-        # Sem key, não pode usar Z.ai, então retorna HF
-        assert llm.get_model_name() in ["glm-4.7-flash", "HuggingFaceTB/SmolLM-135M"]
-
-    def test_get_device_zai(self):
-        """Testa get_device"""
-        from src.core.llm_manager import LLMManager, BackendType
-
-        config = {"ZAI_API_KEY": ""}
-
-        try:
-            llm = LLMManager(config)
-            device = llm.get_device()
-            assert device in ["cloud", "cpu", "cuda"]
-        except Exception:
-            pytest.skip("Não foi possível inicializar LLM")
-
-
 class TestConfig:
     """Testes de configuração"""
 
@@ -183,16 +155,6 @@ class TestConfig:
 
         settings = get_settings()
         assert settings is not None
-
-    def test_zai_config_defaults(self):
-        """Testa valores padrão da config Z.ai"""
-        from src.config import get_settings
-
-        settings = get_settings()
-        assert hasattr(settings, 'ZAI_API_KEY')
-        assert hasattr(settings, 'ZAI_MODEL')
-        assert hasattr(settings, 'WEB_SEARCH_ENABLED')
-        assert settings.ZAI_MODEL == "glm-4.7-flash"
 
     def test_web_search_config(self):
         """Testa configurações de web search"""
@@ -218,17 +180,6 @@ class TestIntegration:
         llm = LLMManager(config, memory_manager=mock_memory)
 
         assert llm.memory_manager == mock_memory
-
-    @pytest.mark.asyncio
-    async def test_web_search_processor_with_zai_client(self):
-        """Testa WebSearchProcessor com Z.ai client"""
-        from src.core.web_search import WebSearchProcessor
-
-        mock_zai = Mock()
-        mock_zai.is_available.return_value = True
-
-        processor = WebSearchProcessor(zai_client=mock_zai)
-        assert processor.zai_client == mock_zai
 
 
 if __name__ == "__main__":
