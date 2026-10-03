@@ -42,3 +42,4 @@ node_modules/
 *.gguf
 *.onnx
 venv/
+.env.*
