@@ -1,0 +1,2 @@
+docs/TEST_REPORT_FASE4.md:37:3. **Web Search não usa tool calling do Z.ai**: O web search agora usa o conhecimento interno do modelo OpenRouter, não tool calling dedicado (Z.ai removido na Fase 2).
+docs/TEST_REPORT_FASE4.md:43:3. **Testes automatizados**: Os testes existentes em `tests/` precisam de atualização para refletir a nova arquitetura sem Z.ai.

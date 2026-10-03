@@ -1,0 +1,69 @@
+=== FASE 9 — REPOSITORY BOUNDARY COMPLETION ===
+
+## 9A — Diretórios de Auditoria
+
+| Item | Classificação | Evidência | Ação |
+|------|---------------|-----------|------|
+| auditoria_nex/ | ARCHIVE | zero referências externas; log limpo da Fase 0 | mover para archive/ |
+| auditoria_profunda/ | DELETE | zero referências externas; contém artefato de 7,6MB corrompido por bug de auto-referência de grep; conteúdo útil já resumido em 00_SINTESE.txt e superado pela Fase 7 | remover |
+| baseline_saude/ | ARCHIVE | zero referências externas; documenta causa-raiz do GenerationConfig que motivou ação real (DELETE de 2 arquivos) | mover para archive/ |
+| fase_7_correcao_controlada/ | ARCHIVE | zero referências externas; rastreabilidade do Commit B (728e7c5) já mesclado | mover para archive/ |
+| fase_8_repository_boundary/ | ARCHIVE | zero referências externas; rastreabilidade do Commit A (67763fc) já mesclado; contém NAO_CLASSIFICADOS.txt referenciado por esta própria Fase 9 | mover para archive/ (após conclusão da Fase 9) |
+
+Nota: `fase_9_completion/` (este diretório) não existia quando os 5 acima
+foram inventariados — deve seguir o mesmo destino (ARCHIVE) uma vez
+concluída esta fase.
+
+## 9B — Itens do Produto (24)
+
+| Item | Tipo | Classificação | Evidência | Ação |
+|------|------|---------------|-----------|------|
+| docs/ (4 arquivos) | documentação | PROMOTE | documentado em README.md:297, SYSTEM_MAP.md:90 | stage |
+| examples/ (2 arquivos) | exemplos | PROMOTE | documentado em README.md:299 | stage |
+| Dockerfile | infra | PROMOTE | referenciado por docker-compose.yml, .dockerignore (ambos já PROMOTE), README, SYSTEM_MAP | stage |
+| docker-entrypoint.sh | infra | PROMOTE | usado como ENTRYPOINT no Dockerfile (dependência funcional confirmada) | stage |
+| Makefile | build | PROMOTE | conteúdo coerente, opera sobre stack Docker já PROMOTE | stage |
+| scripts/*.sh (7) | scripts | PROMOTE | documentado individualmente no README (tabela "Scripts Linux/Mac") | stage |
+| scripts/*.bat (raiz, 3) | scripts | PROMOTE | idem | stage |
+| scripts/windows/*.bat (14) | scripts | PROMOTE | documentado individualmente no README (tabela "Scripts Windows") | stage |
+| check_environment.ps1 | script pessoal | PROMOTE | funcionalmente equivalente a scripts/validate_system.* já PROMOTE; sem hardcode; sem segredo | stage |
+| start_services.ps1 | script pessoal | KEEP-UNTRACKED | linha 8: caminho hardcoded `C:\Users\becat\...` de outra máquina — quebra em qualquer outro ambiente | manter local |
+| "MANUAL SISTEMA Nex 1.pdf" | binário (4,25MB) | KEEP-UNTRACKED | zero referências em .md; binário grande sem política de LFS | manter local |
+| "Manual de Bolso do Nex Chat.pdf" | binário (3,88MB) | KEEP-UNTRACKED | idem | manter local |
+| "ligar Nex.txt" | nota pessoal | KEEP-UNTRACKED | nota informal do usuário, não documentação de projeto | manter local |
+
+## Resumo
+
+| Categoria | Quantidade | Ação |
+|-----------|------------|------|
+| PROMOTE (9B) | 21 | stage |
+| KEEP-UNTRACKED (9B) | 4 | manter local |
+| ARCHIVE (9A) | 4 (5 incluindo fase_8, após conclusão) | mover para archive/ |
+| DELETE (9A) | 1 (auditoria_profunda/) | remover |
+
+## Achados fora do escopo original do prompt (não corrigidos nesta etapa)
+
+1. `auditoria_profunda/01_seguranca/outras_credenciais.txt` cresceu de
+   152 linhas (relatado na Fase 7) para 25.560 linhas / 7,6MB, por um bug
+   de auto-referência do grep original (o comando varria "." sem excluir
+   seu próprio diretório de saída). Nenhum segredo em texto puro
+   sobrevive (verificado), mas é a razão concreta da classificação DELETE
+   para auditoria_profunda/ em vez de ARCHIVE como os outros 3 diretórios
+   de processo.
+2. `scripts/windows/setup_ollama.bat` e `scripts/windows/start_local.bat`
+   são citados pelo README mas JÁ ESTAVAM tracked antes desta sessão —
+   não fazem parte dos 24 itens, mas confirmam que a cobertura de
+   scripts/ documentada no README é mais ampla que os untracked
+   isoladamente.
+3. `start_services.ps1` tem um defeito de portabilidade (caminho
+   hardcoded de outra máquina/usuário) que o impede de ser promovido como
+   está — precisaria de correção (fora do escopo de "classificar, não
+   modificar").
+
+## Próximo Passo
+
+- Executar ações baseadas na classificação (Fase 9 — execução, análoga à
+  Fase 8.3): stage dos 21 PROMOTE, archive dos 4 diretórios de processo,
+  delete de auditoria_profunda/
+- Validar staging (mesma bateria de checagens da 8.2E)
+- Fase 10 (26 falhas) — após boundary estabilizado

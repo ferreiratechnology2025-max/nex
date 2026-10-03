@@ -1,0 +1,3 @@
+tests/test_fallback.py
+tests/test_fallback_activation.py
+tests/test_web_search.py

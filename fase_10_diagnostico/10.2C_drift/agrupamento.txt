@@ -1,0 +1,16 @@
+=== 10.2C — AGRUPAMENTO POR CONTRATO (19 falhas restantes) ===
+
+| Contrato | Falhas | API Atual | Intenção Original | Decisão |
+|---|---|---|---|---|
+| LLMManager (construtor) | test_cleanup, test_initialization, test_model_loaded, test_batch_processing, test_single_request, test_cpu_fallback_on_no_cuda, test_memory_cleanup (7) | `LLMManager(config: dict, memory_manager=None)` | `LLMManager(model_name="HuggingFaceTB/SmolLM-135M")` — API de versão única-modelo-HF, anterior à arquitetura multi-backend | ELIMINAR o arquivo tests/test_llm_manager.py — cobertura equivalente já existe em tests/test_fallback.py e tests/test_fallback_chain.py (ambos já tracked, testam LLMManager contra a API real) |
+| _detect_backend() (huggingface) | test_backend_detection, test_detect_huggingface_backend, test_detect_huggingface_placeholder_key (3) | Retorna apenas LLAMA_CPP (se GGUF local existir) ou OPENROUTER (caso contrário) — 2 ramos | Testava um `_detect_backend()` com ramo dedicado para HUGGINGFACE quando `USE_HUGGINGFACE=True` — esse ramo não existe mais na função | ADAPTAR: atualizar as 3 asserções para refletir os 2 ramos reais |
+| CacheLRU (assíncrono) | test_cache_eviction, test_cache_miss, test_cache_set_get, test_cache_ttl, test_cache_lru_interno (5) | `async def get/set/clear` | Testes síncronos (unittest.TestCase, `def test_*`) chamando `cache.get()`/`.set()` sem await | ADAPTAR: converter os métodos de teste para `async def` (usando IsolatedAsyncioTestCase, já usado em outro arquivo tracked) e usar `await` nas chamadas |
+| GET / (root, HTML) | test_app_with_test_client (1) | `@app.get("/", response_class=HTMLResponse)` — serve a UI de chat | Testava `/` como endpoint JSON com chave "message" | ADAPTAR: checar `response.headers["content-type"]` contém "text/html" em vez de `response.json()` |
+| Query.max_tokens (default) | test_query_defaults (1) | `Field(2048, ...)`, consistente com `Settings.MAX_TOKENS=2048` | Esperava default 256 | ADAPTAR: `assert query.max_tokens == 2048` |
+| websocket_chat (assinatura) | test_ws_handler_has_correct_signature (1) | `websocket_chat(websocket: WebSocket)` — nunca teve parâmetro request | Esperava `"request" in params` | ADAPTAR: remover a asserção sobre "request", manter a de "websocket" |
+
+Nota: `test_ask_without_memory_uses_test_client` (CR6 — fixture/isolamento)
+está fora deste agrupamento por categoria (é E, não C) — tratada na 10.2D.
+
+Total desta onda: 7 (eliminar) + 3+5+1+1+1 (adaptar, 11) = 18. A 19ª falha
+(test_ask_without_memory_uses_test_client) é 10.2D.

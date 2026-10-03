@@ -1,0 +1,527 @@
+============================= test session starts =============================
+platform win32 -- Python 3.11.9, pytest-9.0.3, pluggy-1.6.0 -- C:\Python311\python.exe
+cachedir: .pytest_cache
+hypothesis profile 'default'
+metadata: {'Python': '3.11.9', 'Platform': 'Windows-10-10.0.26200-SP0', 'Packages': {'pytest': '9.0.3', 'pluggy': '1.6.0'}, 'Plugins': {'Faker': '40.36.0', 'asyncio': '1.3.0', 'cov': '7.1.0', 'anyio': '4.13.0', 'hypothesis': '6.161.1', 'json-report': '1.5.0', 'metadata': '3.1.1'}, 'JAVA_HOME': 'C:\\Program Files\\Eclipse Adoptium\\jdk-17.0.20.8-hotspot\\'}
+rootdir: D:\Nex
+configfile: pytest.ini
+plugins: Faker-40.36.0, asyncio-1.3.0, cov-7.1.0, anyio-4.13.0, hypothesis-6.161.1, json-report-1.5.0, metadata-3.1.1
+asyncio: mode=Mode.AUTO, debug=False, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function
+collecting ... collected 106 items
+
+tests/quick_test.py::test PASSED                                         [  0%]
+tests/test_api_gateway.py::TestPromptBuilding::test_prompt_with_context PASSED [  1%]
+tests/test_api_gateway.py::TestPromptBuilding::test_prompt_without_context PASSED [  2%]
+tests/test_api_gateway.py::TestRateLimiter::test_rate_limiter_init PASSED [  3%]
+tests/test_api_gateway.py::TestRateLimiter::test_rate_limiter_check_ok PASSED [  4%]
+tests/test_api_gateway.py::TestPydanticModels::test_query_model PASSED   [  5%]
+tests/test_api_gateway.py::TestPydanticModels::test_query_defaults FAILED [  6%]
+tests/test_api_gateway.py::TestPydanticModels::test_memory_model PASSED  [  7%]
+tests/test_api_gateway.py::TestPydanticModels::test_query_validation PASSED [  8%]
+tests/test_api_gateway.py::TestAppCreation::test_app_created PASSED      [  9%]
+tests/test_api_gateway.py::TestIntegration::test_app_with_test_client FAILED [ 10%]
+tests/test_api_gateway.py::TestIntegration::test_health_without_models PASSED [ 11%]
+tests/test_api_gateway.py::TestIntegration::test_ask_without_memory_uses_test_client FAILED [ 12%]
+tests/test_config.py::TestSettingsDefaults::test_default_model_name PASSED [ 13%]
+tests/test_config.py::TestSettingsDefaults::test_default_max_tokens PASSED [ 14%]
+tests/test_config.py::TestSettingsDefaults::test_default_db_path PASSED  [ 15%]
+tests/test_config.py::TestSettingsDefaults::test_default_cache_size PASSED [ 16%]
+tests/test_config.py::TestSettingsDefaults::test_default_memory_max_items PASSED [ 16%]
+tests/test_config.py::TestSettingsDefaults::test_default_optimizations PASSED [ 17%]
+tests/test_config.py::TestSettingsOverride::test_override_model_name PASSED [ 18%]
+tests/test_config.py::TestSettingsOverride::test_override_max_tokens PASSED [ 19%]
+tests/test_config.py::TestSettingsOverride::test_override_port PASSED    [ 20%]
+tests/test_config.py::TestSettingsValidation::test_invalid_max_tokens_below_min PASSED [ 21%]
+tests/test_config.py::TestSettingsValidation::test_invalid_max_tokens_above_max PASSED [ 22%]
+tests/test_config.py::TestSettingsValidation::test_invalid_port_below_min PASSED [ 23%]
+tests/test_config.py::TestSettingsValidation::test_invalid_temperature_above_max PASSED [ 24%]
+tests/test_config.py::TestSettingsPaths::test_db_path_normalized PASSED  [ 25%]
+tests/test_config.py::TestSingleton::test_get_settings_returns_singleton PASSED [ 26%]
+tests/test_config.py::TestSingleton::test_load_settings_returns_singleton PASSED [ 27%]
+tests/test_config.py::TestDirectoryCreation::test_creates_data_directory PASSED [ 28%]
+tests/test_config.py::TestOptimizations::test_apply_optimizations_sets_env PASSED [ 29%]
+tests/test_config.py::TestMainImport::test_main_can_be_imported PASSED   [ 30%]
+tests/test_coordinator_triage.py::TestCoordinatorTriage::test_simple_cases PASSED [ 31%]
+tests/test_coordinator_triage.py::TestCoordinatorTriage::test_dados_validados_is_simple PASSED [ 32%]
+tests/test_coordinator_triage.py::TestCoordinatorTriage::test_complex_cases PASSED [ 33%]
+tests/test_coordinator_triage.py::TestCoordinatorTriage::test_weak_matches_require_two PASSED [ 33%]
+tests/test_coordinator_triage.py::TestCoordinatorTriage::test_weak_matches_two_triggers_complex PASSED [ 34%]
+tests/test_coordinator_triage.py::TestCoordinatorTriage::test_long_text_without_keywords_is_simple PASSED [ 35%]
+tests/test_coordinator_triage.py::TestCoordinatorTriage::test_route_simple_no_writer_agent PASSED [ 36%]
+tests/test_coordinator_triage.py::TestCoordinatorTriage::test_circuit_breaker_returns_success_false PASSED [ 37%]
+tests/test_coordinator_triage.py::TestCoordinatorTriage::test_circuit_breaker_no_writer_agent PASSED [ 38%]
+tests/test_fallback.py::test_backend_detection FAILED                    [ 39%]
+tests/test_fallback.py::test_llama_cpp_detection PASSED                  [ 40%]
+tests/test_fallback.py::test_health_structure PASSED                     [ 41%]
+tests/test_fallback_chain.py::TestFallbackChain::test_fallback_chain_order PASSED [ 42%]
+tests/test_fallback_chain.py::TestFallbackChain::test_fallback_all_fail PASSED [ 43%]
+tests/test_fallback_chain.py::TestFallbackChain::test_fallback_stream_order PASSED [ 44%]
+tests/test_fallback_chain.py::TestFallbackChain::test_direct_success_openrouter PASSED [ 45%]
+tests/test_fallback_chain.py::TestFallbackChain::test_metadata_on_fallback PASSED [ 46%]
+tests/test_llm_manager.py::TestLLMManager::test_cleanup FAILED           [ 47%]
+tests/test_llm_manager.py::TestLLMManager::test_initialization FAILED    [ 48%]
+tests/test_llm_manager.py::TestLLMManager::test_model_loaded FAILED      [ 49%]
+tests/test_llm_manager.py::TestLLMManager::test_request_dataclass PASSED [ 50%]
+tests/test_llm_manager.py::TestBatching::test_batch_processing FAILED    [ 50%]
+tests/test_llm_manager.py::TestBatching::test_single_request FAILED      [ 51%]
+tests/test_llm_manager.py::TestCPUFallback::test_cpu_fallback_on_no_cuda FAILED [ 52%]
+tests/test_llm_manager.py::TestMemoryCleanup::test_memory_cleanup FAILED [ 53%]
+tests/test_memory_integration.py::test_delete_and_search_returns_only_valid PASSED [ 54%]
+tests/test_memory_integration.py::test_eviction_updates_mapping PASSED   [ 55%]
+tests/test_memory_opt.py::TestCacheLRU::test_cache_eviction FAILED       [ 56%]
+tests/test_memory_opt.py::TestCacheLRU::test_cache_miss FAILED           [ 57%]
+tests/test_memory_opt.py::TestCacheLRU::test_cache_set_get FAILED        [ 58%]
+tests/test_memory_opt.py::TestCacheLRU::test_cache_ttl FAILED            [ 59%]
+tests/test_memory_opt.py::TestMemoriaPersistente::test_cache_lru_interno FAILED [ 60%]
+tests/test_memory_opt.py::TestMemoriaPersistente::test_inicializacao PASSED [ 61%]
+tests/test_memory_opt.py::TestMemoriaPersistente::test_salvar_memoria PASSED [ 62%]
+tests/test_ollama_client.py::test_ollama_config_defaults PASSED          [ 63%]
+tests/test_ollama_client.py::test_ollama_config_custom PASSED            [ 64%]
+tests/test_ollama_client.py::test_ollama_client_init PASSED              [ 65%]
+tests/test_ollama_client.py::test_ollama_empty_prompt_embeddings PASSED  [ 66%]
+tests/test_ollama_client.py::test_ollama_connection_refused PASSED       [ 66%]
+tests/test_ollama_client.py::test_ollama_list_models_empty PASSED        [ 67%]
+tests/test_ollama_client.py::test_ollama_get_model_info_empty PASSED     [ 68%]
+tests/test_ollama_client.py::test_ollama_generate_no_connection PASSED   [ 69%]
+tests/test_ollama_client.py::test_llm_manager_ollama_config PASSED       [ 70%]
+tests/test_ollama_client.py::test_llm_manager_ollama_disabled PASSED     [ 71%]
+tests/test_ollama_client.py::test_llm_manager_fallback_chain_includes_ollama PASSED [ 72%]
+tests/test_ollama_client.py::test_backend_type_has_ollama PASSED         [ 73%]
+tests/test_ollama_client.py::test_ollama_try_methods_exist PASSED        [ 74%]
+tests/test_ollama_client.py::test_ollama_try_no_connection PASSED        [ 75%]
+tests/test_web_search.py::TestWebSearchProcessor::test_processor_initialization PASSED [ 76%]
+tests/test_web_search.py::TestWebSearchProcessor::test_processor_with_memory_manager PASSED [ 77%]
+tests/test_web_search.py::TestWebSearchProcessor::test_format_for_context_empty PASSED [ 78%]
+tests/test_web_search.py::TestWebSearchProcessor::test_format_for_context_with_results PASSED [ 79%]
+tests/test_web_search.py::TestWebSearchProcessor::test_save_to_memory_no_manager PASSED [ 80%]
+tests/test_web_search.py::TestWebSearchProcessor::test_save_to_memory_with_manager PASSED [ 81%]
+tests/test_web_search.py::TestBackendDetection::test_detect_huggingface_backend FAILED [ 82%]
+tests/test_web_search.py::TestBackendDetection::test_detect_huggingface_placeholder_key FAILED [ 83%]
+tests/test_web_search.py::TestLLMGenerate::test_generate_without_web_search PASSED [ 83%]
+tests/test_web_search.py::TestConfig::test_load_dotenv PASSED            [ 84%]
+tests/test_web_search.py::TestConfig::test_web_search_config PASSED      [ 85%]
+tests/test_web_search.py::TestIntegration::test_llm_manager_with_memory PASSED [ 86%]
+tests/test_ws_metrics.py::TestMetricsCollection::test_metrics_initialization PASSED [ 87%]
+tests/test_ws_metrics.py::TestMetricsCollection::test_increment_requests PASSED [ 88%]
+tests/test_ws_metrics.py::TestMetricsCollection::test_increment_decrement_connections PASSED [ 89%]
+tests/test_ws_metrics.py::TestMetricsCollection::test_latency_ema PASSED [ 90%]
+tests/test_ws_metrics.py::TestMetricsCollection::test_get_metrics PASSED [ 91%]
+tests/test_ws_metrics.py::TestMetricsCollection::test_reset_metrics PASSED [ 92%]
+tests/test_ws_metrics.py::TestMetricsMiddleware::test_middleware_registered PASSED [ 93%]
+tests/test_ws_metrics.py::TestMetricsMiddleware::test_middleware_does_not_break_request PASSED [ 94%]
+tests/test_ws_metrics.py::TestWebSocketEndpoint::test_ws_endpoint_exists PASSED [ 95%]
+tests/test_ws_metrics.py::TestWebSocketEndpoint::test_ws_handler_has_correct_signature FAILED [ 96%]
+tests/test_ws_metrics.py::TestWebSocketEndpoint::test_ws_route_registered PASSED [ 97%]
+tests/test_ws_metrics.py::TestMetricsEndpoint::test_metrics_endpoint_returns_data PASSED [ 98%]
+tests/test_ws_metrics.py::TestWebSocketJsonFormat::test_ws_json_structure PASSED [ 99%]
+tests/test_ws_metrics.py::TestMetricsIntegration::test_metrics_after_http_request PASSED [100%]
+
+================================== FAILURES ===================================
+___________________ TestPydanticModels.test_query_defaults ____________________
+tests\test_api_gateway.py:82: in test_query_defaults
+    assert query.max_tokens == 256
+E   AssertionError: assert 2048 == 256
+E    +  where 2048 = Query(text='Test', max_tokens=2048, temperature=0.7, stream=False, use_memory=True, use_web_search=False).max_tokens
+__________________ TestIntegration.test_app_with_test_client __________________
+tests\test_api_gateway.py:131: in test_app_with_test_client
+    assert "message" in response.json()
+                        ^^^^^^^^^^^^^^^
+C:\Users\ferre\AppData\Roaming\Python\Python311\site-packages\httpx\_models.py:832: in json
+    return jsonlib.loads(self.content, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+C:\Python311\Lib\json\__init__.py:346: in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+C:\Python311\Lib\json\decoder.py:337: in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+C:\Python311\Lib\json\decoder.py:355: in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+E   json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+__________ TestIntegration.test_ask_without_memory_uses_test_client ___________
+C:\Python311\Lib\site-packages\starlette\datastructures.py:683: in __getattr__
+    return self._state[key]
+           ^^^^^^^^^^^^^^^^
+E   KeyError: 'rate_limiter'
+
+The above exception was the direct cause of the following exception:
+tests\test_api_gateway.py:153: in test_ask_without_memory_uses_test_client
+    response = client.post("/ask", json={
+C:\Python311\Lib\site-packages\starlette\testclient.py:555: in post
+    return super().post(
+C:\Users\ferre\AppData\Roaming\Python\Python311\site-packages\httpx\_client.py:1144: in post
+    return self.request(
+C:\Python311\Lib\site-packages\starlette\testclient.py:454: in request
+    return super().request(
+C:\Users\ferre\AppData\Roaming\Python\Python311\site-packages\httpx\_client.py:825: in request
+    return self.send(request, auth=auth, follow_redirects=follow_redirects)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+C:\Users\ferre\AppData\Roaming\Python\Python311\site-packages\httpx\_client.py:914: in send
+    response = self._send_handling_auth(
+C:\Users\ferre\AppData\Roaming\Python\Python311\site-packages\httpx\_client.py:942: in _send_handling_auth
+    response = self._send_handling_redirects(
+C:\Users\ferre\AppData\Roaming\Python\Python311\site-packages\httpx\_client.py:979: in _send_handling_redirects
+    response = self._send_single_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+C:\Users\ferre\AppData\Roaming\Python\Python311\site-packages\httpx\_client.py:1014: in _send_single_request
+    response = transport.handle_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+C:\Python311\Lib\site-packages\starlette\testclient.py:356: in handle_request
+    raise exc
+C:\Python311\Lib\site-packages\starlette\testclient.py:353: in handle_request
+    portal.call(self.app, scope, receive, send)
+C:\Python311\Lib\site-packages\anyio\from_thread.py:334: in call
+    return cast(T_Retval, self.start_task_soon(func, *args).result())
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+C:\Python311\Lib\concurrent\futures\_base.py:456: in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+C:\Python311\Lib\concurrent\futures\_base.py:401: in __get_result
+    raise self._exception
+C:\Python311\Lib\site-packages\anyio\from_thread.py:259: in _call_func
+    retval = await retval_or_awaitable
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+C:\Users\ferre\AppData\Roaming\Python\Python311\site-packages\fastapi\applications.py:1159: in __call__
+    await super().__call__(scope, receive, send)
+C:\Python311\Lib\site-packages\starlette\applications.py:90: in __call__
+    await self.middleware_stack(scope, receive, send)
+C:\Python311\Lib\site-packages\starlette\middleware\errors.py:186: in __call__
+    raise exc
+C:\Python311\Lib\site-packages\starlette\middleware\errors.py:164: in __call__
+    await self.app(scope, receive, _send)
+C:\Python311\Lib\site-packages\starlette\middleware\base.py:193: in __call__
+    response = await self.dispatch_func(request, call_next)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+src\metrics.py:134: in dispatch
+    response = await call_next(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+C:\Python311\Lib\site-packages\starlette\middleware\base.py:168: in call_next
+    raise app_exc from app_exc.__cause__ or app_exc.__context__
+C:\Python311\Lib\site-packages\starlette\middleware\base.py:144: in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+C:\Python311\Lib\site-packages\starlette\middleware\cors.py:88: in __call__
+    await self.app(scope, receive, send)
+C:\Python311\Lib\site-packages\starlette\middleware\exceptions.py:63: in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+C:\Python311\Lib\site-packages\starlette\_exception_handler.py:53: in wrapped_app
+    raise exc
+C:\Python311\Lib\site-packages\starlette\_exception_handler.py:42: in wrapped_app
+    await app(scope, receive, sender)
+C:\Users\ferre\AppData\Roaming\Python\Python311\site-packages\fastapi\middleware\asyncexitstack.py:18: in __call__
+    await self.app(scope, receive, send)
+C:\Python311\Lib\site-packages\starlette\routing.py:660: in __call__
+    await self.middleware_stack(scope, receive, send)
+C:\Python311\Lib\site-packages\starlette\routing.py:680: in app
+    await route.handle(scope, receive, send)
+C:\Python311\Lib\site-packages\starlette\routing.py:276: in handle
+    await self.app(scope, receive, send)
+C:\Users\ferre\AppData\Roaming\Python\Python311\site-packages\fastapi\routing.py:134: in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+C:\Python311\Lib\site-packages\starlette\_exception_handler.py:53: in wrapped_app
+    raise exc
+C:\Python311\Lib\site-packages\starlette\_exception_handler.py:42: in wrapped_app
+    await app(scope, receive, sender)
+C:\Users\ferre\AppData\Roaming\Python\Python311\site-packages\fastapi\routing.py:120: in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+C:\Users\ferre\AppData\Roaming\Python\Python311\site-packages\fastapi\routing.py:674: in app
+    raw_response = await run_endpoint_function(
+C:\Users\ferre\AppData\Roaming\Python\Python311\site-packages\fastapi\routing.py:328: in run_endpoint_function
+    return await dependant.call(**values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+src\api_gateway.py:266: in ask
+    await (await get_rate_limiter(request)).check(get_client_id(request))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+src\api_gateway.py:185: in get_rate_limiter
+    return request.app.state.rate_limiter
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+C:\Python311\Lib\site-packages\starlette\datastructures.py:686: in __getattr__
+    raise AttributeError(message.format(self.__class__.__name__, key))
+E   AttributeError: 'State' object has no attribute 'rate_limiter'
+___________________________ test_backend_detection ____________________________
+tests\test_fallback.py:24: in test_backend_detection
+    assert manager.backend == BackendType.HUGGINGFACE
+E   AssertionError: assert <BackendType.... 'openrouter'> == <BackendType....'huggingface'>
+E     
+E     - huggingface
+E     + openrouter
+_________________________ TestLLMManager.test_cleanup _________________________
+tests\test_llm_manager.py:64: in test_cleanup
+    manager = LLMManager(model_name="HuggingFaceTB/SmolLM-135M")
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   TypeError: LLMManager.__init__() got an unexpected keyword argument 'model_name'
+_____________________ TestLLMManager.test_initialization ______________________
+tests\test_llm_manager.py:44: in test_initialization
+    manager = LLMManager(model_name="HuggingFaceTB/SmolLM-135M")
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   TypeError: LLMManager.__init__() got an unexpected keyword argument 'model_name'
+______________________ TestLLMManager.test_model_loaded _______________________
+tests\test_llm_manager.py:54: in test_model_loaded
+    manager = LLMManager(model_name="HuggingFaceTB/SmolLM-135M")
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   TypeError: LLMManager.__init__() got an unexpected keyword argument 'model_name'
+_____________________ TestBatching.test_batch_processing ______________________
+tests\test_llm_manager.py:90: in test_batch_processing
+    manager = LLMManager(model_name="HuggingFaceTB/SmolLM-135M")
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   TypeError: LLMManager.__init__() got an unexpected keyword argument 'model_name'
+______________________ TestBatching.test_single_request _______________________
+tests\test_llm_manager.py:119: in test_single_request
+    manager = LLMManager(model_name="HuggingFaceTB/SmolLM-135M")
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   TypeError: LLMManager.__init__() got an unexpected keyword argument 'model_name'
+________________ TestCPUFallback.test_cpu_fallback_on_no_cuda _________________
+tests\test_llm_manager.py:148: in test_cpu_fallback_on_no_cuda
+    manager = LLMManager(model_name="HuggingFaceTB/SmolLM-135M")
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   TypeError: LLMManager.__init__() got an unexpected keyword argument 'model_name'
+____________________ TestMemoryCleanup.test_memory_cleanup ____________________
+tests\test_llm_manager.py:169: in test_memory_cleanup
+    manager = LLMManager(model_name="HuggingFaceTB/SmolLM-135M")
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   TypeError: LLMManager.__init__() got an unexpected keyword argument 'model_name'
+______________________ TestCacheLRU.test_cache_eviction _______________________
+tests\test_memory_opt.py:47: in test_cache_eviction
+    self.assertIsNone(cache.get("key1"))
+E   AssertionError: <coroutine object CacheLRU.get at 0x0000017E63AFBD30> is not None
+________________________ TestCacheLRU.test_cache_miss _________________________
+tests\test_memory_opt.py:37: in test_cache_miss
+    self.assertIsNone(result)
+E   AssertionError: <coroutine object CacheLRU.get at 0x0000017E639D05E0> is not None
+_______________________ TestCacheLRU.test_cache_set_get _______________________
+tests\test_memory_opt.py:31: in test_cache_set_get
+    self.assertTrue(np.array_equal(result, arr))
+E   AssertionError: False is not true
+_________________________ TestCacheLRU.test_cache_ttl _________________________
+tests\test_memory_opt.py:60: in test_cache_ttl
+    self.assertIsNone(result)
+E   AssertionError: <coroutine object CacheLRU.get at 0x0000017E639D0D60> is not None
+________________ TestMemoriaPersistente.test_cache_lru_interno ________________
+tests\test_memory_opt.py:123: in test_cache_lru_interno
+    self.assertTrue(np.array_equal(result, arr))
+E   AssertionError: False is not true
+____________ TestBackendDetection.test_detect_huggingface_backend _____________
+tests\test_web_search.py:109: in test_detect_huggingface_backend
+    assert llm.backend == BackendType.HUGGINGFACE
+E   AssertionError: assert <BackendType.... 'openrouter'> == <BackendType....'huggingface'>
+E     
+E     - huggingface
+E     + openrouter
+________ TestBackendDetection.test_detect_huggingface_placeholder_key _________
+tests\test_web_search.py:121: in test_detect_huggingface_placeholder_key
+    assert llm.backend == BackendType.HUGGINGFACE
+E   AssertionError: assert <BackendType.... 'openrouter'> == <BackendType....'huggingface'>
+E     
+E     - huggingface
+E     + openrouter
+_________ TestWebSocketEndpoint.test_ws_handler_has_correct_signature _________
+tests\test_ws_metrics.py:146: in test_ws_handler_has_correct_signature
+    assert "request" in params
+E   AssertionError: assert 'request' in ['websocket']
+============================== warnings summary ===============================
+C:\Users\ferre\AppData\Roaming\Python\Python311\site-packages\fastapi\testclient.py:1
+  C:\Users\ferre\AppData\Roaming\Python\Python311\site-packages\fastapi\testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
+    from starlette.testclient import TestClient as TestClient  # noqa
+
+tests/quick_test.py::test
+  <frozen importlib._bootstrap>:241: DeprecationWarning: builtin type SwigPyPacked has no __module__ attribute
+
+tests/quick_test.py::test
+  <frozen importlib._bootstrap>:241: DeprecationWarning: builtin type SwigPyObject has no __module__ attribute
+
+tests/quick_test.py::test
+  <frozen importlib._bootstrap>:241: DeprecationWarning: builtin type swigvarlink has no __module__ attribute
+
+tests/test_api_gateway.py::TestIntegration::test_health_without_models
+  D:\Nex\tests\..\src\config.py:27: PydanticDeprecatedSince20: Using extra keyword arguments on `Field` is deprecated and will be removed. Use `json_schema_extra` instead. (Extra keys: 'env'). Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.12/migration/
+    OLLAMA_ENABLED: bool = Field(default=True, env="OLLAMA_ENABLED")
+
+tests/test_api_gateway.py::TestIntegration::test_health_without_models
+  D:\Nex\tests\..\src\config.py:28: PydanticDeprecatedSince20: Using extra keyword arguments on `Field` is deprecated and will be removed. Use `json_schema_extra` instead. (Extra keys: 'env'). Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.12/migration/
+    OLLAMA_URL: str = Field(default="http://localhost:11434", env="OLLAMA_URL")
+
+tests/test_api_gateway.py::TestIntegration::test_health_without_models
+  D:\Nex\tests\..\src\config.py:29: PydanticDeprecatedSince20: Using extra keyword arguments on `Field` is deprecated and will be removed. Use `json_schema_extra` instead. (Extra keys: 'env'). Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.12/migration/
+    OLLAMA_MODEL: str = Field(default="ornith:latest", env="OLLAMA_MODEL")
+
+tests/test_api_gateway.py::TestIntegration::test_health_without_models
+  D:\Nex\tests\..\src\config.py:30: PydanticDeprecatedSince20: Using extra keyword arguments on `Field` is deprecated and will be removed. Use `json_schema_extra` instead. (Extra keys: 'env'). Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.12/migration/
+    OLLAMA_TIMEOUT: int = Field(default=120, ge=30, le=600, env="OLLAMA_TIMEOUT")
+
+tests/test_api_gateway.py::TestIntegration::test_health_without_models
+  D:\Nex\tests\..\src\config.py:31: PydanticDeprecatedSince20: Using extra keyword arguments on `Field` is deprecated and will be removed. Use `json_schema_extra` instead. (Extra keys: 'env'). Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.12/migration/
+    OLLAMA_TEMPERATURE: float = Field(default=0.7, ge=0.0, le=2.0, env="OLLAMA_TEMPERATURE")
+
+tests/test_api_gateway.py::TestIntegration::test_health_without_models
+  D:\Nex\tests\..\src\config.py:32: PydanticDeprecatedSince20: Using extra keyword arguments on `Field` is deprecated and will be removed. Use `json_schema_extra` instead. (Extra keys: 'env'). Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.12/migration/
+    OLLAMA_TOP_K: int = Field(default=40, ge=1, le=100, env="OLLAMA_TOP_K")
+
+tests/test_api_gateway.py::TestIntegration::test_health_without_models
+  D:\Nex\tests\..\src\config.py:33: PydanticDeprecatedSince20: Using extra keyword arguments on `Field` is deprecated and will be removed. Use `json_schema_extra` instead. (Extra keys: 'env'). Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.12/migration/
+    OLLAMA_TOP_P: float = Field(default=0.9, ge=0.0, le=1.0, env="OLLAMA_TOP_P")
+
+tests/test_api_gateway.py::TestIntegration::test_health_without_models
+  D:\Nex\tests\..\src\config.py:34: PydanticDeprecatedSince20: Using extra keyword arguments on `Field` is deprecated and will be removed. Use `json_schema_extra` instead. (Extra keys: 'env'). Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.12/migration/
+    OLLAMA_REPEAT_PENALTY: float = Field(default=1.1, ge=0.0, le=2.0, env="OLLAMA_REPEAT_PENALTY")
+
+tests/test_api_gateway.py::TestIntegration::test_health_without_models
+  D:\Nex\tests\..\src\config.py:35: PydanticDeprecatedSince20: Using extra keyword arguments on `Field` is deprecated and will be removed. Use `json_schema_extra` instead. (Extra keys: 'env'). Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.12/migration/
+    OLLAMA_NUM_CTX: int = Field(default=4096, ge=512, le=16384, env="OLLAMA_NUM_CTX")
+
+tests/test_api_gateway.py::TestIntegration::test_health_without_models
+  D:\Nex\tests\..\src\config.py:36: PydanticDeprecatedSince20: Using extra keyword arguments on `Field` is deprecated and will be removed. Use `json_schema_extra` instead. (Extra keys: 'env'). Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.12/migration/
+    OLLAMA_NUM_BATCH: int = Field(default=512, ge=1, le=2048, env="OLLAMA_NUM_BATCH")
+
+tests/test_api_gateway.py::TestIntegration::test_health_without_models
+  D:\Nex\tests\..\src\config.py:37: PydanticDeprecatedSince20: Using extra keyword arguments on `Field` is deprecated and will be removed. Use `json_schema_extra` instead. (Extra keys: 'env'). Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.12/migration/
+    OLLAMA_USE_GPU: bool = Field(default=True, env="OLLAMA_USE_GPU")
+
+tests/test_api_gateway.py::TestIntegration::test_health_without_models
+  D:\Nex\tests\..\src\config.py:38: PydanticDeprecatedSince20: Using extra keyword arguments on `Field` is deprecated and will be removed. Use `json_schema_extra` instead. (Extra keys: 'env'). Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.12/migration/
+    USE_OLLAMA_EMBEDDINGS: bool = Field(default=True, env="USE_OLLAMA_EMBEDDINGS")
+
+tests/test_api_gateway.py::TestIntegration::test_health_without_models
+  D:\Nex\tests\..\src\config.py:39: PydanticDeprecatedSince20: Using extra keyword arguments on `Field` is deprecated and will be removed. Use `json_schema_extra` instead. (Extra keys: 'env'). Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.12/migration/
+    EMBEDDING_DIMENSION: int = Field(default=4096, ge=384, le=8192, env="EMBEDDING_DIMENSION")
+
+tests/test_api_gateway.py::TestIntegration::test_health_without_models
+  D:\Nex\tests\..\src\config.py:42: PydanticDeprecatedSince20: Using extra keyword arguments on `Field` is deprecated and will be removed. Use `json_schema_extra` instead. (Extra keys: 'env'). Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.12/migration/
+    OPENROUTER_API_KEY: str = Field(default="", env="OPENROUTER_API_KEY")
+
+tests/test_api_gateway.py::TestIntegration::test_health_without_models
+  D:\Nex\tests\..\src\config.py:43: PydanticDeprecatedSince20: Using extra keyword arguments on `Field` is deprecated and will be removed. Use `json_schema_extra` instead. (Extra keys: 'env'). Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.12/migration/
+    OPENROUTER_BASE_URL: str = Field(default="https://openrouter.ai/api/v1", env="OPENROUTER_BASE_URL")
+
+tests/test_api_gateway.py::TestIntegration::test_health_without_models
+  D:\Nex\tests\..\src\config.py:44: PydanticDeprecatedSince20: Using extra keyword arguments on `Field` is deprecated and will be removed. Use `json_schema_extra` instead. (Extra keys: 'env'). Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.12/migration/
+    OPENROUTER_MODEL: str = Field(default="openrouter/owl-alpha", env="OPENROUTER_MODEL")
+
+tests/test_api_gateway.py::TestIntegration::test_health_without_models
+  D:\Nex\tests\..\src\config.py:45: PydanticDeprecatedSince20: Using extra keyword arguments on `Field` is deprecated and will be removed. Use `json_schema_extra` instead. (Extra keys: 'env'). Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.12/migration/
+    OPENROUTER_FALLBACK_MODEL: str = Field(default="nvidia/nemotron-3-nano-30b-a3b:free", env="OPENROUTER_FALLBACK_MODEL")
+
+tests/test_api_gateway.py::TestIntegration::test_health_without_models
+  D:\Nex\tests\..\src\config.py:46: PydanticDeprecatedSince20: Using extra keyword arguments on `Field` is deprecated and will be removed. Use `json_schema_extra` instead. (Extra keys: 'env'). Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.12/migration/
+    WEB_SEARCH_ENABLED: bool = Field(default=True, env="WEB_SEARCH_ENABLED")
+
+tests/test_api_gateway.py::TestIntegration::test_health_without_models
+  D:\Nex\tests\..\src\config.py:47: PydanticDeprecatedSince20: Using extra keyword arguments on `Field` is deprecated and will be removed. Use `json_schema_extra` instead. (Extra keys: 'env'). Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.12/migration/
+    WEB_SEARCH_MAX_RESULTS: int = Field(default=5, ge=1, le=10, env="WEB_SEARCH_MAX_RESULTS")
+
+tests/test_api_gateway.py::TestIntegration::test_health_without_models
+  D:\Nex\tests\..\src\config.py:48: PydanticDeprecatedSince20: Using extra keyword arguments on `Field` is deprecated and will be removed. Use `json_schema_extra` instead. (Extra keys: 'env'). Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.12/migration/
+    WEB_SEARCH_SAVE_TO_MEMORY: bool = Field(default=True, env="WEB_SEARCH_SAVE_TO_MEMORY")
+
+tests/test_api_gateway.py::TestIntegration::test_health_without_models
+  D:\Nex\tests\..\src\config.py:51: PydanticDeprecatedSince20: Using extra keyword arguments on `Field` is deprecated and will be removed. Use `json_schema_extra` instead. (Extra keys: 'env'). Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.12/migration/
+    USE_HUGGINGFACE: bool = Field(default=True, env="USE_HUGGINGFACE")
+
+tests/test_api_gateway.py::TestIntegration::test_health_without_models
+  D:\Nex\tests\..\src\config.py:54: PydanticDeprecatedSince20: Using extra keyword arguments on `Field` is deprecated and will be removed. Use `json_schema_extra` instead. (Extra keys: 'env'). Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.12/migration/
+    HF_MODEL_NAME: str = Field(default="microsoft/phi-2", env="HF_MODEL_NAME")
+
+tests/test_api_gateway.py::TestIntegration::test_health_without_models
+C:\Users\ferre\AppData\Roaming\Python\Python311\site-packages\_pytest\unraisableexception.py:33: RuntimeWarning: coroutine 'CacheLRU.get' was never awaited
+  gc.collect()
+RuntimeWarning: Enable tracemalloc to get the object allocation traceback
+  D:\Nex\tests\..\src\config.py:55: PydanticDeprecatedSince20: Using extra keyword arguments on `Field` is deprecated and will be removed. Use `json_schema_extra` instead. (Extra keys: 'env'). Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.12/migration/
+    HF_FALLBACK_MODEL: str = Field(default="TinyLlama/TinyLlama-1.1B-Chat-v1.0", env="HF_FALLBACK_MODEL")
+
+tests/test_api_gateway.py::TestIntegration::test_health_without_models
+  D:\Nex\tests\..\src\config.py:56: PydanticDeprecatedSince20: Using extra keyword arguments on `Field` is deprecated and will be removed. Use `json_schema_extra` instead. (Extra keys: 'env'). Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.12/migration/
+    HF_USE_GPU: bool = Field(default=False, env="HF_USE_GPU")
+
+tests/test_api_gateway.py::TestIntegration::test_health_without_models
+  D:\Nex\tests\..\src\config.py:57: PydanticDeprecatedSince20: Using extra keyword arguments on `Field` is deprecated and will be removed. Use `json_schema_extra` instead. (Extra keys: 'env'). Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.12/migration/
+    HF_MAX_LENGTH: int = Field(default=512, ge=128, le=2048, env="HF_MAX_LENGTH")
+
+tests/test_api_gateway.py::TestIntegration::test_health_without_models
+  D:\Nex\tests\..\src\config.py:60: PydanticDeprecatedSince20: Using extra keyword arguments on `Field` is deprecated and will be removed. Use `json_schema_extra` instead. (Extra keys: 'env'). Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.12/migration/
+    LOCAL_MODEL_PATH: str = Field(default="", env="LOCAL_MODEL_PATH", description="Path para modelo GGUF")
+
+tests/test_api_gateway.py::TestIntegration::test_health_without_models
+  D:\Nex\tests\..\src\config.py:61: PydanticDeprecatedSince20: Using extra keyword arguments on `Field` is deprecated and will be removed. Use `json_schema_extra` instead. (Extra keys: 'env'). Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.12/migration/
+    LOCAL_MODEL_THREADS: int = Field(default=4, ge=1, le=16, env="LOCAL_MODEL_THREADS", description="Threads para inferência local")
+
+tests/test_api_gateway.py::TestIntegration::test_health_without_models
+  D:\Nex\tests\..\src\config.py:62: PydanticDeprecatedSince20: Using extra keyword arguments on `Field` is deprecated and will be removed. Use `json_schema_extra` instead. (Extra keys: 'env'). Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.12/migration/
+    LLAMA_N_CTX: int = Field(default=2048, ge=512, le=4096, env="LLAMA_N_CTX", description="Tamanho do contexto")
+
+tests/test_api_gateway.py::TestIntegration::test_health_without_models
+  D:\Nex\tests\..\src\config.py:63: PydanticDeprecatedSince20: Using extra keyword arguments on `Field` is deprecated and will be removed. Use `json_schema_extra` instead. (Extra keys: 'env'). Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.12/migration/
+    LLAMA_N_GPU_LAYERS: int = Field(default=0, ge=0, le=32, env="LLAMA_N_GPU_LAYERS", description="Camadas GPU (0 = CPU)")
+
+tests/test_api_gateway.py::TestIntegration::test_health_without_models
+  D:\Nex\tests\..\src\config.py:64: PydanticDeprecatedSince20: Using extra keyword arguments on `Field` is deprecated and will be removed. Use `json_schema_extra` instead. (Extra keys: 'env'). Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.12/migration/
+    LOCAL_MODEL_TIMEOUT: int = Field(default=120, ge=30, le=300, env="LOCAL_MODEL_TIMEOUT", description="Timeout para inferência local (segundos)")
+
+tests/test_api_gateway.py::TestIntegration::test_health_without_models
+  D:\Nex\tests\..\src\config.py:91: PydanticDeprecatedSince20: Using extra keyword arguments on `Field` is deprecated and will be removed. Use `json_schema_extra` instead. (Extra keys: 'env'). Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.12/migration/
+    MAX_UPLOAD_SIZE_MB: int = Field(default=10, ge=1, le=100, env="MAX_UPLOAD_SIZE_MB")
+
+tests/test_api_gateway.py::TestIntegration::test_health_without_models
+  D:\Nex\tests\..\src\config.py:92: PydanticDeprecatedSince20: Using extra keyword arguments on `Field` is deprecated and will be removed. Use `json_schema_extra` instead. (Extra keys: 'env'). Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.12/migration/
+    MAX_CONTENT_CHARS: int = Field(default=50000, ge=1000, le=200000, env="MAX_CONTENT_CHARS")
+
+tests/test_api_gateway.py::TestIntegration::test_health_without_models
+  D:\Nex\tests\..\src\config.py:20: PydanticDeprecatedSince20: Support for class-based `config` is deprecated, use ConfigDict instead. Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.12/migration/
+    class Settings(BaseSettings):
+
+tests/test_memory_opt.py::TestCacheLRU::test_cache_eviction
+  D:\Nex\tests\test_memory_opt.py:43: RuntimeWarning: coroutine 'CacheLRU.set' was never awaited
+    cache.set("key1", "value1")
+  Enable tracemalloc to get traceback where the object was allocated.
+  See https://docs.pytest.org/en/stable/how-to/capture-warnings.html#resource-warnings for more info.
+
+tests/test_memory_opt.py::TestCacheLRU::test_cache_eviction
+  D:\Nex\tests\test_memory_opt.py:44: RuntimeWarning: coroutine 'CacheLRU.set' was never awaited
+    cache.set("key2", "value2")
+  Enable tracemalloc to get traceback where the object was allocated.
+  See https://docs.pytest.org/en/stable/how-to/capture-warnings.html#resource-warnings for more info.
+
+tests/test_memory_opt.py::TestCacheLRU::test_cache_eviction
+  D:\Nex\tests\test_memory_opt.py:45: RuntimeWarning: coroutine 'CacheLRU.set' was never awaited
+    cache.set("key3", "value3")
+  Enable tracemalloc to get traceback where the object was allocated.
+  See https://docs.pytest.org/en/stable/how-to/capture-warnings.html#resource-warnings for more info.
+
+tests/test_memory_opt.py::TestCacheLRU::test_cache_set_get
+  D:\Nex\tests\test_memory_opt.py:27: RuntimeWarning: coroutine 'CacheLRU.set' was never awaited
+    cache.set("key1", arr)
+  Enable tracemalloc to get traceback where the object was allocated.
+  See https://docs.pytest.org/en/stable/how-to/capture-warnings.html#resource-warnings for more info.
+
+tests/test_memory_opt.py::TestCacheLRU::test_cache_ttl
+  D:\Nex\tests\test_memory_opt.py:56: RuntimeWarning: coroutine 'CacheLRU.set' was never awaited
+    cache.set("key1", "value1")
+  Enable tracemalloc to get traceback where the object was allocated.
+  See https://docs.pytest.org/en/stable/how-to/capture-warnings.html#resource-warnings for more info.
+
+tests/test_memory_opt.py::TestMemoriaPersistente::test_cache_lru_interno
+  D:\Nex\tests\test_memory_opt.py:119: RuntimeWarning: coroutine 'CacheLRU.set' was never awaited
+    memoria.cache_lru.set("test_key", arr)
+  Enable tracemalloc to get traceback where the object was allocated.
+  See https://docs.pytest.org/en/stable/how-to/capture-warnings.html#resource-warnings for more info.
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ===========================
+FAILED tests/test_api_gateway.py::TestPydanticModels::test_query_defaults - A...
+FAILED tests/test_api_gateway.py::TestIntegration::test_app_with_test_client
+FAILED tests/test_api_gateway.py::TestIntegration::test_ask_without_memory_uses_test_client
+FAILED tests/test_fallback.py::test_backend_detection - AssertionError: asser...
+FAILED tests/test_llm_manager.py::TestLLMManager::test_cleanup - TypeError: L...
+FAILED tests/test_llm_manager.py::TestLLMManager::test_initialization - TypeE...
+FAILED tests/test_llm_manager.py::TestLLMManager::test_model_loaded - TypeErr...
+FAILED tests/test_llm_manager.py::TestBatching::test_batch_processing - TypeE...
+FAILED tests/test_llm_manager.py::TestBatching::test_single_request - TypeErr...
+FAILED tests/test_llm_manager.py::TestCPUFallback::test_cpu_fallback_on_no_cuda
+FAILED tests/test_llm_manager.py::TestMemoryCleanup::test_memory_cleanup - Ty...
+FAILED tests/test_memory_opt.py::TestCacheLRU::test_cache_eviction - Assertio...
+FAILED tests/test_memory_opt.py::TestCacheLRU::test_cache_miss - AssertionErr...
+FAILED tests/test_memory_opt.py::TestCacheLRU::test_cache_set_get - Assertion...
+FAILED tests/test_memory_opt.py::TestCacheLRU::test_cache_ttl - AssertionErro...
+FAILED tests/test_memory_opt.py::TestMemoriaPersistente::test_cache_lru_interno
+FAILED tests/test_web_search.py::TestBackendDetection::test_detect_huggingface_backend
+FAILED tests/test_web_search.py::TestBackendDetection::test_detect_huggingface_placeholder_key
+FAILED tests/test_ws_metrics.py::TestWebSocketEndpoint::test_ws_handler_has_correct_signature
+================= 19 failed, 87 passed, 43 warnings in 27.00s =================

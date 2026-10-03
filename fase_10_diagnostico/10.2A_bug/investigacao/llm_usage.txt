@@ -1,0 +1,34 @@
+162:async def get_llm_manager(request: Request):
+164:    return request.app.state.llm_manager
+193:        if hasattr(app.state, "llm_manager") and app.state.llm_manager:
+194:            asyncio.create_task(app.state.llm_manager.preload_llama_cpp_if_needed())
+198:    if hasattr(app.state, 'llm_manager') and app.state.llm_manager:
+199:        if hasattr(app.state.llm_manager, 'cleanup'):
+200:            app.state.llm_manager.cleanup()
+282:        llm = await get_llm_manager(request)
+283:        from src.core.llm_manager import Request as LLMRequest
+285:        llm_request = LLMRequest(
+295:                async for token in llm._generate_stream(llm_request):
+306:                "X-Backend-Used": llm.backend.value,
+308:                "X-Fallback-Chain": getattr(llm, "last_fallback_chain", "openrouter->llama_cpp->huggingface"),
+312:            response = await llm.generate(
+313:                llm_request,
+323:            backend_used = (llm.last_backend_used.value if getattr(llm, "last_backend_used", None) else llm.backend.value)
+324:            fallback_triggered = bool(getattr(llm, "last_fallback_triggered", False))
+328:                "X-Fallback-Chain": getattr(llm, "last_fallback_chain", "openrouter->llama_cpp->huggingface"),
+388:        llm = await get_llm_manager(request)
+389:        if llm:
+390:            model_name = llm.get_model_name()
+391:            device = llm.get_device()
+392:            ollama_client = getattr(llm, "ollama_client", None)
+395:            llama_available = bool(getattr(llm, "can_use_llama_cpp", lambda: False)())
+396:            llama_loaded = bool(getattr(llm, "is_llama_cpp_ready", lambda: False)())
+397:            hf_loaded = bool(getattr(llm, "is_huggingface_ready", lambda: False)())
+410:    openrouter_available = llm and getattr(llm, "_openrouter_client", None) is not None
+509:        llm = await get_llm_manager(request)
+510:        summary = await doc_mgr.summarize_document(doc_id, llm)
+534:    llm = await get_llm_manager(request)
+535:    from src.core.llm_manager import Request
+537:    answer = await llm.generate(Request(prompt=prompt, max_tokens=512))
+552:    llm = await get_llm_manager(request)
+555:    summary = await doc_mgr.summarize_document(req.document_id, llm)

@@ -1,0 +1,48 @@
+=== AGRUPAMENTO POR CAUSA-RAIZ ===
+
+26 failures
+      ↓
+9 causas-raiz distintas
+      ↓
+Nenhuma correção de produto exigida no todo (1 exceção: CR5) — a esmagadora
+maioria é drift documentado entre testes e uma arquitetura que já evoluiu
+
+| Causa-Raiz | Descrição | Falhas | Categoria | Ação Proposta | Prioridade |
+|---|---|---|---|---|---|
+| CR1 | `LLMManager` mudou de `LLMManager(model_name=...)` (API antiga, modelo único HuggingFace direto) para `LLMManager(config: dict, memory_manager=None)` (multi-backend atual). `tests/test_llm_manager.py` inteiro (6 métodos) nunca foi migrado. | F09,F10,F11,F12,F13,F14,F15 (7) | C | Reescrever `tests/test_llm_manager.py` contra a API atual, ou decidir se o arquivo deve ser substituído integralmente por `tests/test_fallback.py`/`tests/test_fallback_chain.py` (já tracked, já cobrem LLMManager multi-backend) | Alta |
+| CR2 | Backend "Z.ai" foi deliberadamente removido do produto na Fase 2 do próprio desenvolvimento (confirmado em `docs/TEST_REPORT_FASE4.md`, que já recomendava atualizar os testes — nunca feito). `_init_zai`, `BackendType.ZAI`, `Settings.ZAI_API_KEY`, `WebSearchProcessor(zai_client=...)` não existem mais. | F07,F08,F23,F24,F25 (5) | C | Remover os 5 testes relacionados a Z.ai — não há ambiguidade, é feature confirmadamente descontinuada pelo próprio time do produto | Baixa (remoção segura, não bloqueia nada) |
+| CR3 | `LLMManager._detect_backend()` foi simplificado para retornar apenas `LLAMA_CPP` (se GGUF local existir) ou `OPENROUTER` (caso contrário) — não há mais ramo de detecção para `HUGGINGFACE`. Provavelmente parte da mesma consolidação que removeu Z.ai. | F05,F21,F22 (3) | C | Atualizar os 3 testes para refletir a lógica atual de 2 ramos, ou remover se a intenção de "detectar huggingface automaticamente" não é mais um requisito do produto | Média |
+| CR4 | `CacheLRU.get()`, `.set()`, `.clear()` tornaram-se `async def` em algum momento (para compatibilizar com o restante do `MemoriaPersistente`, que é assíncrono). `tests/test_memory_opt.py::TestCacheLRU` (unittest.TestCase síncrono) nunca foi convertido para chamar com `await`. | F16,F17,F18,F19,F20 (5) | C | Converter `TestCacheLRU` e o teste `test_cache_lru_interno` para métodos `async def` com `await cache.get(...)`/`await cache.set(...)` — mudança mecânica, sem ambiguidade | Média |
+| CR5 | **BUG DE PRODUTO REAL.** `src/api_gateway.py:410`: `openrouter_available = llm and getattr(llm, "_openrouter_client", None) is not None` — a variável `llm` só é atribuída dentro de um bloco `try/except: pass` anterior; se essa atribuição falhar silenciosamente (ex.: `get_llm_manager()` levanta exceção), `llm` nunca é definida e a linha 410 lança `UnboundLocalError`. Reproduzido de forma determinística por `TestClient(app)` sem contexto de lifespan (que deixa `app.state` incompleto, fazendo o bloco try da linha ~400 falhar). | F03,F06 (2) | A | Corrigir `src/api_gateway.py`: inicializar `llm = None` antes do bloco try/except que o popula, para que a linha 410 nunca opere sobre variável não vinculada | **Alta — único item desta lista que é defeito real de produto, não apenas teste desatualizado** |
+| CR6 | `TestClient(app)` instanciado sem o context manager (`with TestClient(app) as client:`), portanto os eventos de `lifespan`/`startup` do FastAPI nunca rodam — `app.state.rate_limiter` (definido em `src/main.py`/`src/api_gateway.py` no startup) nunca é populado. | F04 (1) | E | Atualizar o teste para usar `with TestClient(app) as client:` | Baixa |
+| CR7 | `GET /` foi deliberadamente implementado como `HTMLResponse` (serve a UI de chat, `src/api_gateway.py:616`) — decisão de produto legítima e não relacionada a nenhuma das outras causas. O teste assume (de uma versão anterior?) que `/` era um endpoint JSON. | F02 (1) | B | Atualizar o teste para checar `response.headers["content-type"]` contém `text/html`, ou testar via `/static` para verificar conteúdo JSON em outro endpoint | Baixa |
+| CR8 | `Query.max_tokens` tem default `2048`, consistente com `Settings.MAX_TOKENS` em toda a base. O teste espera `256`, valor que não aparece em nenhum outro lugar do código atual. | F01 (1) | B | Atualizar o teste para `assert query.max_tokens == 2048` | Baixa |
+| CR9 | `websocket_chat(websocket: WebSocket)` nunca teve parâmetro `request` — o teste assume uma assinatura que não corresponde ao design atual do handler (FastAPI expõe `query_params`/`cookies` diretamente via o próprio objeto `WebSocket`, sem precisar de um `Request` separado). | F26 (1) | B | Atualizar o teste para checar apenas `"websocket" in params`, removendo a asserção sobre `request` | Baixa |
+
+## Distribuição por categoria
+
+| Categoria | Descrição | Quantidade |
+|---|---|---|
+| A | Implementação incorreta (produto) | 2 |
+| B | Teste incorreto/obsoleto | 4 |
+| C | Contrato/API drift | 19 |
+| D | Configuração/ambiente | 0 |
+| E | Fixture/isolamento | 1 |
+| F | Dependência externa | 0 |
+| G | Comportamento não implementado | 0 |
+| H | Teste inválido (nunca deveria existir) | 0 |
+
+## Achado central
+
+**24 das 26 falhas (92%) são testes desatualizados em relação a uma arquitetura
+que já evoluiu de forma documentada e legítima** (Z.ai removido, backend
+detection simplificado, CacheLRU tornou-se assíncrono, LLMManager mudou de
+API, `/` passou a servir UI). **Apenas 2 falhas (CR5, 8%) são um defeito real
+de produto** — e é um bug pequeno, isolado e com correção óbvia de uma linha
+(`llm = None` antes do try).
+
+Nenhuma das 26 falhas indica um problema sistêmico de saúde do produto. O
+sistema em runtime real (validado repetidamente nas Fases 6-9 desta
+auditoria: servidor sobe, `/health` responde 200, `memory_count: 71`
+consistente) funciona corretamente — as falhas são inteiramente do lado do
+arnês de testes, que não acompanhou a evolução do código.

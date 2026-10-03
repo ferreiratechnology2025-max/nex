@@ -1,0 +1,71 @@
+=== FASE 10.1 — CLASSIFICAÇÃO DAS 26 FALHAS ===
+
+TESTES:
+- Coletados: 113
+- Passaram: 87
+- Falharam: 26
+- Erros: 0
+
+CLASSIFICAÇÃO POR CATEGORIA:
+- A (implementação incorreta): 2
+- B (teste incorreto/obsoleto): 4
+- C (contrato/API drift): 19
+- D (configuração/ambiente): 0
+- E (fixture/isolamento): 1
+- F (dependência externa): 0
+- G (comportamento não implementado): 0
+- H (teste inválido): 0
+
+CAUSAS-RAIZ IDENTIFICADAS: 9
+
+- CR1: LLMManager mudou de model_name= para config:dict → afeta 7 falhas
+  (test_llm_manager.py inteiro) → ação: reescrever o arquivo contra a API
+  atual, ou substituí-lo pelos testes já existentes (test_fallback.py,
+  test_fallback_chain.py)
+
+- CR2: Backend Z.ai removido do produto na Fase 2 (confirmado em
+  docs/TEST_REPORT_FASE4.md, já tracked) → afeta 5 falhas → ação: remover
+  os testes relacionados, sem ambiguidade
+
+- CR3: _detect_backend() simplificado, não detecta mais HuggingFace
+  automaticamente → afeta 3 falhas → ação: atualizar ou remover os testes
+
+- CR4: CacheLRU.get/set/clear tornaram-se assíncronos, testes não
+  convertidos → afeta 5 falhas → ação: converter TestCacheLRU para métodos
+  async com await
+
+- CR5: BUG REAL DE PRODUTO — UnboundLocalError em src/api_gateway.py:410
+  (variável 'llm' não inicializada antes do try que a popula) → afeta 2
+  falhas → ação: corrigir produto (llm = None antes do try)
+
+- CR6: TestClient(app) sem context manager, app.state incompleto → afeta 1
+  falha → ação: atualizar teste para usar 'with TestClient(app) as client:'
+
+- CR7: '/' serve HTML deliberadamente (UI de chat), teste espera JSON →
+  afeta 1 falha → ação: atualizar teste
+
+- CR8: Query.max_tokens default real é 2048, teste espera 256 → afeta 1
+  falha → ação: atualizar teste
+
+- CR9: websocket_chat() nunca teve parâmetro 'request', teste assume que
+  tem → afeta 1 falha → ação: atualizar teste
+
+RECOMENDAÇÃO:
+- Correções de produto necessárias: 1 (CR5 — UnboundLocalError, bug real)
+- Testes a atualizar: 6 grupos (CR3, CR4, CR6, CR7, CR8, CR9 — mecânicos,
+  sem ambiguidade de design)
+- Testes a remover: 2 grupos (CR1 se optar por substituição, CR2 —
+  feature confirmadamente descontinuada pelo próprio projeto)
+- Dependências externas: 0
+
+ACHADO CENTRAL:
+92% das falhas (24/26) são testes desatualizados em relação a uma
+arquitetura que evoluiu de forma legítima e, em pelo menos um caso (Z.ai),
+documentada pelo próprio projeto como decisão consciente. Apenas 8% (2/26)
+é defeito real de produto, e é um bug pequeno e isolado com correção óbvia.
+Nenhuma falha indica problema sistêmico — o sistema em runtime real segue
+validado e funcional em todas as fases anteriores desta auditoria.
+
+PRÓXIMO PASSO:
+- Decidir quais correções implementar
+- Fase 10.2 — Correção Controlada (apenas causas aprovadas)

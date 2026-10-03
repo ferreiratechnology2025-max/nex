@@ -1,0 +1,9 @@
+total 125
+drwxr-xr-x 1 ferre 197609     0 Aug  8 22:46 .
+drwxr-xr-x 1 ferre 197609     0 Aug  8 23:55 ..
+-rw-r--r-- 1 ferre 197609  5782 Aug  8 22:46 00_RESUMO.txt
+-rw-r--r-- 1 ferre 197609    73 Aug  8 22:42 ambiente.txt
+-rw-r--r-- 1 ferre 197609 32437 Aug  8 22:43 baseline_completo.txt
+-rw-r--r-- 1 ferre 197609 66203 Aug  8 22:45 baseline_sem_ollama_integration.txt
+drwxr-xr-x 1 ferre 197609     0 Aug  8 22:45 generationconfig
+drwxr-xr-x 1 ferre 197609     0 Aug  8 22:46 servidor

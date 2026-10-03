@@ -1,0 +1,25 @@
+=== 10.2D — FIXTURE/ISOLAMENTO (última falha) ===
+
+CORREÇÃO EM DUAS TENTATIVAS (documentando o erro, não só o acerto):
+
+Tentativa 1 (INSUFICIENTE): envolver `TestClient(app)` em
+`with TestClient(app) as client:` para disparar o ciclo de vida ASGI.
+Testado e FALHOU — o `lifespan` de src/api_gateway.py (linha 189) só
+mexe em app.state.llm_manager (pré-existente), nunca inicializa
+app.state.rate_limiter. A classificação original da Fase 10.1 (CR6:
+"TestClient sem context manager") estava incompleta — o context manager
+sozinho não resolve nada aqui.
+
+Tentativa 2 (CORRETA): app.state.rate_limiter é inicializado de forma
+IMPERATIVA em src/main.py:main() (não por lifespan do FastAPI) — só
+acontece quando a aplicação sobe via `python -m src.main`. Testes que
+importam `app` diretamente de `src.api_gateway` (todos os desta suíte)
+nunca passam por esse caminho, então precisam popular esse estado à mão.
+Esse padrão já era usado no arquivo removido test_fallback_activation.py
+(`app.state.rate_limiter = RateLimiter(requests_per_minute=1000)` antes
+do TestClient) — reaplicado aqui.
+
+RESULTADO: 1 failed → 0 failed. 97 passed → 98 passed.
+
+=== SUÍTE COMPLETA APÓS TODA A FASE 10.2 ===
+98 passed, 0 failed, 0 errors, 0 skipped — exit code 0.

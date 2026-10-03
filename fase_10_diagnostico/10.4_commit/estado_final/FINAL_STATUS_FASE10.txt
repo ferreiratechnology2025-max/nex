@@ -1,0 +1,46 @@
+=== FASE 10 — DIAGNÓSTICO E CORREÇÃO DAS 26 FALHAS ===
+
+COMMITS:
+- Commit A: 53a8a2f — fix: initialize llm to None before try block in api_gateway
+- Commit B: 1a94ba4 — test: align test suite with current Nex contracts
+
+RESULTADO:
+- Testes: 98 passed / 0 failed / 0 errors — exit code 0
+- /health: memory_count = 71 (inalterado em toda a Fase 10)
+- /metrics: 200 OK (requests_total, latência, uso de memória reportados)
+- Regressão: NENHUMA
+
+MUDANÇAS:
+- Produção: src/api_gateway.py (+1 linha — llm = None)
+- Testes removidos: 2 arquivos (test_fallback_activation.py,
+  test_llm_manager.py), 9 métodos, com evidência objetiva de
+  obsolescência (API removida/renomeada, verificável)
+- Testes adaptados: 13 asserções em 5 arquivos, intenção preservada em
+  todas — auditado item a item, nenhuma enfraquecida para checagem vácua
+- Testes renomeados: 2 (test_detect_huggingface_backend →
+  test_detect_backend_ignores_use_huggingface_flag;
+  test_detect_huggingface_placeholder_key →
+  test_detect_backend_without_local_model) — 1 delas sem equivalente
+  exato à intenção original, documentado como tal
+
+DÍVIDA REGISTRADA:
+- FB-001: Restaurar cobertura do mecanismo de fallback runtime
+  (openrouter → llama_cpp: backend ativo falha em runtime → sistema cai
+  para llama_cpp → last_backend_used/last_fallback_triggered corretos →
+  métricas incrementadas → headers X-Backend-Used/X-Fallback-Triggered/
+  X-Fallback-Chain corretos no endpoint HTTP). Perdida com a remoção de
+  test_fallback_activation.py (construído inteiramente sobre a API Z.ai
+  removida). Registrada no corpo do Commit B.
+
+TRAJETÓRIA COMPLETA DA FASE 10:
+  10.1 (classificação): 26 failed → 9 causas-raiz identificadas
+  10.2A (bug real):      26 failed → 25 failed
+  10.2B (Z.ai obsoleto):  25 failed → 19 failed
+  10.2C (API drift):      19 failed → 1 failed
+  10.2D (fixture):         1 failed → 0 failed
+  10.3 (review):          0 failed, auditoria confirma nenhuma
+                           adaptação enfraquecida
+  10.4 (commit):           2 commits, suíte e servidor validados após
+                           cada um
+
+FASE 10 — ENCERRADA

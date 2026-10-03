@@ -1,0 +1,36 @@
+    llama_loaded = False
+    hf_available = False
+    hf_loaded = False
+    ollama_available = False
+    ollama_ready = False
+    ollama_model = settings.OLLAMA_MODEL
+    
+    try:
+        llm = await get_llm_manager(request)
+        if llm:
+            model_name = llm.get_model_name()
+            device = llm.get_device()
+            ollama_client = getattr(llm, "ollama_client", None)
+            ollama_available = ollama_client is not None
+            ollama_ready = ollama_client is not None and ollama_client._model_available
+            llama_available = bool(getattr(llm, "can_use_llama_cpp", lambda: False)())
+            llama_loaded = bool(getattr(llm, "is_llama_cpp_ready", lambda: False)())
+            hf_loaded = bool(getattr(llm, "is_huggingface_ready", lambda: False)())
+            hf_available = hf_loaded or settings.USE_HUGGINGFACE
+    except:
+        pass
+    
+    try:
+        memory = await get_memory_system(request)
+        if memory:
+            stats = memory.get_stats()
+            memory_count = stats.get('total_memories', 0)
+    except:
+        pass
+    
+    openrouter_available = llm and getattr(llm, "_openrouter_client", None) is not None
+    
+    return {
+        "status": "ok",
+        "model": model_name,
+        "device": device,

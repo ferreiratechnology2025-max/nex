@@ -174,7 +174,7 @@
             if (!res.ok) throw new Error('HTTP ' + res.status);
             var data = await res.json();
             removeTypingIndicator();
-            var msg = '📄 Arquivo **' + data.filename + '** carregado (' + (data.pages || data.chars || '?') + ')';
+            var msg = '📄 Arquivo **' + data.filename + '** carregado (' + (data.size_chars || '?') + ' chars)';
             if (data.summary) msg += '\n\n📝 ' + data.summary;
             addMessage('assistant', msg);
             notify(data.filename + ' carregado', 'success');

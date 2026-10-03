@@ -1,0 +1,10 @@
+./agents/chief-of-staff.md:157:- [Claude Code](https://docs.anthropic.com/en/docs/claude-code)
+./agents/doc-updater.md:3:description: Documentation and codemap specialist. Use PROACTIVELY for updating codemaps and documentation. Runs /update-codemaps and /update-docs, generates docs/CODEMAPS/*, updates READMEs and guides.
+./agents/doc-updater.md:52:docs/CODEMAPS/
+./agents/doc-updater.md:88:2. **Update** — README.md, docs/GUIDES/*.md, package.json, API docs
+./agents/docs-lookup.md:3:description: When the user asks how to use a library, framework, or API or needs up-to-date code examples, use Context7 MCP to fetch current documentation and return answers with examples. Invoke for docs/API/setup questions.
+./agents/pytorch-build-resolver.md:129:For PyTorch best practices, consult the [official PyTorch documentation](https://pytorch.org/docs/stable/) and [PyTorch forums](https://discuss.pytorch.org/).
+./CLAUDE.md:59:- Skill placement: Curated in skills/; generated/imported under ~/.claude/skills/. See docs/SKILL-PLACEMENT-POLICY.md
+./README.md:297:+-- docs/                        # Documentação (guia do usuário, API, dev)
+./scripts/create_release.sh:35:cp -r docs/* ${RELEASE_DIR}/docs/ 2>/dev/null || true
+./SYSTEM_MAP.md:90:+-- docs/                      # Documentacao

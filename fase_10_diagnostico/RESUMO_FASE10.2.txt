@@ -1,0 +1,93 @@
+=== FASE 10.2 — CORREÇÃO CONTROLADA — RESUMO CONSOLIDADO ===
+
+PONTO DE PARTIDA: 113 coletados, 87 passed, 26 failed (baseline da Fase 10.1)
+PONTO DE CHEGADA: 98 coletados, 98 passed, 0 failed — exit code 0
+
+=== ONDA 10.2A — BUG REAL DE PRODUTO ===
+Corrigido: src/api_gateway.py — UnboundLocalError em `llm` no handler
+/health (linha 410 usava `llm` fora do escopo de atribuição). Fix de 1
+linha: `llm = None` adicionado ao bloco de pré-inicialização, junto às
+demais variáveis de fallback já tratadas dessa forma.
+Achado extra: revelou uma segunda falha mascarada em test_health_structure
+(dependência de "zai" em backends) — resolvida na onda seguinte.
+Resultado: 26 failed → 25 failed (+1 passed: 87→88).
+
+=== ONDA 10.2B — TESTES OBSOLETOS (Z.AI) ===
+Evidência: docs/TEST_REPORT_FASE4.md confirma remoção deliberada do
+backend Z.ai na "Fase 2" do próprio desenvolvimento do produto.
+- tests/test_fallback.py: removida test_zai_detection() (sem assert) e a
+  linha `assert "zai" in backends` de test_health_structure.
+- tests/test_fallback_activation.py: REMOVIDO POR INTEIRO (ambos os
+  testes eram inteiramente sobre o cenário "Z.ai falha → llama_cpp",
+  API completamente inexistente). Backlog aberto: mecanismo de fallback
+  real (openrouter→llama_cpp) ficou sem teste equivalente.
+- tests/test_web_search.py: removidos 4 métodos (test_get_model_name_zai,
+  test_get_device_zai, test_zai_config_defaults,
+  test_web_search_processor_with_zai_client).
+Resultado: 25 failed → 19 failed, 106 coletados (-7).
+
+=== ONDA 10.2C — API DRIFT (19 falhas) ===
+- CR1 (7 falhas): tests/test_llm_manager.py REMOVIDO por inteiro
+  (API model_name= não existe mais; cobertura real de cleanup()/
+  is_loaded() confirmada em outros arquivos já tracked).
+- CR3 (3 falhas): _detect_backend() simplificado para 2 ramos
+  (LLAMA_CPP/OPENROUTER) — 3 testes adaptados. Nota de transparência: um
+  dos testes ("placeholder key") não tinha equivalente 1:1, foi
+  reescrito para exercitar o outro ramo real em vez de simular
+  comportamento inexistente.
+- CR4 (5 falhas): CacheLRU.get/set/clear são async — TestCacheLRU
+  convertida para unittest.IsolatedAsyncioTestCase; test_cache_lru_interno
+  ajustado com asyncio.run() (mesmo padrão já usado no arquivo).
+- CR7, CR8, CR9 (1 falha cada): 3 asserções pontuais corrigidas para
+  refletir comportamento real (HTML em vez de JSON no "/"; max_tokens
+  default 2048; websocket_chat sem parâmetro "request").
+Resultado: 19 failed → 1 failed, 98 coletados (-7, test_llm_manager.py).
+
+=== ONDA 10.2D — FIXTURE/ISOLAMENTO (1 falha) ===
+Tentativa 1 (documentada, insuficiente): `with TestClient(app)` sozinho
+não resolve — o lifespan de api_gateway.py não inicializa
+app.state.rate_limiter (isso é feito imperativamente em src/main.py,
+fora do ciclo ASGI).
+Tentativa 2 (correta): popular app.state.rate_limiter explicitamente no
+teste antes do TestClient, replicando o padrão já usado no arquivo
+removido test_fallback_activation.py.
+Resultado: 1 failed → 0 failed.
+
+=== VALIDAÇÃO FINAL ===
+- Suíte: 98 passed, 0 failed, 0 errors — exit code 0
+- Servidor: sobe normalmente, /health → memory_count: 71, /metrics → 200 OK
+- data/memoria.db e data/memoria.index: inalterados durante toda a Fase 10
+
+=== ARQUIVOS MODIFICADOS NESTA FASE ===
+Produto (1 arquivo, 1 correção real):
+  src/api_gateway.py (linha 410 — UnboundLocalError)
+
+Testes (5 arquivos modificados, 2 arquivos removidos):
+  tests/test_api_gateway.py (2 asserções + 1 fixture)
+  tests/test_fallback.py (limpeza Z.ai + adaptação backend detection)
+  tests/test_web_search.py (limpeza Z.ai + adaptação backend detection)
+  tests/test_memory_opt.py (CacheLRU → async)
+  tests/test_ws_metrics.py (1 asserção)
+  tests/test_fallback_activation.py — REMOVIDO
+  tests/test_llm_manager.py — REMOVIDO
+
+=== ACHADO ESTRUTURAL (para registro, não uma correção desta fase) ===
+Duas descobertas ao longo da Fase 10.2 reforçam o diagnóstico da Fase 10.1
+("o Nex não possui uma fronteira suficientemente forte entre evolução de
+contrato e evolução de testes"):
+1. app.state (rate_limiter, memory_system, llm_manager) é inicializado
+   IMPERATIVAMENTE em src/main.py, não via lifespan do FastAPI — isso
+   força todo teste que importa `app` diretamente de api_gateway.py a
+   duplicar manualmente essa inicialização. Um lifespan real (ou uma
+   fixture pytest compartilhada) eliminaria essa classe inteira de
+   fragilidade de teste.
+2. A remoção de features (Z.ai) e a evolução de contratos (LLMManager,
+   CacheLRU, _detect_backend) nunca foram acompanhadas de atualização de
+   testes, apesar de pelo menos uma vez (docs/TEST_REPORT_FASE4.md) isso
+   ter sido explicitamente recomendado pelo próprio time do projeto.
+
+PRÓXIMO PASSO SUGERIDO: nenhuma fase adicional é estritamente necessária
+— a suíte reflete fielmente o sistema atual. Recomendo apenas registrar
+como item de backlog (fora desta auditoria) a cobertura de teste do
+mecanismo de fallback openrouter→llama_cpp, perdida com a remoção de
+test_fallback_activation.py.

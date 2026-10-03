@@ -1,0 +1,48 @@
+=== 10.2B — TESTES OBSOLETOS (Z.AI) ===
+
+Evidência de remoção deliberada: docs/TEST_REPORT_FASE4.md ("Z.ai removido
+na Fase 2"), confirmado por zero referências em src/.
+
+AÇÕES:
+1. tests/test_fallback.py:
+   - Removida test_zai_detection() (sem assert, testava nada, referenciava
+     ZAI_API_KEY)
+   - Removida a linha `assert "zai" in backends` de test_health_structure
+     (resto do teste preservado — status, backends dict, fallback_order,
+     llama_cpp/huggingface continuam verificados)
+   - Docstring do módulo atualizada (não menciona mais Z.ai)
+
+2. tests/test_fallback_activation.py: ARQUIVO REMOVIDO POR INTEIRO.
+   Ambos os testes (test_llm_manager_fallback_to_llama_cpp,
+   test_api_ask_sets_fallback_headers) são construídos inteiramente em
+   torno do cenário "Z.ai falha → fallback llama_cpp"
+   (_init_zai/_generate_zai/_zai_client/BackendType.ZAI — nenhum existe
+   mais). Reescrever exigiria desenhar um cenário de teste novo (ex.:
+   "openrouter falha → fallback llama_cpp"), o que é autoria de teste
+   nova, não manutenção mecânica — fora do escopo desta onda.
+   RECOMENDAÇÃO PARA FASE FUTURA: o mecanismo de fallback real (openrouter
+   → llama_cpp → huggingface) não tem cobertura de teste após esta
+   remoção. Vale abrir um item de backlog para escrever um teste
+   equivalente contra o backend ativo real (openrouter).
+
+3. tests/test_web_search.py:
+   - Removida test_get_model_name_zai (falhava)
+   - Removida test_get_device_zai (não falhava, mas testava nada —
+     try/except com pytest.skip mascarava qualquer resultado)
+   - Removida test_zai_config_defaults (falhava) — nota de cobertura
+     incidental perdida documentada em outros/nota_cobertura_perdida.txt
+   - Removida test_web_search_processor_with_zai_client (falhava)
+   - test_detect_huggingface_backend e test_detect_huggingface_placeholder_key
+     NÃO foram tocadas nesta onda — usam "ZAI_API_KEY": "" incidentalmente,
+     mas a causa da falha é CR3 (backend detection), não CR2. Tratamento
+     na 10.2C.
+
+RESULTADO: 25 failed → 19 failed (-6), 88 passed → 87 passed (-1, pela
+remoção de 2 testes que passavam trivialmente sem testar nada:
+test_zai_detection, test_get_device_zai). 113 coletados → 106 coletados
+(-7, todos os arquivos/métodos removidos).
+
+Números conferem exatamente com a contagem esperada pela classificação da
+Fase 10.1 (CR2 tinha 5 falhas; +1 falha adicional descoberta na 10.2A
+como "mascarada" também resolvida; 2 testes não-falhos removidos por
+testarem uma feature inexistente sem nenhuma asserção real).

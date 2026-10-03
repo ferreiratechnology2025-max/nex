@@ -1,0 +1,16 @@
+NOTA DE TRANSPARÊNCIA — cobertura incidental perdida
+
+test_web_search.py::TestConfig::test_zai_config_defaults (removido nesta
+etapa por ser inteiramente sobre configuração Z.ai) continha, além das 3
+asserções sobre ZAI_API_KEY/ZAI_MODEL, uma quarta asserção não relacionada:
+
+    assert hasattr(settings, 'WEB_SEARCH_ENABLED')
+
+Verificado: nenhum outro teste em tests/*.py checa esse atributo após a
+remoção (grep "WEB_SEARCH_ENABLED" tests/*.py → vazio).
+
+Decisão: não recriar uma asserção isolada só para essa linha — é cobertura
+trivial (hasattr, não testa comportamento) e settings.WEB_SEARCH_ENABLED
+já é implicitamente exercitado sempre que o WebSearchProcessor é
+inicializado nos testes de integração restantes. Registrando a perda
+como nota, não como ação pendente.

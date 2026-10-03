@@ -1,0 +1,9 @@
+?? "MANUAL SISTEMA Nex 1.pdf"
+?? "Manual de Bolso do Nex Chat.pdf"
+?? fase_10_diagnostico/
+?? fase_9_completion/
+?? "ligar Nex.txt"
+?? start_services.ps1
+?? tests/debug_test.py
+?? tests/quick_test.py
+?? venv/

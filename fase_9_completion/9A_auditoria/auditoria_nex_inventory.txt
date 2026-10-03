@@ -1,0 +1,13 @@
+total 88
+drwxr-xr-x 1 ferre 197609     0 Aug  8 22:25 .
+drwxr-xr-x 1 ferre 197609     0 Aug  8 23:55 ..
+-rw-r--r-- 1 ferre 197609 73394 Aug  8 22:24 01_estrutura_projeto.txt
+drwxr-xr-x 1 ferre 197609     0 Aug  8 22:24 02_configuracoes
+-rw-r--r-- 1 ferre 197609   708 Aug  8 22:25 03_inventario_modulos.txt
+drwxr-xr-x 1 ferre 197609     0 Aug  8 22:25 04_agentes
+drwxr-xr-x 1 ferre 197609     0 Aug  8 22:25 05_testes
+drwxr-xr-x 1 ferre 197609     0 Aug  8 22:26 06_dependencias
+drwxr-xr-x 1 ferre 197609     0 Aug  8 22:32 07_ambiente
+drwxr-xr-x 1 ferre 197609     0 Aug  8 22:28 08_dados
+drwxr-xr-x 1 ferre 197609     0 Aug  8 22:28 09_logs
+drwxr-xr-x 1 ferre 197609     0 Aug  8 22:28 10_health

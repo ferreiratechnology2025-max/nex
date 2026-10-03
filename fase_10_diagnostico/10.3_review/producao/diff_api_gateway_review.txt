@@ -1,0 +1,15 @@
+warning: in the working copy of 'src/api_gateway.py', LF will be replaced by CRLF the next time Git touches it
+diff --git a/src/api_gateway.py b/src/api_gateway.py
+index bcd0da1..e030934 100644
+--- a/src/api_gateway.py
++++ b/src/api_gateway.py
+@@ -375,7 +375,8 @@ async def health(request: Request):
+     model_name = "unknown"
+     device = "unknown"
+     memory_count = 0
+-    
++    llm = None
++
+     llama_available = False
+     llama_loaded = False
+     hf_available = False

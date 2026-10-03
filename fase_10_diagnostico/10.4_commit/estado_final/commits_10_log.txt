@@ -1,0 +1,2 @@
+1a94ba4 test: align test suite with current Nex contracts
+53a8a2f fix: initialize llm to None before try block in api_gateway

@@ -1,0 +1,51 @@
+=== 10.2C — API DRIFT (19 → 1 falha restante) ===
+
+AÇÕES:
+
+1. CR1 (LLMManager construtor, 7 falhas) → ELIMINAR
+   tests/test_llm_manager.py removido por inteiro. Verificado antes da
+   remoção: cleanup() é coberto por tests/test_ollama_client.py (já
+   tracked, passando); is_loaded() é coberto por
+   tests/test_web_search.py::test_generate_without_web_search. Não há
+   perda de cobertura real, apenas de nomes de teste específicos.
+
+2. CR3 (_detect_backend, 3 falhas) → ADAPTAR
+   - tests/test_fallback.py::test_backend_detection: assert mudado de
+     HUGGINGFACE para OPENROUTER (ramo real); removida chave ZAI_API_KEY
+     incidental do config de teste.
+   - tests/test_web_search.py::TestBackendDetection: os dois métodos
+     foram renomeados e reescritos (test_detect_huggingface_backend →
+     test_detect_backend_ignores_use_huggingface_flag,
+     test_detect_huggingface_placeholder_key →
+     test_detect_backend_without_local_model). NOTA DE TRANSPARÊNCIA: a
+     segunda não tem equivalente 1:1 — a lógica de "chave placeholder"
+     não existe mais em lugar nenhum do detector atual, então o novo
+     teste exercita o outro ramo real (LOCAL_MODEL_PATH vazio) em vez de
+     inventar comportamento inexistente.
+
+3. CR4 (CacheLRU assíncrono, 5 falhas) → ADAPTAR
+   - tests/test_memory_opt.py::TestCacheLRU: classe convertida de
+     unittest.TestCase para unittest.IsolatedAsyncioTestCase; todos os 4
+     métodos convertidos para async def com await nas chamadas
+     cache.get()/cache.set().
+   - test_cache_lru_interno: mantido como método síncrono (a classe
+     TestMemoriaPersistente não foi convertida), usando
+     asyncio.run(memoria.cache_lru.set/get(...)) — mesmo padrão já usado
+     no método irmão test_salvar_memoria no mesmo arquivo.
+
+4. CR7 (GET / retorna HTML, 1 falha) → ADAPTAR
+   tests/test_api_gateway.py::test_app_with_test_client: troca de
+   response.json()["message"] para checagem de
+   "text/html" in response.headers["content-type"].
+
+5. CR8 (Query.max_tokens default, 1 falha) → ADAPTAR
+   tests/test_api_gateway.py::test_query_defaults: assert 256 → assert 2048.
+
+6. CR9 (websocket_chat signature, 1 falha) → ADAPTAR
+   tests/test_ws_metrics.py::test_ws_handler_has_correct_signature:
+   removida a asserção sobre "request" (nunca existiu na assinatura real).
+
+RESULTADO: 19 failed → 1 failed (a falha restante é CR6, deferida para
+10.2D). 87 passed → 97 passed. 106 coletados → 98 coletados (-7, pela
+remoção de test_llm_manager.py). Todos os números conferem exatamente com
+o previsto no agrupamento.

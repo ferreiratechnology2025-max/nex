@@ -1,0 +1,19 @@
+total 40
+drwxr-xr-x 1 ferre 197609    0 Aug  8 23:52 .
+drwxr-xr-x 1 ferre 197609    0 Aug  8 23:55 ..
+drwxr-xr-x 1 ferre 197609    0 Aug  8 23:13 01_inventario
+drwxr-xr-x 1 ferre 197609    0 Aug  8 23:39 02_classificacao
+drwxr-xr-x 1 ferre 197609    0 Aug  8 23:39 03_resumo
+drwxr-xr-x 1 ferre 197609    0 Aug  8 23:23 04_recomendacoes
+drwxr-xr-x 1 ferre 197609    0 Aug  8 23:28 8.2A_investigacao
+drwxr-xr-x 1 ferre 197609    0 Aug  8 23:28 8.2A_remocao
+drwxr-xr-x 1 ferre 197609    0 Aug  8 23:33 8.2B_dockerignore
+drwxr-xr-x 1 ferre 197609    0 Aug  8 23:32 8.2B_gitignore
+drwxr-xr-x 1 ferre 197609    0 Aug  8 23:29 8.2B_verificacao
+drwxr-xr-x 1 ferre 197609    0 Aug  8 23:39 8.2C0_toolkit
+drwxr-xr-x 1 ferre 197609    0 Aug  8 23:42 8.2C2_limpeza
+drwxr-xr-x 1 ferre 197609    0 Aug  8 23:34 8.2C_limpeza
+drwxr-xr-x 1 ferre 197609    0 Aug  8 23:45 8.2D_promote
+drwxr-xr-x 1 ferre 197609    0 Aug  8 23:50 8.2E_validacao
+drwxr-xr-x 1 ferre 197609    0 Aug  8 23:52 8.3_commits
+-rw-r--r-- 1 ferre 197609 4080 Aug  8 23:46 RESUMO_STAGING.txt

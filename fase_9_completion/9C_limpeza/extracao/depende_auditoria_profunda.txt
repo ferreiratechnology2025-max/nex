@@ -1,0 +1,25 @@
+fase_9_completion/9A_auditoria/CLASSIFICACAO_9A.md:25:## auditoria_profunda/ (7.3M — majoritariamente bloat)
+fase_9_completion/9A_auditoria/CLASSIFICACAO_9A.md:34:  `auditoria_profunda/`, então em algum momento leu seu próprio arquivo de
+fase_9_completion/9A_auditoria/CLASSIFICACAO_9A.md:60:  auditoria_profunda/), documenta uma decisão técnica real (causa-raiz do
+fase_9_completion/9A_auditoria/CLASSIFICACAO_9A.md:87:  auto-referência acidental de auditoria_profunda/).
+fase_9_completion/9A_auditoria/CLASSIFICACAO_9A.md:96:| auditoria_profunda/ | **DELETE** | remover (artefato corrompido) |
+grep: input file 'fase_9_completion/9C_limpeza/extracao/depende_auditoria_profunda.txt' is also the output
+fase_9_completion/CLASSIFICACAO_FINAL.txt:8:| auditoria_profunda/ | DELETE | zero referências externas; contém artefato de 7,6MB corrompido por bug de auto-referência de grep; conteúdo útil já resumido em 00_SINTESE.txt e superado pela Fase 7 | remover |
+fase_9_completion/CLASSIFICACAO_FINAL.txt:42:| DELETE (9A) | 1 (auditoria_profunda/) | remover |
+fase_9_completion/CLASSIFICACAO_FINAL.txt:46:1. `auditoria_profunda/01_seguranca/outras_credenciais.txt` cresceu de
+fase_9_completion/CLASSIFICACAO_FINAL.txt:51:   para auditoria_profunda/ em vez de ARCHIVE como os outros 3 diretórios
+fase_9_completion/CLASSIFICACAO_FINAL.txt:67:  delete de auditoria_profunda/
+
+=== ANÁLISE ===
+Todas as ocorrências acima são referências em PROSA dentro da própria
+Fase 9 (que classifica o diretório), não citações de conteúdo exclusivo.
+
+Verificação adicional: auditoria_profunda/00_SINTESE.txt (o resumo de 4KB
+citado como 'conteúdo útil preservado') está DENTRO do próprio diretório
+que será deletado. Confirmando que suas conclusões (data/memoria.db como
+fonte de verdade, 71 registros/vetores, dimensão 384) estão preservadas
+de forma redundante em baseline_saude/00_RESUMO.txt (Fase 6, ARCHIVE, não
+deletado) via reconfirmação independente do /health do servidor rodando
+(memory_count: 71) e ao longo de fase_7_correcao_controlada/ e
+fase_8_repository_boundary/ (ambos ARCHIVE). Nenhuma informação única
+seria perdida com o DELETE de auditoria_profunda/ por inteiro.

@@ -1,0 +1,24 @@
+   Para rodar apenas a API (Porta 8000):
+
+cd D:\Nex
+venv\Scripts\activate
+scripts\windows\start_local.bat
+
+http://localhost:8000/
+
+D:\Nex, ative o venv: venv\Scripts\activate
+ digite:
+
+python -m src.main        
+
+streamlit run streamlit_app.py         
+
+Para rodar a Interface Gráfica (Porta 8501):
+Abra outro terminal, navegue até
+ D:\Nex, ative o venv 
+venv\Scripts\activate
+ 
+digite:
+
+
+streamlit run streamlit_app.py                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   

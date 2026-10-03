@@ -1,0 +1,7 @@
+./fase_8_repository_boundary/02_classificacao/classificacao_config.md:5:  documentada do projeto (Dockerfile também presente no repo).
+./fase_8_repository_boundary/02_classificacao/classificacao_docs.md:33:  em `docker-entrypoint.sh`/`Dockerfile`, ambos já tracked) não funciona.
+./fase_8_repository_boundary/03_resumo/SUMMARY.md:33:| docs | .dockerignore | PROMOTE | Dockerfile + docker-compose.yml confirmados; conteúdo correto, já ignorava `data/` por completo — achado da 8.2B.2 |
+./Nex.spec.md:672:### 3.1 Dockerfile Otimizado
+./Nex.spec.md:675:# Dockerfile.multistage
+./scripts/create_release.sh:40:cp Dockerfile ${RELEASE_DIR}/
+./SYSTEM_MAP.md:96:+-- Dockerfile               # Imagem Docker

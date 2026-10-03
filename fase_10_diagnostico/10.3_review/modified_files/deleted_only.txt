@@ -1,0 +1,2 @@
+ D tests/test_fallback_activation.py
+ D tests/test_llm_manager.py

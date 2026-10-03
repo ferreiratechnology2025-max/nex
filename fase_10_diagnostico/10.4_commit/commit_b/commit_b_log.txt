@@ -1,0 +1,1 @@
+1a94ba4 test: align test suite with current Nex contracts

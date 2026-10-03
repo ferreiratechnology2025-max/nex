@@ -1,0 +1,4 @@
+./agents/doc-updater.md
+./CLAUDE.md
+./README.md
+./SYSTEM_MAP.md

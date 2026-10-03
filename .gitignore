@@ -32,4 +32,13 @@ Thumbs.db
 # Test
 .pytest_cache/
 .coverage
-htmlcov/
+htmlcov/.env.*
+*.env
+!.env.example
+node_modules/
+.venv/
+*.sqlite
+*.sqlite3
+*.gguf
+*.onnx
+venv/

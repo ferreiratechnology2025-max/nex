@@ -1,0 +1,82 @@
+=== ITENS UNTRACKED NÃO CLASSIFICADOS EM NENHUMA FASE ===
+
+Descobertos ao montar a lista explícita de staging da 8.2D. Nenhum destes
+passou pelo grep da Fase 8.1 (escopo original: .py, extensões de config
+específicas — .env/.key/.json/.yaml/.yml/.toml/.ini —, artefatos —
+.log/.db/.index/.sqlite/.cache/.pyc —, e 5 diretórios nomeados
+explicitamente). NÃO estão na lista de staging desta etapa.
+
+## Documentação
+- docs/                    (diretório — contém ao menos DEVELOPER_GUIDE.md
+                             e USER_GUIDE.md, vistos por referência em
+                             outras buscas desta auditoria, nunca lidos
+                             diretamente nem classificados)
+- examples/                (diretório — conteúdo nunca inspecionado)
+
+## Infraestrutura / build
+- Dockerfile                (arquivo citado como existente e referenciado
+                              por .dockerignore, já classificado PROMOTE —
+                              mas o Dockerfile em si nunca foi lido nem
+                              formalmente classificado)
+- docker-entrypoint.sh
+- Makefile
+
+## Scripts operacionais (raiz)
+- check_environment.ps1
+- start_services.ps1
+
+## Scripts (scripts/ e scripts/windows/) — 17 arquivos
+- scripts/build.sh
+- scripts/create_release.sh
+- scripts/download_model.bat
+- scripts/download_model.sh
+- scripts/install_ollama.bat
+- scripts/install_ollama.sh
+- scripts/start.bat
+- scripts/start.sh
+- scripts/stop.sh
+- scripts/validate_system.bat
+- scripts/validate_system.sh
+- scripts/windows/backup.bat
+- scripts/windows/build.bat
+- scripts/windows/download_tinyllama.bat
+- scripts/windows/fix_env.bat
+- scripts/windows/setup_openrouter.bat
+- scripts/windows/setup_venv.bat
+- scripts/windows/start.bat
+- scripts/windows/start_ui.bat
+- scripts/windows/start_venv.bat
+- scripts/windows/stop.bat
+- scripts/windows/test.bat
+- scripts/windows/test_venv.bat
+- scripts/windows/validate.bat
+- scripts/windows/validate_venv.bat
+
+## Manuais / conteúdo não-código
+- "MANUAL SISTEMA Nex 1.pdf"
+- "Manual de Bolso do Nex Chat.pdf"
+- "ligar Nex.txt"
+
+## Também pendente (já sinalizado na 8.2A/8.2B, ainda sem classificação formal própria)
+- streamlit_app.py — NÃO está nesta lista porque já está TRACKED
+  (confirmado na Fase 8.1: `git status --porcelain -- streamlit_app.py`
+  não retorna nada). Mencionado aqui só para registro — não precisa de
+  staging.
+
+---
+
+RECOMENDAÇÃO: estes itens não devem ser adicionados ao staging nesta
+etapa. A maioria tem alta probabilidade de ser PROMOTE óbvio por
+associação (ex.: Dockerfile é referenciado por docker-compose.yml e
+.dockerignore, já ambos PROMOTE; scripts/*.sh são citados no README como
+forma de execução do projeto), mas "alta probabilidade" não é o padrão de
+evidência usado em nenhuma classificação anterior desta auditoria — cada
+grupo anterior teve leitura de conteúdo e verificação de consumidores
+antes da decisão. Os PDFs em particular merecem atenção: arquivos
+binários grandes de manual não deveriam necessariamente ir para controle
+de versão de código sem uma decisão explícita sobre política de
+documentação binária no repositório.
+
+Proponho uma Fase 8.2D-bis (ou 8.3) dedicada a classificar estes ~24
+itens antes de qualquer commit final, para que o commit resultante da
+Fase 8 represente o estado COMPLETO do repositório, não um subconjunto.

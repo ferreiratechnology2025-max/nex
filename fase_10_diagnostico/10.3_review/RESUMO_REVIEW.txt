@@ -1,0 +1,74 @@
+=== REVISÃO DO DIFF — FASE 10.3 ===
+
+PRODUÇÃO ALTERADA:
+- src/api_gateway.py: +1 linha (llm = None), confirmado como ÚNICO
+  arquivo alterado em src/ (git diff --name-only src/ → 1 resultado)
+- Justificativa: UnboundLocalError quando get_llm_manager() falha
+  silenciosamente dentro do try/except: pass que precede o uso de `llm`
+- Risco: baixo — variável adicionada ao mesmo bloco de pré-inicialização
+  já usado para model_name, device, memory_count e as 6 flags de backend;
+  nenhum caminho de exceção novo foi criado, apenas um já existente deixou
+  de ser um crash
+
+Nota lateral (não desta fase): `static/script.js` aparece modificado no
+git status, mas é alteração pré-existente ao início desta auditoria
+(último commit 0dd63ba, anterior a toda a conversa) — confirmado via
+`git log -1 -- static/script.js`, sem relação com a Fase 10.
+
+TESTES DELETADOS (2 arquivos, 9 métodos):
+- test_fallback_activation.py (2 testes): removido — API Z.ai não existe
+  mais (confirmado: zero ocorrências em src/). Evidência documental:
+  docs/TEST_REPORT_FASE4.md confirma remoção deliberada na Fase 2 do
+  produto.
+  → DÍVIDA EXPLÍCITA: cobertura do mecanismo real de fallback em runtime
+    (backend ativo falha → cai para llama_cpp → headers/métricas
+    corretos) foi perdida. Não presumida como "coberta em outro lugar" —
+    tests/test_fallback_chain.py não foi auditado linha a linha para
+    confirmar sobreposição, então trato como lacuna real, registrada
+    como item de backlog.
+- test_llm_manager.py (7 testes): removido — construtor `model_name=`
+  não existe (TypeError objetivo e verificável). Cobertura substituta
+  CONFIRMADA (não presumida) para cleanup() e is_loaded() em arquivos já
+  tracked (test_ollama_client.py, test_web_search.py). Conceito de
+  "batching" verificado como INEXISTENTE no LLMManager atual (grep
+  confirma única ocorrência de "batch" é o parâmetro de tuning
+  OLLAMA_NUM_BATCH) — não é dívida, é teste de uma capacidade que não
+  está no produto.
+
+TESTES ADAPTADOS (13 asserções em 5 arquivos — a contagem de 11 do plano
+original cresceu para 13 ao contar precisamente cada asserção alterada):
+- test_api_gateway.py: 3 adaptações → intenção preservada em todas (1
+  correção de valor, 1 troca de propriedade verificada por mudança real
+  de comportamento do endpoint, 1 correção de fixture sem tocar
+  asserção)
+- test_fallback.py: 2 adaptações → intenção preservada em ambas
+- test_memory_opt.py: 5 adaptações (4 em TestCacheLRU + 1 em
+  test_cache_lru_interno) → intenção 100% preservada — zero mudança nas
+  asserções em si, apenas correção de await ausente
+- test_web_search.py: 2 adaptações → 1 com intenção preservada
+  (renomeada para honestidade, valor corrigido), 1 SEM equivalente 1:1
+  (propriedade original testada não existe mais na lógica atual — teste
+  reescrito para exercitar o outro ramo real, não disfarçado como
+  adaptação limpa)
+- test_ws_metrics.py: 1 adaptação → intenção preservada (remoção de
+  expectativa sobre parâmetro que nunca existiu)
+
+CRITÉRIO DE REJEIÇÃO APLICADO: nenhuma das 13 asserções foi substituída
+por `is not None` ou equivalente vacuamente fraco. Verificado item a
+item em fase_10_diagnostico/10.3_review/adaptations/AUDITORIA_ADAPTACOES.md.
+
+ESTADO FINAL:
+- Testes: 98 passed / 0 failed / 0 errors — exit code 0
+- Servidor: /health → memory_count: 71, backends corretos, /metrics 200 OK
+- Cobertura do fallback real (openrouter→llama_cpp): PENDENTE (backlog,
+  não resolvida nesta auditoria)
+
+DECISÃO: Commit autorizado — SIM, com condição.
+
+CONDIÇÃO: nenhuma. Todas as verificações desta etapa passaram:
+(1) apenas 1 linha de produção alterada, de baixo risco; (2) os 2 testes
+deletados têm evidência de obsolescência objetiva (TypeError/API
+inexistente), com apenas 1 dívida de cobertura genuína, já registrada
+explicitamente e não escondida; (3) nenhuma das 13 adaptações enfraquece
+uma asserção — todas mantêm verificação específica e falsificável;
+(4) suíte 100% verde e servidor validado em runtime real.

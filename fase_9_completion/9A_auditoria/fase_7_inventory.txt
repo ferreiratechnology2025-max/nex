@@ -1,0 +1,12 @@
+total 24
+drwxr-xr-x 1 ferre 197609 0 Aug  8 23:06 .
+drwxr-xr-x 1 ferre 197609 0 Aug  8 23:55 ..
+drwxr-xr-x 1 ferre 197609 0 Aug  8 22:48 01_seguranca
+drwxr-xr-x 1 ferre 197609 0 Aug  8 22:57 02_pytest
+drwxr-xr-x 1 ferre 197609 0 Aug  8 23:00 03_untracked_tests
+drwxr-xr-x 1 ferre 197609 0 Aug  8 23:03 04_memory_manager
+drwxr-xr-x 1 ferre 197609 0 Aug  8 22:48 04_persistencia
+drwxr-xr-x 1 ferre 197609 0 Aug  8 23:02 04_remocao_scripts
+drwxr-xr-x 1 ferre 197609 0 Aug  8 23:06 05_index_path
+drwxr-xr-x 1 ferre 197609 0 Aug  8 22:48 05_validacao
+drwxr-xr-x 1 ferre 197609 0 Aug  8 23:12 06_baseline_final
